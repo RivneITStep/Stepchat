@@ -18,29 +18,7 @@ namespace StepChat
 {
     public partial class WindowControlPanel : UserControl
     {
-        #region
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetCursorPos(ref Win32Point pt);
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct Win32Point
-        {
-            public Int32 X;
-            public Int32 Y;
-        };
-        private static Point GetMousePosition()
-        {
-            Win32Point w32Mouse = new Win32Point();
-            GetCursorPos(ref w32Mouse);
-            return new Point(w32Mouse.X, w32Mouse.Y);
-        }
-        #endregion
-        private bool isWindowsControlPanel_MouseDoubleClick;
         public delegate void ButtonEnter(object sender, RoutedEventArgs e);
-
-        public double x { get; set; }
-        public double y { get; set; }
 
         public event ButtonEnter ButtonClose_MouseClick_Handler;
         public event ButtonEnter ButtonMaximize_MouseClick_Handler;
@@ -48,7 +26,6 @@ namespace StepChat
         public WindowControlPanel()
         {
             InitializeComponent();
-            isWindowsControlPanel_MouseDoubleClick = false;
         }
 
 
