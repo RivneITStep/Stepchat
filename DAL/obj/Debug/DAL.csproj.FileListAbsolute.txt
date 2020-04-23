@@ -1,0 +1,12 @@
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\ItStepChat.dll.config
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\ItStepChat.dll
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\ItStepChat.pdb
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\EntityFramework.dll
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\EntityFramework.xml
+C:\Users\pavl\Desktop\Stepchat\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pavl\Desktop\Stepchat\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\pavl\Desktop\Stepchat\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\pavl\Desktop\Stepchat\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\pavl\Desktop\Stepchat\DAL\obj\Debug\ItStepChat.dll
+C:\Users\pavl\Desktop\Stepchat\DAL\obj\Debug\ItStepChat.pdb
