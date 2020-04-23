@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projects\ComangProj\StepChat\StepChat\App.xaml
-11151548125
+2-380639338
 
-6-42473472
+7-269859715
 15-2069912719
-MainWindow.xaml;
+LoginWindow.xaml;WindowControlPanel.xaml;
 
-True
+False
 

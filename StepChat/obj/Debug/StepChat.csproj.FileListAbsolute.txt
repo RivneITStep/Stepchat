@@ -6,13 +6,10 @@ C:\Projects\ComangProj\StepChat\StepChat\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Projects\ComangProj\StepChat\StepChat\bin\Debug\MaterialDesignColors.pdb
 C:\Projects\ComangProj\StepChat\StepChat\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Projects\ComangProj\StepChat\StepChat\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.csprojAssemblyReference.cache
-C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\MainWindow.g.cs
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\App.g.cs
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat_MarkupCompile.cache
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat_MarkupCompile.lref
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\App.baml
-C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\MainWindow.baml
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.g.resources
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.Properties.Resources.resources
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.csproj.GenerateResource.cache
@@ -20,3 +17,8 @@ C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.csproj.CoreCompileIn
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.csproj.CopyComplete
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.exe
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.pdb
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\LoginWindow.g.cs
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\LoginWindow.baml
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\WindowControlPanel.g.cs
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\WindowControlPanel.baml
