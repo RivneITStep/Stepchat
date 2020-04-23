@@ -64,7 +64,7 @@
     <Compile Include="Configs\ConfigsMessageView.cs" />
     <Compile Include="Configs\ConfigsReadStatus.cs" />
     <Compile Include="Configs\ConfigsUser.cs" />
-    <Compile Include="DAL.cs" />
+    <Compile Include="DALClass.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\ChatMember.cs" />
