@@ -1,7 +1,0 @@
-C:\Users\pavl\Desktop\Stepchat\Service\bin\Debug\Service.dll.config
-C:\Users\pavl\Desktop\Stepchat\Service\bin\Debug\Service.dll
-C:\Users\pavl\Desktop\Stepchat\Service\bin\Debug\Service.pdb
-C:\Users\pavl\Desktop\Stepchat\Service\obj\Debug\Service.csprojAssemblyReference.cache
-C:\Users\pavl\Desktop\Stepchat\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
-C:\Users\pavl\Desktop\Stepchat\Service\obj\Debug\Service.dll
-C:\Users\pavl\Desktop\Stepchat\Service\obj\Debug\Service.pdb
