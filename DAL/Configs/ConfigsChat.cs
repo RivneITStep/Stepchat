@@ -16,7 +16,9 @@ namespace DAL.Configs
             Property(c => c.Description).IsOptional();
             Property(c => c.PhotoPath).IsOptional();
 
-            HasRequired<ReadStatus>(c => c.ReadStatus).WithRequiredDependent().Map(c=>c.MapKey("ReadStatusId"));
+            //HasRequired<ReadStatus>(c => c.ReadStatus).WithRequiredDependent().Map(c=>c.MapKey("ReadStatusId"));
+
+            HasMany<ReadStatus>(c => c.ReadStatuses).WithRequired(c => c.Chat);
 
         }
     }

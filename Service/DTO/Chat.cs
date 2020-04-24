@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace Service.DTO
 {
+    [DataContract]
     public class Chat
     {
+        [DataMember]
         public int Id { get; set; }
+
         public bool IsPersonal { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string PhotoPath { get; set; }
-
-        // Foreign key
-        public ICollection<int> ReadStatusId { get; set; }
-
-        // Navigation properties
-        public virtual ICollection<ChatMember> ChatMembers { get; set; }
-        public virtual ICollection<Message> Messages { get; set; }
-        public virtual ICollection<ReadStatus> ReadStatuses { get; set; }
+        public int ReadStatusId { get; set; }
     }
 }

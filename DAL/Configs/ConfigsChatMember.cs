@@ -13,7 +13,8 @@ namespace DAL.Configs
         {
             HasRequired<User>(c => c.User).WithMany(u => u.ChatMembers).HasForeignKey(c => c.UserId);
             HasRequired<Chat>(c => c.Chat).WithMany(ct => ct.ChatMembers).HasForeignKey(c => c.ChatId);
-            HasRequired<MemberRole>(c => c.MemberRole).WithRequiredDependent().Map(d => d.MapKey("MemberRoleId"));
+
+            // HasRequired<MemberRole>(c => c.MemberRole); ToDo
 
 
         }
