@@ -1,0 +1,62 @@
+﻿<Window x:Class="MainWindowUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainWindowUI"
+        mc:Ignorable="d"
+       Title="LoginWindow" MinHeight="800" MinWidth="800" Width="1248" Height="800"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource ForegroundColor}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource PrimaryColor}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="68"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="837*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:WindowControlPanel Background="{DynamicResource PrimarySecondColor}" x:Name="WindowControlPanel_" Grid.Row="0"  Grid.ColumnSpan="3" Height="Auto"/>
+        <DockPanel  materialDesign:ButtonAssist.CornerRadius="25 25 0 0" Background="{DynamicResource PrimarySecondColor}"  Grid.Row="1" Grid.Column="0" LastChildFill="False">
+            <Button Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom" Click="Button_Click">
+                <materialDesign:PackIcon Kind="ThemeLightDark" />
+            </Button>
+
+        </DockPanel>
+        <DockPanel Grid.Column="1" Grid.Row="1" Name="contactsDockPanel" LastChildFill="False" Background="{DynamicResource PrimarySecondColor}" >
+            <ListBox Name="contactsList" SelectionChanged="ListBox_SelectionChanged">
+                <local:PersonControl   Width="auto"  Height="auto"></local:PersonControl>
+            <local:PersonControl ></local:PersonControl>
+            <local:PersonControl ></local:PersonControl>
+            </ListBox>
+        </DockPanel>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <TextBox  VerticalAlignment="Bottom" Height="100" Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimarySecondColor}"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+    Margin="8"
+    AcceptsReturn="True"
+    TextWrapping="Wrap"
+    VerticalScrollBarVisibility="Auto"
+    materialDesign:HintAssist.Hint="Enter your message"
+                      materialDesign:HintAssist.Foreground="{DynamicResource ForegroundColor}"
+    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
+            
+        </Grid>
+    </Grid>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
+</Window>
