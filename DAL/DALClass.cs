@@ -37,14 +37,19 @@ namespace DAL
             context.SaveChanges();
         }
 
-        public bool CheckUserExist(int userId)
+        public bool CheckUserExist(string login)
         {
-            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            var existing = context.Users.FirstOrDefault(u => u.Login == login);
 
             if (existing == null) return false;
             
             else return true;
         }
+        public Chat GetChatById(int chatId)
+        {
+            return context.Chats.FirstOrDefault(c => c.Id == chatId);
+        }
+
         public User GetUserById(int userId)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -53,9 +58,17 @@ namespace DAL
             
             else return existing;
         }
-        public bool CheckUserPassword(string password, int userId)
+        public User GetUserByLogin(string login)
         {
-            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            var existing = context.Users.FirstOrDefault(u => u.Login == login);
+
+            if (existing == null) return null;
+
+            else return existing;
+        }
+        public bool CheckUserPassword(string password, string login)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Login == login);
             
             if (existing == null) return false;
 

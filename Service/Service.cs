@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using DAL;
 using AutoMapper;
+using Service.Managers;
 
 namespace Service
 {
@@ -13,6 +14,8 @@ namespace Service
     {
         private static DALClass dal = new DALClass();
         private static IMapper mapper;
+
+        private Models.User User;
 
         static Service() // Initialization
         {
@@ -74,17 +77,28 @@ namespace Service
             return Result.WithError(ResultError.NotImplemented);
         }
 
-        public Result Login(string login, string password)
+        public Result<DTO.User> Login(string login, string password)
         {
-            dal.Login(login, password);
+            Result<Models.User> r = UsersManager.LoginUser(login, password);
+            DTO.User dtoUser = mapper.Map<DTO.User>(r.Data);
 
-            return Result.OK;
+            if (!r.IsSuccess) return Result<DTO.User>.WithError(r.Error);
+
+            User = r.Data;
+
+            return Result<DTO.User>.OK(dtoUser);
         }
-        public Result Register(DTO.User user)
-        {
-            dal.Register(mapper.Map<DAL.User>(user));
-            return Result.OK;
 
+        public Result<DTO.User> Register(DTO.User user)
+        {
+            Result<Models.User> r = UsersManager.RegisterUser(user);
+            DTO.User dtoUser = mapper.Map<DTO.User>(r.Data);
+
+            if (!r.IsSuccess) return Result<DTO.User>.WithError(r.Error);
+
+            User = r.Data;
+
+            return Result<DTO.User>.OK(dtoUser);
         }
 
         public Result<IEnumerable<DTO.Chat>> SearchChats(string query)

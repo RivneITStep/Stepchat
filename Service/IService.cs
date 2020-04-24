@@ -7,14 +7,15 @@ using System.Text;
 
 namespace Service
 {
+
     [ServiceContract]
     public interface IService
     {
         [OperationContract]
-        Result Login(string login, string password);
+        Result<DTO.User> Login(string login, string password);
 
         [OperationContract]
-        Result Register(DTO.User user);
+        Result<DTO.User> Register(DTO.User user);
 
         [OperationContract]
         Result SendMessage(int chatId, string message);

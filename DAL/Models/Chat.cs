@@ -15,11 +15,11 @@ namespace DAL
         public string PhotoPath { get; set; }
 
         // Foreign key
-        public int ReadStatusId { get; set; }
+        public ICollection<int> ReadStatusId { get; set; }
 
         // Navigation properties
         public virtual ICollection<ChatMember> ChatMembers { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
-        public virtual ReadStatus ReadStatus { get; set; }
+        public virtual ICollection<ReadStatus> ReadStatuses { get; set; }
     }
 }

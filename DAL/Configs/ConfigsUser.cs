@@ -12,7 +12,7 @@ namespace DAL.Configs
         public ConfigsUser()
         {
             Property(u => u.FirstName).IsRequired();
-            Property(u => u.LastName).IsRequired();
+            Property(u => u.LastName).IsOptional();
             Property(u => u.Bio).IsOptional();
             Property(u => u.Email).IsRequired();
             Property(u => u.PhotoPath).IsOptional();

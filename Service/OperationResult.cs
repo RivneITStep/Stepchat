@@ -11,6 +11,8 @@ namespace Service
     public enum ResultError
     {
         [EnumMember]
+        Null,
+        [EnumMember]
         LoginIsUsed,
         [EnumMember]
         UserNotExist,
@@ -28,7 +30,7 @@ namespace Service
         [DataMember]
         public readonly bool IsSuccess;
         [DataMember]
-        public ResultError Error;
+        public ResultError Error = ResultError.Null;
         [DataMember]
         public static Result OK = new Result();
 
@@ -48,6 +50,7 @@ namespace Service
             IsSuccess = false;
         }
     }
+
     [DataContract]
     public class Result<T> : Result
     {
@@ -60,6 +63,11 @@ namespace Service
 
         }
         public Result(ResultError error) : base(error) { }
+
+        public new static Result<T> OK(T data)
+        {
+            return new Result<T>(data);
+        }
 
         public new static Result<T> WithError(ResultError error)
         {
