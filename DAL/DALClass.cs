@@ -15,7 +15,7 @@ namespace DAL
             context = new ChatDBModel();
         }
 
-        public bool Login (string login, string hashPassword)
+        public bool Login(string login, string hashPassword)
         {
             User user = context.Users.FirstOrDefault(u => u.Login == login);
 
@@ -34,6 +34,65 @@ namespace DAL
             if (existing != null) return;
 
             context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public bool CheckUserExist(int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return false;
+            
+            else return true;
+        }
+        public User GetUserById(int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+            
+            else return existing;
+        }
+        public bool CheckUserPassword(string password, int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            
+            if (existing == null) return false;
+
+            else 
+            {
+                if (existing.Password == password)
+                    return true;
+                else
+                    return false;
+            }
+
+        }
+
+        public void AddMessage(Message message)
+        {            
+            if (message == null) return;
+
+            context.Messages.Add(message);
+            context.SaveChanges();
+        }
+
+        public void EditUser(User newUser)
+        {
+            var existing = context.Users.FirstOrDefault(u=>u.Id == newUser.Id);
+
+            if (existing == null) return;
+
+            existing.FirstName = newUser.FirstName;
+            existing.LastName = newUser.LastName;
+            existing.Bio = newUser.Bio;
+            existing.Email = newUser.Email;
+            existing.PhotoPath = newUser.PhotoPath;
+            existing.Login = newUser.Login;
+            existing.Password = newUser.Password;
+            existing.IsOnline = newUser.IsOnline;
+            existing.LastOnlineDate = newUser.LastOnlineDate;
+
             context.SaveChanges();
         }
     }

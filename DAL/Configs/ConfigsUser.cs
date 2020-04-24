@@ -14,6 +14,7 @@ namespace DAL.Configs
             Property(u => u.FirstName).IsRequired();
             Property(u => u.LastName).IsRequired();
             Property(u => u.Bio).IsOptional();
+            Property(u => u.Email).IsRequired();
             Property(u => u.PhotoPath).IsOptional();
             Property(u => u.Login).IsRequired();
             Property(u => u.Password).IsRequired();
