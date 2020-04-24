@@ -11,17 +11,16 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource test1}"
+     Background="{DynamicResource PrimarySecondColor}"
      FontFamily="{DynamicResource MaterialDesignFont}"
    mc:Ignorable="d" 
              MinHeight="25" MaxHeight="25" MinWidth="300" Height="24.627" 
-             
              >
     
         <Grid>
             
         <DockPanel Grid.Column="3">
-            <Button DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
+            <Button Margin="1" DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
                              Background="{StaticResource AccentColor}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                     materialDesign:ButtonAssist.CornerRadius="0"
@@ -35,7 +34,7 @@
                     >
                 <materialDesign:PackIcon Kind="CloseBox" />
             </Button>
-            <Button DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
+            <Button Margin="1" DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
                     
                              Background="{StaticResource AccentColor}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
@@ -48,7 +47,7 @@
                     Click="ButtonMaximize_MouseClick">
                 <materialDesign:PackIcon Kind="WindowMaximize" />
             </Button>
-            <Button DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True"
+            <Button Margin="1" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True"
                     materialDesign:ButtonAssist.CornerRadius="0"
                     
                 Width="25"
@@ -58,9 +57,8 @@
                     Click="ButtonMinimize_MouseClick">
                 <materialDesign:PackIcon Kind="WindowMinimize" />
             </Button>
-            <Button DockPanel.Dock="Left"  WindowChrome.IsHitTestVisibleInChrome="True"
-                    Background="{StaticResource AccentColor}"
-                Style="{StaticResource MaterialDesignRaisedButton}"
+            <Label FontFamily="Forte" VerticalContentAlignment="Center" FontSize="14" Margin="-2,-5,0,0" DockPanel.Dock="Left"  WindowChrome.IsHitTestVisibleInChrome="True"
+             
                     materialDesign:ButtonAssist.CornerRadius="0"
                     
                 Width="auto"
@@ -69,7 +67,7 @@
                     
                 ToolTip="Resource name: MaterialDesignRaisedButton">
                 StepChat
-            </Button>
+            </Label>
             <Grid Width="50"/>
             <Label Name="Debug"/>
         </DockPanel>

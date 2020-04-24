@@ -25,3 +25,5 @@ D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\MainWindowUI.exe
 D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\MainWindowUI.pdb
 D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\PersonControl.g.cs
 D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\PersonControl.baml
+D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\SearchUserWindow.g.cs
+D:\TeamProject\WindowUi\MainWindowUI\obj\Debug\SearchUserWindow.baml

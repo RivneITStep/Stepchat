@@ -12,8 +12,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="PrimaryColor" x:Name="PrimaryC" Color="#FF303030"/>
-            <SolidColorBrush x:Key="PrimarySecondColor" x:Name="PrimarySecondC" Color="#394045"/>
+            <SolidColorBrush x:Key="PrimaryColor" x:Name="PrimaryC" Color="#394045"/>
+            <SolidColorBrush x:Key="PrimarySecondColor" x:Name="PrimarySecondC" Color="#FF303030"/>
             <SolidColorBrush x:Key="AccentColor" x:Name="AccentC" Color="#534bae"/>
             <SolidColorBrush x:Key="ForegroundColor" x:Name="ForegroundC" Color="#ffffff"/>
             

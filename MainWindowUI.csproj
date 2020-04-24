@@ -66,6 +66,9 @@
     <Compile Include="PersonControl.xaml.cs">
       <DependentUpon>PersonControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchUserWindow.xaml.cs">
+      <DependentUpon>SearchUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PersonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SearchUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

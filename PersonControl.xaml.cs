@@ -20,9 +20,30 @@ namespace MainWindowUI
     /// </summary>
     public partial class PersonControl : UserControl
     {
+        private string contactUserName;
+        private Image contactImage;
+        private string contactLastMessage;
+        private DateTime timeOfLastMessage;
         public PersonControl()
         {
             InitializeComponent();
+        }
+
+        public void EditContactName(string userName)
+        {
+            contactUserName = userName;
+            contactNameLabel.Content = contactUserName;
+        }
+        public void EditContactName(string message, DateTime time)
+        {
+            timeOfLastMessage = time;
+            lastSendedMessageTime.Content = timeOfLastMessage.ToShortTimeString();
+
+            contactLastMessage = message;
+            lastMessage.Text = contactLastMessage;
+        }
+        public void EditContactImage(Image image)
+        {
         }
     }
 }

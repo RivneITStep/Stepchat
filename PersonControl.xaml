@@ -15,10 +15,8 @@
      TextOptions.TextRenderingMode="Auto"
      Background="#4f5b62"
      FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid >
+    <Grid Width="248" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="71*"/>
-            <ColumnDefinition Width="147*"/>
         </Grid.ColumnDefinitions>
 
         <DockPanel LastChildFill="True" Grid.ColumnSpan="2" >
@@ -33,12 +31,12 @@
                     </RadialGradientBrush>
                 </Button.BorderBrush>
 
-                <materialDesign:PackIcon Kind="Person" Height="48" Width="48" />
+                <materialDesign:PackIcon  Name="userImage" Kind="Person" Height="48" Width="48" />
             </Button>
             <DockPanel DockPanel.Dock="Top" LastChildFill="False" MaxWidth="200">
 
-                <Label DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"  Name="userName" FontSize="20" Margin="5,0,5,5" >Person</Label >
-                <Label Foreground="{StaticResource ForegroundColor}" DockPanel.Dock="Right" FontSize="10" >12:05</Label>
+                <Label Name="contactNameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="20" Margin="5,0,5,5" >Person</Label >
+                <Label Name="lastSendedMessageTime" Foreground="{StaticResource ForegroundColor}" DockPanel.Dock="Right" FontSize="10" >12:05</Label>
             </DockPanel>
             <TextBlock DockPanel.Dock="Top"  Foreground="{StaticResource ForegroundColor}"  Name="lastMessage" FontSize="12" Margin="15,-5,5,5" AllowDrop="True"  >Hello there how are you?</TextBlock>
 
