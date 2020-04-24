@@ -4,19 +4,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StepChat"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="False"
-        Title="LoginWindow" MinHeight="500" MinWidth="500" Width="500" Height="500" Background="#FF242832"
+        Title="LoginWindow" MinHeight="500" MinWidth="500" Width="500" Height="500"
+        
+        Icon="Icon.ico"
        >
     <Grid>
-   
-    <StackPanel>
-        <local:WindowControlPanel x:Name="WindowControlPanel_"/>
-        
-    </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="225*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="250*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox VerticalAlignment="Center"
+                 x:Name="NameTextBox"
+                 materialDesign:HintAssist.Hint="Login" Grid.Column="1" Grid.Row="1">
+            </TextBox>
+            <PasswordBox
+  x:Name="PasswordBox"
+  materialDesign:HintAssist.Hint="Password"
+  materialDesign:TextFieldAssist.HasClearButton="True"
+  materialDesign:HintAssist.HelperText="At least 8 characters" Grid.Column="1" Grid.Row="2" />
+        </Grid>
     </Grid>
-        <WindowChrome.WindowChrome>
-        <WindowChrome ResizeBorderThickness="10"/>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="3"/>
     </WindowChrome.WindowChrome>
 </Window>

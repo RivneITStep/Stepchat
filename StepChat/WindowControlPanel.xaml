@@ -19,9 +19,12 @@
         <DockPanel Grid.Column="3">
             <Button DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
                 Style="{StaticResource MaterialDesignRaisedButton}"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    
                 Width="25"
                 Height="25"
                     Padding="5"
+                    
                 ToolTip="Resource name: MaterialDesignRaisedButton"
                     Click="ButtonClose_MouseClick"
                     >
@@ -29,14 +32,18 @@
             </Button>
             <Button DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
                 Style="{StaticResource MaterialDesignRaisedButton}"
+                    materialDesign:ButtonAssist.CornerRadius="0"
                 Width="25"
                 Height="25"
                       Padding="5"
+                    
                 ToolTip="Resource name: MaterialDesignRaisedButton"
                     Click="ButtonMaximize_MouseClick">
                 <materialDesign:PackIcon Kind="WindowMaximize" />
             </Button>
             <Button DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    
                 Width="25"
                 Height="25"
                       Padding="5"
@@ -45,9 +52,12 @@
             </Button>
             <Button DockPanel.Dock="Left"  WindowChrome.IsHitTestVisibleInChrome="True"
                 Style="{StaticResource MaterialDesignRaisedButton}"
+                    materialDesign:ButtonAssist.CornerRadius="0"
+                    
                 Width="auto"
                 Height="25"
                       Padding="5"
+                    
                 ToolTip="Resource name: MaterialDesignRaisedButton">
                 StepChat
             </Button>
