@@ -114,16 +114,9 @@ namespace MainWindowUI
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.IsEnabled = false;
-            SearchUserWindow searchUserWindow = new SearchUserWindow();
-            searchUserWindow.Show();
-            searchUserWindow.Closed += Search_Window;
+            OpenSearchMenu();
         }
 
-        private void Search_Window(object sender, EventArgs e)
-        {
-            this.IsEnabled = true;
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -157,6 +150,23 @@ namespace MainWindowUI
         private void Delete(int id)
         {
             contactsList.Items.RemoveAt(id);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void CloseSearchMenu()
+        {
+            searchMenuGrid.Visibility = Visibility.Collapsed;
+        }
+        private void OpenSearchMenu()
+        {
+            searchMenuGrid.Visibility = Visibility.Visible;
+        }
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            CloseSearchMenu();
         }
     }
 }

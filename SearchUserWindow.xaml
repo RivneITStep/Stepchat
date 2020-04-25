@@ -24,8 +24,5 @@
             <RowDefinition Height="281*"/>
         </Grid.RowDefinitions>
        
-        <TextBox Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="5"   materialDesign:HintAssist.Hint="Search">
-            
-        </TextBox>
     </Grid>
 </Window>
