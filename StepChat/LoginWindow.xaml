@@ -28,11 +28,13 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="180*"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="225*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="18"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -40,15 +42,20 @@
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox VerticalAlignment="Center"
-                 x:Name="NameTextBox"
-                 materialDesign:HintAssist.Hint="Login" Grid.Column="1" Grid.Row="1">
-            </TextBox>
-            <PasswordBox
-  x:Name="PasswordBox"
+            <TextBox Grid.Column="1" Grid.Row="1"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+  materialDesign:HintAssist.Hint="Login"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+  VerticalAlignment="Center" />
+            <PasswordBox  Grid.Column="1" Grid.Row="2" 
+  x:Name="FloatingPasswordBox"
   materialDesign:HintAssist.Hint="Password"
-  materialDesign:TextFieldAssist.HasClearButton="True"
-  materialDesign:HintAssist.HelperText="At least 8 characters" Grid.Column="1" Grid.Row="2" />
+  materialDesign:HintAssist.Foreground="Green"
+  materialDesign:TextFieldAssist.UnderlineBrush="Green"
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                materialDesign:HintAssist.HelperText="At least 8 characters"
+                          materialDesign:TextFieldAssist.HasClearButton="True"
+                />
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -56,26 +63,42 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="1"
                         Height="auto"
-                        FontSize="10"
-                        FontFamily="Arial"
+                        FontSize="12"
+                        FontFamily="Roboto"
                         Margin="0"
                         Padding="0"
                         Foreground="#FF9B9B9B"
-                        HorizontalContentAlignment="left"
+                        HorizontalContentAlignment="Right"
                         VerticalContentAlignment="Bottom"
     Style="{StaticResource MaterialDesignFlatButton}"
-    ToolTip="MaterialDesignFlatButton">
-                    forgot password?
+    ToolTip="MaterialDesignFlatButton" Click="Button_Click_2">
+                    Forgot password?
                 </Button>
 
             </Grid>
-            <Grid Grid.ColumnSpan="3" Grid.Row="10"
+            <Grid Grid.ColumnSpan="3" Grid.Row="11"
   Width="auto" Height="auto">
+                <ProgressBar Padding="0" Margin="0" Height="auto"
+  IsIndeterminate="True" />
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Button
     Style="{StaticResource MaterialDesignRaisedButton}"
-    materialDesign:ButtonProgressAssist.Value="-1"
-    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-    materialDesign:ButtonProgressAssist.IsIndeterminate="True"/>
+    ToolTip="Login" Grid.Column="2" Click="Button_Click"
+                    >
+                    Login
+                </Button>
+                <Button Grid.Column="0"
+                        Padding="0"
+    Style="{StaticResource MaterialDesignOutlinedButton}"
+    ToolTip="MaterialDesignOutlinedButton" Click="Button_Click_1">
+                    Create new account
+                </Button>
             </Grid>
         </Grid>
     </Grid>

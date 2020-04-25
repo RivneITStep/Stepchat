@@ -58,7 +58,7 @@
                 Height="25"
                       Padding="5"
                     
-                ToolTip="Resource name: MaterialDesignRaisedButton">
+                ToolTip="Resource name: MaterialDesignRaisedButton" Click="Button_Click">
                 StepChat
             </Button>
             <Grid Width="50"/>

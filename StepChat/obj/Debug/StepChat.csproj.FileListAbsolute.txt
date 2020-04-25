@@ -22,4 +22,6 @@ C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\LoginWindow.baml
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\WindowControlPanel.g.cs
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\WindowControlPanel.baml
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\RegistrationWindow.g.cs
+C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\RegistrationWindow.baml
 C:\Projects\ComangProj\StepChat\StepChat\obj\Debug\StepChat.csprojAssemblyReference.cache
