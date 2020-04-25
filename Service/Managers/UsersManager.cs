@@ -28,7 +28,8 @@ namespace Service.Managers
         {
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<User, DAL.User>().PreserveReferences();
-                cfg.CreateMap<DAL.User, DTO.User>().PreserveReferences();
+                cfg.CreateMap<DAL.User, Models.User>().PreserveReferences();
+                cfg.CreateMap<User, DTO.User>().PreserveReferences();
                 cfg.CreateMap<DTO.User, DAL.User>().PreserveReferences();
             });
             mapper = config.CreateMapper();
