@@ -71,6 +71,7 @@ namespace Service.Managers
 
 
             User user =  mapper.Map<User>(dal.GetUserByLogin(login));
+
             Users.Add(user.Id, user);
 
             return Result<User>.OK(user);
@@ -79,8 +80,13 @@ namespace Service.Managers
 
         public static User GetUser(int id)
         {
-            return Users[id];
+            if(Users.ContainsKey(id))
+                return Users[id];
+
+            User user = mapper.Map<User>(dal.GetUserById(id));
+            Users.Add(user.Id, user);
+
+            return user;
         }
-       
     }
 }

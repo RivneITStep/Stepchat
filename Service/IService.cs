@@ -24,6 +24,12 @@ namespace Service
         Result CreateChat(string name);
 
         [OperationContract]
+        Result AddContact(int contactId);
+
+        [OperationContract]
+        Result<IEnumerable<int>> GetContacts();
+
+        [OperationContract]
         Result CreatePrivateChat(int userId);
 
         [OperationContract]

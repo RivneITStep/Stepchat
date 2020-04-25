@@ -21,7 +21,9 @@ namespace Service
         [EnumMember]
         PasswordIsIncorrect,
         [EnumMember]
-        NotImplemented
+        NotImplemented,
+        [EnumMember]
+        NoAuthorized
     };
 
     [DataContract]

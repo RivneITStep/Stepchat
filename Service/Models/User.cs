@@ -18,13 +18,31 @@ namespace Service.Models
         public string Login { get; private set; }
         public bool IsOnline { get; private set; }
         public DateTime LastOnlineDate { get; private set; }
+        public List<Chat> Chats { get; private set; }
 
-        public List<Chat> Chats { get; set; } 
+        private static DAL.DALClass dal = DALProxy.GetInstance();
 
 
         public User()
         {
             // Automapper ctor
+        }
+
+        public IEnumerable<int> GetContacts()
+        {
+            return dal.GetUserContacts(this.Id);
+        }
+
+        public void AddContact(int contactId)
+        {
+            dal.AddContact(this.Id, contactId);
+        }
+
+        private void StartPrivateChat(int userId)
+        {
+            User user = UsersManager.GetUser(userId);
+
+            ChatsManager.CreatePrivateChat(this, user);
         }
 
 
