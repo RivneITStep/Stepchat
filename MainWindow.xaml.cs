@@ -119,6 +119,7 @@ namespace MainWindowUI
             searchUserWindow.Show();
             searchUserWindow.Closed += Search_Window;
         }
+
         private void Search_Window(object sender, EventArgs e)
         {
             this.IsEnabled = true;
@@ -147,6 +148,15 @@ namespace MainWindowUI
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AddContact(PersonControl person)
+        {
+            contactsList.Items.Add(person);
+        }
+        private void Delete(int id)
+        {
+            contactsList.Items.RemoveAt(id);
         }
     }
 }

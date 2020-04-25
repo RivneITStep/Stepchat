@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contact.cs" />
     <Compile Include="PersonControl.xaml.cs">
       <DependentUpon>PersonControl.xaml</DependentUpon>
     </Compile>
