@@ -28,6 +28,10 @@ namespace MainWindowUI
             bio = contactBio;
 
         }
+        public void SetImage(Image img)
+        {
+            contactImage = img;
+        }
         
 
         
