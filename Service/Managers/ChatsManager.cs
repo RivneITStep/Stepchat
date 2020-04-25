@@ -39,5 +39,16 @@ namespace Service.Managers
 
             return Result<Chat>.OK(chat);
         }
+
+        public static Chat CreatePrivateChat(User user1, User user2)
+        {
+            Chat chat = new Chat(user1, user2);
+
+            int chatId = dal.AddChat(mapper.Map<DAL.Chat>(chat));
+
+            Chats.Add(chatId, chat);
+
+            return chat;
+        }
     }
 }

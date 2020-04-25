@@ -10,6 +10,8 @@ using Service.Managers;
 
 namespace Service
 {
+
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
         private static DALClass dal = new DALClass();
@@ -27,6 +29,23 @@ namespace Service
                 
             });
             mapper = config.CreateMapper();
+        }
+
+        public Result<IEnumerable<int>> GetContacts()
+        {
+            if (IsNotAuth()) return Result<IEnumerable<int>>.WithError(ResultError.NoAuthorized);
+
+
+            return Result<IEnumerable<int>>.OK(User.GetContacts());
+        }
+
+        public Result AddContact(int contactId)
+        {
+            if (IsNotAuth()) return Result.WithError(ResultError.NoAuthorized);
+
+            User.AddContact(contactId);
+
+            return Result.OK;
         }
 
         public Result AddUserToChat(int userId, int chatId)
@@ -89,13 +108,12 @@ namespace Service
         public Result<DTO.User> Register(DTO.User user)
         {
             Result<Models.User> r = UsersManager.RegisterUser(user);
-            DTO.User dtoUser = mapper.Map<DTO.User>(r.Data);
 
             if (!r.IsSuccess) return Result<DTO.User>.WithError(r.Error);
 
             User = r.Data;
 
-            return Result<DTO.User>.OK(dtoUser);
+            return Result<DTO.User>.OK(mapper.Map<DTO.User>(r.Data));
         }
 
         public Result<IEnumerable<DTO.Chat>> SearchChats(string query)
@@ -111,6 +129,12 @@ namespace Service
         public Result SendMessage(int chatId, string message)
         {
             return Result.WithError(ResultError.NotImplemented);
+        }
+
+
+        private bool IsNotAuth()
+        {
+            return (User == null);
         }
     }
 }

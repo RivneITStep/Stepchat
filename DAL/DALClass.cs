@@ -58,6 +58,28 @@ namespace DAL
             
             else return existing;
         }
+        public IEnumerable<User> GetUsersShortByIds(int[] ids)
+        {
+            return context.Users.Where(u => ids.Contains(u.Id))
+                                .Select(u => new User{
+                                    Id = u.Id,
+                                    FirstName = u.FirstName,
+                                    LastName = u.LastName,
+                                    LastOnlineDate = u.LastOnlineDate,
+                                    PhotoPath = u.PhotoPath
+                                });
+        }
+
+        public IEnumerable<int> GetUserContacts(int userId)
+        {
+            return context.Users.First(u => u.Id == userId).ContactsIds;
+        }
+        public void AddContact(int userId, int contactId)
+        {
+            context.Users.First(u => u.Id == userId).ContactsIds.Add(contactId);
+            context.SaveChanges();
+        }
+
         public User GetUserByLogin(string login)
         {
             var existing = context.Users.FirstOrDefault(u => u.Login == login);
@@ -79,7 +101,14 @@ namespace DAL
                 else
                     return false;
             }
+        }
 
+        public int AddChat(Chat chat)
+        {
+            context.Chats.Add(chat);
+            context.SaveChanges();
+
+            return chat.Id;
         }
 
         public void AddMessage(Message message)
@@ -102,8 +131,6 @@ namespace DAL
             existing.Email = newUser.Email;
             existing.PhotoPath = newUser.PhotoPath;
             existing.Login = newUser.Login;
-            existing.Password = newUser.Password;
-            existing.IsOnline = newUser.IsOnline;
             existing.LastOnlineDate = newUser.LastOnlineDate;
 
             context.SaveChanges();
