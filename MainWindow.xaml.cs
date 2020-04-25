@@ -140,7 +140,7 @@ namespace MainWindowUI
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-
+            OpenSettingsMenu();
         }
 
         private void AddContact(PersonControl person)
@@ -156,17 +156,22 @@ namespace MainWindowUI
         {
 
         }
-        private void CloseSearchMenu()
+        private void CloseAllMenus()
         {
             searchMenuGrid.Visibility = Visibility.Collapsed;
+            settingsMenuGrid.Visibility = Visibility.Collapsed;
         }
         private void OpenSearchMenu()
         {
             searchMenuGrid.Visibility = Visibility.Visible;
         }
+        private void OpenSettingsMenu()
+        {
+            settingsMenuGrid.Visibility = Visibility.Visible;
+        }
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            CloseSearchMenu();
+            CloseAllMenus();
         }
     }
 }

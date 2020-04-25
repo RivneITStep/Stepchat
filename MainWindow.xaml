@@ -152,7 +152,19 @@
             <TextBox Grid.Row="1" TextChanged="TextBox_TextChanged" FontSize="20" Background="{DynamicResource PrimarySecondColor}" BorderBrush="Black" BorderThickness="1" Margin="5"   materialDesign:HintAssist.Hint="Search"  />
             <ListBox Grid.Row="2" Margin="10" Background="{DynamicResource PrimarySecondColor}"></ListBox>
         </Grid>
+        <Grid  Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="settingsMenuGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="2.2*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" LastChildFill="False" >
+                <Button Height="24"  Margin="0,0,10,0"    FontSize="16"  DockPanel.Dock="Right"    Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" Click="Button_Click_7"    >
+                    X
+                </Button>
+            </DockPanel>
 
+
+        </Grid>
     </Grid>
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="3"/>
