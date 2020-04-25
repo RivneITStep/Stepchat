@@ -20,14 +20,11 @@ namespace Service
         static Service() // Initialization
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<DAL.User, DTO.User>();
-                cfg.CreateMap<DTO.User, DAL.User>();
+                cfg.CreateMap<User, Models.User>().PreserveReferences();
+                cfg.CreateMap<User, DTO.User>().PreserveReferences();
+                cfg.CreateMap<Models.User, DTO.User>().PreserveReferences();
 
-                cfg.CreateMap<DAL.Chat, DTO.Chat>();
-                cfg.CreateMap<DTO.Chat, DAL.Chat>();
-
-                cfg.CreateMap<DAL.Message, DTO.Message>();
-                cfg.CreateMap<DTO.Message, DAL.Message>();
+                
             });
             mapper = config.CreateMapper();
         }

@@ -11,8 +11,10 @@ namespace DAL.Configs
     {
         public ConfigsContact()
         {
-            HasRequired<User>(c => c.User).WithMany(u => u.Contacts).HasForeignKey(c => c.UserId);
-            HasRequired<User>(c => c.UserContact).WithRequiredPrincipal().Map(d => d.MapKey("ContactId"));
+            // Чомусь конфліктує при добавці юзера
+
+            //HasRequired<User>(c => c.User).WithMany(u => u.Contacts).HasForeignKey(c => c.UserId);
+            //HasRequired<User>(c => c.UserContact).WithRequiredPrincipal().Map(d => d.MapKey("ContactId"));
         }
 
     }
