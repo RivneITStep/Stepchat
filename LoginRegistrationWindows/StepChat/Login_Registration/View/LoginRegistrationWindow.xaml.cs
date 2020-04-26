@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginRegistration.Login_Registration.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace StepChat
+namespace LoginRegistration
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginRegistrationWindow : Window
     {
-        public LoginWindow()
+        public LoginRegistrationWindow()
         {
             InitializeComponent();
             WindowControlPanel_.ButtonClose_MouseClick_Handler += Window_Closed;
             WindowControlPanel_.ButtonMinimize_MouseClick_Handler += Window_Minimize;
             WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
+            RegistrationWindow.Visibility = Visibility.Hidden;
         }
 
         private void Window_Closed(object sender, RoutedEventArgs e)
@@ -46,21 +48,30 @@ namespace StepChat
                 this.WindowState = WindowState.Normal;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Open_Registration_Window(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow.Visibility = Visibility.Collapsed;
+            RegistrationWindow.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Open_Login_Window(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow s = new RegistrationWindow();
-            s.Show();
-            Close();
+            RegistrationWindow.Visibility = Visibility.Collapsed;
+            LoginWindow.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            if (ConfirmPasswordBox.Password != "" && PasswordBox.Password != "" && ConfirmPasswordBox.Password != PasswordBox.Password)
+            {
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            }
+            else
+            {
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255,255));
+            }
         }
     }
 }
