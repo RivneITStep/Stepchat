@@ -4,137 +4,97 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using DAL;
 using AutoMapper;
-using Service.Managers;
+using DAL;
+
 
 namespace Service
 {
 
+
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static DALClass dal = new DALClass();
         private static IMapper mapper;
+        private User ActiveUser = null;
 
-        private Models.User User;
-
-        static Service() // Initialization
+        static Service()
         {
             var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<User, Models.User>().PreserveReferences();
                 cfg.CreateMap<User, DTO.User>().PreserveReferences();
-                cfg.CreateMap<Models.User, DTO.User>().PreserveReferences();
-
+                cfg.CreateMap<Chat, DTO.Chat>().PreserveReferences();
                 
             });
             mapper = config.CreateMapper();
         }
 
-        public Result<IEnumerable<int>> GetContacts()
+        public Service()
         {
-            if (IsNotAuth()) return Result<IEnumerable<int>>.WithError(ResultError.NoAuthorized);
-
-
-            return Result<IEnumerable<int>>.OK(User.GetContacts());
-        }
-
-        public Result AddContact(int contactId)
-        {
-            if (IsNotAuth()) return Result.WithError(ResultError.NoAuthorized);
-
-            User.AddContact(contactId);
-
-            return Result.OK;
-        }
-
-        public Result AddUserToChat(int userId, int chatId)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result ChangePassword(string newPassword)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result CreateChat(string name)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result CreatePrivateChat(int userId)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result EditName(string newFirstname, string newLastname, string newBio)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result<IEnumerable<DTO.Message>> GetChatHistory(int chatId)
-        {
-            return Result<IEnumerable<DTO.Message>>.WithError(ResultError.NotImplemented);
-        }
-
-        public Result<IEnumerable<DTO.Chat>> GetChats()
-        {
-            return Result<IEnumerable<DTO.Chat>>.WithError(ResultError.NotImplemented);
-        }
-
-        public Result JoinToChat(int chatId)
-        {
-            return Result.WithError(ResultError.NotImplemented);
-        }
-
-        public Result LeaveFromChat(int chatId)
-        {
-            return Result.WithError(ResultError.NotImplemented);
+            Logger.Debug("Init new user");
         }
 
         public Result<DTO.User> Login(string login, string password)
         {
-            Result<Models.User> r = UsersManager.LoginUser(login, password);
-            DTO.User dtoUser = mapper.Map<DTO.User>(r.Data);
+            if (!dal.CheckUserExist(login))
+                return Result<DTO.User>.WithError(ResultError.UserNotExist, $"User login {login} not exist");
+            if (!dal.CheckUserPassword(password, login))
+                return Result<DTO.User>.WithError(ResultError.PasswordIsIncorrect, "Password is incorrect");
 
-            if (!r.IsSuccess) return Result<DTO.User>.WithError(r.Error);
 
-            User = r.Data;
+            ActiveUser = dal.GetUserByLogin(login);
 
-            return Result<DTO.User>.OK(dtoUser);
+            return Result<DTO.User>.OK(mapper.Map<DTO.User>(ActiveUser));
         }
 
         public Result<DTO.User> Register(DTO.User user)
         {
-            Result<Models.User> r = UsersManager.RegisterUser(user);
+            if (!dal.CheckUserExist(user.Login))
+                return Result<DTO.User>.WithError(ResultError.LoginIsUsed, $"User login {user.Login} is already used");
 
-            if (!r.IsSuccess) return Result<DTO.User>.WithError(r.Error);
-
-            User = r.Data;
-
-            return Result<DTO.User>.OK(mapper.Map<DTO.User>(r.Data));
+            
+            dal.Register(mapper.Map<User>(user));
+            return Result<DTO.User>.OK(user);
         }
 
-        public Result<IEnumerable<DTO.Chat>> SearchChats(string query)
+        public IEnumerable<DTO.User> GetContacts()
         {
-            return Result<IEnumerable<DTO.Chat>>.WithError(ResultError.NotImplemented);
+            return mapper.Map<IEnumerable<DTO.User>>(dal.GetUserContacts(ActiveUser.Id));
+        }
+        public Result AddContact(int userId)
+        {
+            dal.AddContact(ActiveUser.Id, userId);
+
+            return Result.OK;
         }
 
-        public Result<IEnumerable<DTO.User>> SearchUsers(string query)
+
+        public Result<DTO.Chat> CreatePrivateChat(int userId)
         {
-            return Result<IEnumerable<DTO.User>>.WithError(ResultError.NotImplemented);
+            if (dal.GetUserById(userId) == null)
+                return Result<DTO.Chat>.WithError(ResultError.UserNotExist, $"User id {userId} not exist");
+
+            Chat chat = new Chat { IsPersonal = true };
+            dal.AddChat(chat);
+
+            chat.ChatMembers.Add(new ChatMember { User = ActiveUser, ChatId=chat.Id });
+            chat.ChatMembers.Add(new ChatMember { UserId = userId, ChatId=chat.Id });
+
+            // save changes
+            
+            return Result<DTO.Chat>.OK(null);
         }
 
         public Result SendMessage(int chatId, string message)
         {
-            return Result.WithError(ResultError.NotImplemented);
+            dal.AddMessage(new Message { ChatId = chatId, Text = message, Sender = ActiveUser });
+            return Result.OK;
         }
 
+        
 
-        private bool IsNotAuth()
-        {
-            return (User == null);
-        }
+
+       
     }
 }
