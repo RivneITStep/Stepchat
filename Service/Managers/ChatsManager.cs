@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,12 @@ namespace Service.Managers
 {
     using AutoMapper;
     using Models;
+
     static class ChatsManager
     {
         public static Dictionary<int, Chat> Chats = new Dictionary<int, Chat>();
 
-        private static DAL.DALClass dal = DALProxy.GetInstance();
+        private static DALClass dal = DALProxy.GetInstance();
         private static IMapper mapper = MapperProxy.GetMapper();
 
 

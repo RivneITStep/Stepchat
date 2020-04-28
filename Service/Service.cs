@@ -9,8 +9,7 @@ using AutoMapper;
 using Service.Managers;
 
 namespace Service
-{
-
+{ 
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {

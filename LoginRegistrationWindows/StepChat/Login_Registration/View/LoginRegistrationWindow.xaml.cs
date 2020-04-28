@@ -64,13 +64,13 @@ namespace LoginRegistration
         {
             if (ConfirmPasswordBox.Password != "" && PasswordBox.Password != "" && ConfirmPasswordBox.Password != PasswordBox.Password)
             {
-                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
-                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(210, 0, 0));
+                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(210, 0, 0));
             }
             else
             {
-                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(255, 255,255));
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(230, 230, 230));
+                PasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(230, 230, 230));
             }
         }
     }

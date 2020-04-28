@@ -77,10 +77,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{bc221244-8ce3-4a57-a5d6-4d3413ac75a2}</Project>
+      <Project>{BC221244-8CE3-4A57-A5D6-4D3413AC75A2}</Project>
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
