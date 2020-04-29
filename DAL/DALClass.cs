@@ -151,6 +151,15 @@ namespace DAL
             existing.ChatMembers.Add(cm);                       
             context.SaveChanges();
         }
+        public void ChangePassword (int userId, string newPass)
+        {            
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return;
+
+            existing.Password = newPass;
+            context.SaveChanges();
+        }
 
     }
 }

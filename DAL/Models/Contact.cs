@@ -11,7 +11,7 @@ namespace DAL
         public int Id { get; set; }
         // Foreign key
         public int UserId { get; set; }
-        public int ContactId { get; set; }
+        public int UserContactId { get; set; }
 
         // Navigation properties
         public virtual User User { get; set; }
