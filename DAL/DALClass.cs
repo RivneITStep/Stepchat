@@ -111,6 +111,33 @@ namespace DAL
             context.Messages.Add(message);
             context.SaveChanges();
         }
+        public IEnumerable<Message> GetMessages(int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            if (existing == null) return null;
+
+            return existing.Messages;
+        }
+        public void EditMessages(int messageId, Message newMessage)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+            if (existing == null) return;
+
+            existing.Attachments = newMessage.Attachments;
+            existing.Text = newMessage.Text;
+
+            context.SaveChanges();
+        }
+        public void RemoveMessages(int messageId)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+            if (existing == null) return;
+
+            context.Messages.Remove(existing);
+
+            context.SaveChanges();
+        }
+
         public void EditUser(User newUser)
         {
             var existing = context.Users.FirstOrDefault(u=>u.Id == newUser.Id);
