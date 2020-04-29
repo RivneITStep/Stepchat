@@ -142,6 +142,15 @@ namespace DAL
 
             return chats;
         }
+        public void AddChatMemberToChat(ChatMember cm, int chatId)
+        {
+            var existing = context.Chats.FirstOrDefault(u => u.Id == chatId);
+            
+            if (existing == null) return;
+
+            existing.ChatMembers.Add(cm);                       
+            context.SaveChanges();
+        }
 
     }
 }
