@@ -7,8 +7,8 @@
         mc:Ignorable="d"
        Title="LoginWindow" MinHeight="800" MinWidth="800" Width="1248" Height="800"
         
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource ForegroundColor}"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:LoginRegistration"
+        TextElement.Foreground="{DynamicResource ForegroundColor}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
@@ -29,7 +29,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:WindowControlPanel Background="{DynamicResource PrimarySecondColor}" x:Name="WindowControlPanel_" Grid.Row="0"  Grid.ColumnSpan="3" Height="Auto"/>
+        <local1:WindowControlPanel Background="{DynamicResource PrimarySecondColor}" x:Name="WindowControlPanel_" Grid.Row="0"  Grid.ColumnSpan="3" Height="Auto"/>
 
         <DockPanel   Background="{DynamicResource PrimarySecondColor}"  Grid.Row="1" Grid.Column="0" LastChildFill="False">
 

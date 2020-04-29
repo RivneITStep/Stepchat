@@ -1,17 +1,11 @@
 ﻿using StepChat.Login_Registration.Comands;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using StepChat.Custom_Element.CustomMessageBox;
-using LoginRegistration.Login_Registration.Model;
 
 namespace LoginRegistration.Login_Registration.ViewModel
 {
@@ -22,6 +16,7 @@ namespace LoginRegistration.Login_Registration.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+        public Action CloseAction { get; set; }
         public LoginRegistration_ViewModel()
         {
             ProgressBarVisibility = Visibility.Hidden;
@@ -148,9 +143,9 @@ namespace LoginRegistration.Login_Registration.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    Task.Factory.StartNew(() =>
-                    {
-                        SetProgressBarVisibility(Visibility.Visible);
+                    Task.Run(()=>
+                    { 
+                    SetProgressBarVisibility(Visibility.Visible);
                         try
                         {
                             using (StepChat.StepChatService.ServiceClient proxy = new StepChat.StepChatService.ServiceClient())
@@ -158,11 +153,13 @@ namespace LoginRegistration.Login_Registration.ViewModel
                                 var res = proxy.Login(LoginText, (obj as PasswordBox).Password);
                                 if (!res.IsSuccess)
                                 {
+                                    //##################################################################3
                                     LoginWindow_ErrorTextBox = res.Error.ToString();
+
                                 }
                                 else
                                 {
-                                    //open Main Window
+                                    new MainWindowUI.MainWindow().Show();
                                 }
                             }
                         }
