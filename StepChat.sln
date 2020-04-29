@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{AC6C4D8E-2BAF-4871-9C25-F437E4BDABCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StepChatServer", "StepChatServer\StepChatServer.csproj", "{5774D26B-21C7-4A2E-9365-F7CE0858A394}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +30,6 @@ Global
 		{AC6C4D8E-2BAF-4871-9C25-F437E4BDABCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6C4D8E-2BAF-4871-9C25-F437E4BDABCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6C4D8E-2BAF-4871-9C25-F437E4BDABCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5774D26B-21C7-4A2E-9365-F7CE0858A394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5774D26B-21C7-4A2E-9365-F7CE0858A394}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5774D26B-21C7-4A2E-9365-F7CE0858A394}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5774D26B-21C7-4A2E-9365-F7CE0858A394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

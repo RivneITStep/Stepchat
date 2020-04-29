@@ -31,22 +31,17 @@ namespace LoginRegistration
 
         private void ButtonClose_MouseClick(object sender, RoutedEventArgs e)
         {
-            ButtonClose_MouseClick_Handler.Invoke(sender, e);
+            ButtonClose_MouseClick_Handler?.Invoke(sender, e);
         }
 
         private void ButtonMaximize_MouseClick(object sender, RoutedEventArgs e)
         {
-             ButtonMaximize_MouseClick_Handler.Invoke(sender, e);
+             ButtonMaximize_MouseClick_Handler?.Invoke(sender, e);
         }
 
         private void ButtonMinimize_MouseClick(object sender, RoutedEventArgs e)
         {
-            ButtonMinimize_MouseClick_Handler.Invoke(sender, e);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            ButtonMinimize_MouseClick_Handler?.Invoke(sender, e);
         }
     }
 }

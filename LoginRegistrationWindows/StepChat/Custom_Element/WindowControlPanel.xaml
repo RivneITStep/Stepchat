@@ -13,7 +13,7 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
              mc:Ignorable="d" 
-             MinHeight="25" MaxHeight="25" MinWidth="300" >
+             MinHeight="25" MaxHeight="25">
     
     <Grid>
         <DockPanel Grid.Column="3">
@@ -25,7 +25,6 @@
                 Height="25"
                     Padding="5"
                     
-                ToolTip="Resource name: MaterialDesignRaisedButton"
                     Click="ButtonClose_MouseClick"
                     >
                 <materialDesign:PackIcon Kind="CloseBox" />
@@ -37,7 +36,6 @@
                 Height="25"
                       Padding="5"
                     
-                ToolTip="Resource name: MaterialDesignRaisedButton"
                     Click="ButtonMaximize_MouseClick">
                 <materialDesign:PackIcon Kind="WindowMaximize" />
             </Button>
@@ -56,9 +54,7 @@
                     
                 Width="auto"
                 Height="25"
-                      Padding="5"
-                    
-                ToolTip="Resource name: MaterialDesignRaisedButton" Click="Button_Click">
+                      Padding="5">
                 StepChat
             </Button>
             <Grid Width="50"/>

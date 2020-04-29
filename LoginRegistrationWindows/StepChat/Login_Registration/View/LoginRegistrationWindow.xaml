@@ -15,7 +15,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="False"
-        Title="LoginWindow" MinHeight="500" MinWidth="500" Width="500" Height="500"
+        Title="LoginWindow" MinHeight="500" MinWidth="500" Width="500" Height="500" MaxHeight="500" MaxWidth="500"
         Icon="Icon.ico"
        >
     <Window.DataContext>
@@ -31,14 +31,15 @@
         <!--###################################################################################-->
         <!--###################################################################################-->
         <!--###################################################################################-->
-        <Grid x:Name="LoginWindow" Grid.Row="1" Visibility="Visible">
+        <Grid x:Name="LoginWindow" Grid.Row="1" Visibility="{Binding LoginWindowVisibility}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
                 <RowDefinition Height="42"/>
                 <RowDefinition Height="42"/>
                 <RowDefinition Height="18"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="35"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -51,9 +52,8 @@
   materialDesign:HintAssist.Hint="Login"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Center"/>
-            <!--Password="{Binding Password}"#####################################################-->
             <PasswordBox  Grid.Column="1" Grid.Row="2" 
-  x:Name="FloatingPasswordBox"
+  x:Name="PasswordBoxInLogin"
   materialDesign:HintAssist.Hint="Password"
   Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                 materialDesign:HintAssist.HelperText="At least 8 characters"
@@ -73,9 +73,8 @@
                         Foreground="#FF9B9B9B"
                         HorizontalContentAlignment="Right"
                         VerticalContentAlignment="Bottom"
-    Style="{StaticResource MaterialDesignFlatButton}"
-    ToolTip="MaterialDesignFlatButton">
-                    Forgot password?
+    Style="{StaticResource MaterialDesignFlatButton}">
+                    <!--Forgot password?-->
                 </Button>
 
             </Grid>
@@ -85,32 +84,33 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button  Command="{Binding LoginButtonClick}" 
-    Style="{StaticResource MaterialDesignRaisedButton}"
-    ToolTip="Login" Grid.Column="2"
+                <Button  Command="{Binding LoginButtonClick}" CommandParameter="{Binding ElementName=PasswordBoxInLogin}"
+    Style="{StaticResource MaterialDesignRaisedButton}" Grid.Column="2"
                     >
                     Login
                 </Button>
                 <Button Grid.Column="0"
-                        Command="{Binding CreateNewAccountButtonClick}" 
                         Padding="0"
     Style="{StaticResource MaterialDesignOutlinedButton}"
-    ToolTip="MaterialDesignOutlinedButton" Click="Button_Click_Open_Registration_Window">
+    Command="{Binding LoginWindow_CreateNewAccountButton}"
+                        >
                     Create new account
                 </Button>
             </Grid>
+            <TextBlock TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" Padding="10" TextAlignment="Center" Foreground="#FF9B9B9B" Text="{Binding LoginWindow_ErrorTextBox}"/>
         </Grid>
         <!--###################################################################################-->
         <!--###################################################################################-->
         <!--###################################################################################-->
-        <Grid x:Name="RegistrationWindow" Grid.Row="1" Visibility="Collapsed">
+        <Grid Visibility="{Binding RegistrationWindowVisibility}" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="100*"/>
                 <RowDefinition Height="42"/>
                 <RowDefinition Height="42"/>
                 <RowDefinition Height="42"/>
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="42"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -124,12 +124,12 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox
+                <TextBox Text="{Binding RegistrationWindow_FirstNameTextBox}" TextChanged="AnyTextBox_TextChanged" x:Name="RegistrationWindow_FirstNameTextBox"
   materialDesign:HintAssist.Hint="First Name"
                     materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="0" />
 
-                <TextBox
+                <TextBox Text="{Binding RegistrationWindow_LastNameTextBox}" TextChanged="AnyTextBox_TextChanged" x:Name="RegistrationWindow_LastNameTextBox"
   materialDesign:HintAssist.Hint="Last Name"
                     materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -141,12 +141,12 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox
+                <TextBox Text="{Binding RegistrationWindow_EmailTextBox}" TextChanged="AnyTextBox_TextChanged" x:Name="RegistrationWindow_EmailTextBox"
   materialDesign:HintAssist.Hint="Email"
                     materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="0" />
 
-                <TextBox
+                <TextBox Text="{Binding RegistrationWindow_LoginTextBox}" TextChanged="AnyTextBox_TextChanged" x:Name="RegistrationWindow_LoginTextBox"
   materialDesign:HintAssist.Hint="Login"
                     materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -159,7 +159,7 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordBox"
+                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordBoxInRegister"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                              materialDesign:HintAssist.HelperText="At least 8 characters"
   materialDesign:HintAssist.Hint="Password"
@@ -178,24 +178,22 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button
+                <Button x:Name="RegistratinWindow_NextButton" Command="{Binding RegistrationButtonClick}" CommandParameter="{Binding ElementName=PasswordBoxInRegister}"
     Style="{StaticResource MaterialDesignRaisedButton}"
-    ToolTip="Login" Grid.Column="2"
-                    >
+    Grid.Column="2" Click="RegistratinWindow_NextButtonClick">
                     Next
                 </Button>
                 <Button Grid.Column="0"
                         Padding="0"
-    Style="{StaticResource MaterialDesignOutlinedButton}"
-    ToolTip="MaterialDesignOutlinedButton" Margin="0,5,0,0" VerticalAlignment="Top" Click="Button_Click_Open_Login_Window">
+    Style="{StaticResource MaterialDesignOutlinedButton}" Margin="0,5,0,0" VerticalAlignment="Top" Command="{Binding RegistrationWindow_BackToLoginButton}">
                     Back to Login
                 </Button>
             </Grid>
-         
+            <TextBlock x:Name="RegistrationWindow_ErrorTextBox_" TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" Padding="10" TextAlignment="Center" Foreground="#FF9B9B9B" Text="{Binding RegistrationWindow_ErrorTextBox}"/>
         </Grid>
-            <ProgressBar Padding="0" Margin="0" Height="auto" Grid.ColumnSpan="3" Grid.Row="15"
+        <ProgressBar Padding="0" Margin="0" Height="auto" Grid.ColumnSpan="3" Grid.Row="15"
                          Visibility="{Binding ProgressBarVisibility}"
-  IsIndeterminate="True" />
+  IsIndeterminate="True"/>
     </Grid>
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="3"/>

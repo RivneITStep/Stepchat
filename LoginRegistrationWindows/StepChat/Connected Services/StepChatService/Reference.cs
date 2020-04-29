@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StepChat.ServiceReference1 {
+namespace StepChat.StepChatService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StepChatService.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Login", ReplyAction="http://tempuri.org/IService/LoginResponse")]
@@ -158,12 +158,12 @@ namespace StepChat.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : StepChat.ServiceReference1.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : StepChat.StepChatService.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<StepChat.ServiceReference1.IService>, StepChat.ServiceReference1.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<StepChat.StepChatService.IService>, StepChat.StepChatService.IService {
         
         public ServiceClient() {
         }
