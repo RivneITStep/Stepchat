@@ -137,7 +137,6 @@ namespace DAL
 
             context.SaveChanges();
         }
-
         public void EditUser(User newUser)
         {
             var existing = context.Users.FirstOrDefault(u=>u.Id == newUser.Id);

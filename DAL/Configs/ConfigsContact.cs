@@ -14,7 +14,8 @@ namespace DAL.Configs
             // Чомусь конфліктує при добавці юзера
 
             HasRequired<User>(c => c.User).WithMany(u => u.Contacts).HasForeignKey(c => c.UserId);
-            HasOptional<User>(c => c.UserContact).WithOptionalPrincipal().Map(c => c.MapKey("UserContactId"));
+            HasOptional<User>(c => c.UserContact).WithMany(u => u.UserContacts).HasForeignKey(c => c.UserContactId);
+            //HasOptional<User>(c => c.UserContact).WithOptionalPrincipal().//.Map(c => c.MapKey("UserContactId"));
         }
 
     }
