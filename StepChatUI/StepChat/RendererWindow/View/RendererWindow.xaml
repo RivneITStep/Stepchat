@@ -1,0 +1,41 @@
+﻿<Window x:Class="StepChat.RendererWindow.View.RendererWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StepChat.RendererWindow.View"
+        xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel" 
+        xmlns:LoginRegistrationWindowView="clr-namespace:StepChat.StepChatUI.LoginRegistration.View"
+        xmlns:LoginRegistrationWindowViewModel="clr-namespace:StepChat.StepChatUI.LoginRegistration.ViewModel"
+        xmlns:MainWindowView="clr-namespace:StepChat.StepChatUI.MainWindow.View"
+        xmlns:MainWindowViewModel="clr-namespace:StepChat.StepChatUI.MainWindow.ViewModel"
+        xmlns:viewmodel="clr-namespace:StepChat.RendererWindow.ViewModel"
+        mc:Ignorable="d"
+         WindowStyle="None"
+        AllowsTransparency="False"
+        Title="StepChat" Width="auto" Height="auto"
+        MinWidth="{Binding Min_MaxWindowWidth}"
+        MinHeight="{Binding Min_MaxWindowHeight}"
+        MaxWidth="{Binding Min_MaxWindowWidth}"
+        MaxHeight="{Binding Min_MaxWindowHeight}"
+        >
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type LoginRegistrationWindowViewModel:LoginRegistrationViewModel}">
+            <LoginRegistrationWindowView:LoginRegistrationWindow/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type MainWindowViewModel:MainWindowViewModel}">
+            <MainWindowView:MainWindow/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <windowcontrolpanel:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="1"/>
+    </Grid>
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
+</Window>

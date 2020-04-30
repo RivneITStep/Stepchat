@@ -1,23 +1,24 @@
-﻿using StepChat.Login_Registration.Comands;
+﻿using StepChat.RendererWindow.View;
+using StepChat.StepChatService;
+using StepChat.StepChatUI.BaseViewModel;
+using StepChat.StepChatUI.Commands;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using StepChat.RendererWindow.ViewModel;
 
-namespace LoginRegistration.Login_Registration.ViewModel
+namespace StepChat.StepChatUI.LoginRegistration.ViewModel
 {
-    class LoginRegistration_ViewModel : INotifyPropertyChanged
+    class LoginRegistrationViewModel : BaseViewModelUI
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string prop)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-        public Action CloseAction { get; set; }
-        public LoginRegistration_ViewModel()
+        public LoginRegistrationViewModel()
         {
             ProgressBarVisibility = Visibility.Hidden;
             LoginWindowVisibility = Visibility.Visible;
@@ -143,23 +144,22 @@ namespace LoginRegistration.Login_Registration.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    Task.Run(()=>
-                    { 
-                    SetProgressBarVisibility(Visibility.Visible);
+                    Thread t = new Thread(new ThreadStart(() =>
+                    {
+                        SetProgressBarVisibility(Visibility.Visible);
                         try
                         {
-                            using (StepChat.StepChatService.ServiceClient proxy = new StepChat.StepChatService.ServiceClient())
+                            using (ServiceClient proxy = new ServiceClient())
                             {
                                 var res = proxy.Login(LoginText, (obj as PasswordBox).Password);
                                 if (!res.IsSuccess)
                                 {
-                                    //##################################################################3
                                     LoginWindow_ErrorTextBox = res.Error.ToString();
 
                                 }
                                 else
                                 {
-                                    new MainWindowUI.MainWindow().Show();
+                                    RendererWindowViewModel.RWVM.Swich(RendererWindowState.MainWindow,res.Data);
                                 }
                             }
                         }
@@ -171,7 +171,13 @@ namespace LoginRegistration.Login_Registration.ViewModel
                         {
                             SetProgressBarVisibility(Visibility.Hidden);
                         }
-                    });
+                        //Task.Run(() =>
+                        //{
+                        //});
+                    }));
+                    t.SetApartmentState(ApartmentState.STA);
+                    t.IsBackground = true;
+                    t.Start();
                 });
             }
         }
@@ -186,7 +192,7 @@ namespace LoginRegistration.Login_Registration.ViewModel
                         SetProgressBarVisibility(Visibility.Visible);
                         try
                         {
-                            using (StepChat.StepChatService.ServiceClient proxy = new StepChat.StepChatService.ServiceClient())
+                            using (ServiceClient proxy = new ServiceClient())
                             {
                                 var res = proxy.Register(ConfigurateUserDTO(obj as PasswordBox));
                                 if (!res.IsSuccess)
@@ -249,7 +255,7 @@ namespace LoginRegistration.Login_Registration.ViewModel
         private Service.DTO.User ConfigurateUserDTO(PasswordBox password)
         {
             Service.DTO.User user = null;
-            using (StepChat.StepChatService.ServiceClient proxy = new StepChat.StepChatService.ServiceClient())
+            using (ServiceClient proxy = new ServiceClient())
             {
                 user = new Service.DTO.User()
                 {

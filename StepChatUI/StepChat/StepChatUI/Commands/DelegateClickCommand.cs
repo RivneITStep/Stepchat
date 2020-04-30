@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace StepChat.Login_Registration.Comands
+namespace StepChat.StepChatUI.Commands
 {
     class DelegateClickCommand : ICommand
     {
@@ -16,7 +16,7 @@ namespace StepChat.Login_Registration.Comands
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-        public DelegateClickCommand(Action<object> execute, Func<object,bool> canExecute=null)
+        public DelegateClickCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;

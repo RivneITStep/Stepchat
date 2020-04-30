@@ -1,5 +1,4 @@
-﻿using MaterialDesignColors;
-using MaterialDesignThemes.Wpf;
+﻿using StepChat.StepChatUI.CustomUIElement.PersonControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,45 +14,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MainWindowUI
+namespace StepChat.StepChatUI.MainWindow.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow :  UserControl
     {
         private ColorConverter colorConverter;
         private bool isDarkTheme;
         public MainWindow()
         {
-        
-
             InitializeComponent();
             isDarkTheme = true;
-            WindowControlPanel_.ButtonClose_MouseClick_Handler += Window_Closed;
-            WindowControlPanel_.ButtonMinimize_MouseClick_Handler += Window_Minimize;
-            WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
-        }
-
-        private void Window_Closed(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void Window_Minimize(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void Window_Maximize(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-            {
-                this.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = WindowState.Normal;
-            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,16 +63,16 @@ namespace MainWindowUI
         private void ChangeThemeToLight()
         {
             Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#eceff1"));
-         Application.Current.Resources["PrimarySecondColor"]= new SolidColorBrush((Color)ColorConverter.ConvertFromString("#90a4ae"));
-         Application.Current.Resources["AccentColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1565c0"));
-         Application.Current.Resources["ForegroundColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+            Application.Current.Resources["PrimarySecondColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#90a4ae"));
+            Application.Current.Resources["AccentColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1565c0"));
+            Application.Current.Resources["ForegroundColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
         }
         private void ChangeThemeToDark()
         {
             Application.Current.Resources["PrimaryColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF303030"));
-          Application.Current.Resources["PrimarySecondColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#394045"));
-          Application.Current.Resources["AccentColor"] = new SolidColorBrush(Colors.Indigo);
-          Application.Current.Resources["ForegroundColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            Application.Current.Resources["PrimarySecondColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#394045"));
+            Application.Current.Resources["AccentColor"] = new SolidColorBrush(Colors.Indigo);
+            Application.Current.Resources["ForegroundColor"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
         }
 
         private void Button_MouseEnter(object sender, MouseEventArgs e)

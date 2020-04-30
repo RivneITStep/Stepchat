@@ -1,33 +1,32 @@
-﻿<Window x:Class="LoginRegistration.LoginRegistrationWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LoginRegistration"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:LoginRegistration.Login_Registration.ViewModel"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+﻿<UserControl x:Class="StepChat.StepChatUI.LoginRegistration.View.LoginRegistrationWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StepChat.StepChatUI.LoginRegistration.View" xmlns:viewmodel="clr-namespace:StepChat.StepChatUI.LoginRegistration.ViewModel"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+                     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
-        mc:Ignorable="d"
-        WindowStyle="None"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+        >
+    <!--WindowStyle="None"
         AllowsTransparency="False"
         Title="LoginWindow" MinHeight="500" MinWidth="500" Width="500" Height="500" MaxHeight="500" MaxWidth="500"
-        Icon="Icon.ico"
-       >
-    <Window.DataContext>
-        <local1:LoginRegistration_ViewModel/>
-    </Window.DataContext>
+        Icon="Icon.ico"-->
+    <UserControl.DataContext>
+        <viewmodel:LoginRegistrationViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
-        <local:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
         <!--###################################################################################-->
         <!--###################################################################################-->
         <!--###################################################################################-->
@@ -195,7 +194,7 @@
                          Visibility="{Binding ProgressBarVisibility}"
   IsIndeterminate="True"/>
     </Grid>
-    <WindowChrome.WindowChrome>
+    <!--<WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="3"/>
-    </WindowChrome.WindowChrome>
-</Window>
+    </WindowChrome.WindowChrome>-->
+</UserControl>

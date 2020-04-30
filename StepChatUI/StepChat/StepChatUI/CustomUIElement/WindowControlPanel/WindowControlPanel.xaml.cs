@@ -1,20 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace LoginRegistration
+namespace StepChat.StepChatUI.CustomUIElement.WindowControlPanel
 {
     public partial class WindowControlPanel : UserControl
     {
@@ -36,7 +25,7 @@ namespace LoginRegistration
 
         private void ButtonMaximize_MouseClick(object sender, RoutedEventArgs e)
         {
-             ButtonMaximize_MouseClick_Handler?.Invoke(sender, e);
+            ButtonMaximize_MouseClick_Handler?.Invoke(sender, e);
         }
 
         private void ButtonMinimize_MouseClick(object sender, RoutedEventArgs e)

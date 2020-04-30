@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace MainWindowUI
+namespace StepChat.StepChatUI.CustomUIElement.PersonControl
 {
-   public class Contact
+    public class Contact
     {
         private int id;
         private string firstName;
@@ -13,14 +17,14 @@ namespace MainWindowUI
         private bool isOnline;
         private DateTime lastOnlineDate;
 
-        public int ID { get {return id; } }
-        public string FirstName { get { return firstName; } set { if(value!=null) firstName = value; } }
+        public int ID { get { return id; } }
+        public string FirstName { get { return firstName; } set { if (value != null) firstName = value; } }
         public string LastName { get { return lastName; } set { if (value != null) lastName = value; } }
         public string BIO { get { return bio; } }
         public bool IsOnline { get { return isOnline; } set { isOnline = value; } }
         public DateTime LastOnlineDate { get { return lastOnlineDate; } set { lastOnlineDate = value; } }
 
-        public Contact(int contactId,string contactFirstName,string contactLastName,string contactBio)
+        public Contact(int contactId, string contactFirstName, string contactLastName, string contactBio)
         {
             id = contactId;
             firstName = contactFirstName;
@@ -32,8 +36,8 @@ namespace MainWindowUI
         {
             contactImage = img;
         }
-        
 
-        
+
+
     }
 }

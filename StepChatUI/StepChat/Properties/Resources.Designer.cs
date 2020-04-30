@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LoginRegistration.Properties
+namespace LoginRegistration.Login_Registration.View.Properties
 {
 
 

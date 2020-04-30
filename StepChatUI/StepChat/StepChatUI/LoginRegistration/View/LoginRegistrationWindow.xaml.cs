@@ -1,5 +1,4 @@
-﻿using LoginRegistration.Login_Registration.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,41 +10,41 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using StepChat.Custom_Element.CustomMessageBox;
 
-namespace LoginRegistration
+namespace StepChat.StepChatUI.LoginRegistration.View
 {
-    public partial class LoginRegistrationWindow : Window
+    public partial class LoginRegistrationWindow : UserControl
     {
         public LoginRegistrationWindow()
         {
             InitializeComponent();
-            WindowControlPanel_.ButtonClose_MouseClick_Handler += Window_Closed;
-            WindowControlPanel_.ButtonMinimize_MouseClick_Handler += Window_Minimize;
-            WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
+            //WindowControlPanel_.ButtonClose_MouseClick_Handler += Window_Closed;
+            //WindowControlPanel_.ButtonMinimize_MouseClick_Handler += Window_Minimize;
+            //WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
             RegistratinWindow_NextButton.IsEnabled = false;
         }
         private bool _isPasswordConfirmed = false;
-        private void Window_Closed(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void Window_Minimize(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-        private void Window_Maximize(object sender, RoutedEventArgs e)
-        {
-            //if (this.WindowState == WindowState.Normal)
-            //{
-            //    this.WindowState = WindowState.Maximized;
-            //}
-            //else
-            //{
-            //    this.WindowState = WindowState.Normal;
-            //}
-        }
+        //private void Window_Closed(object sender, RoutedEventArgs e)
+        //{
+        //    this.Close();
+        //}
+        //private void Window_Minimize(object sender, RoutedEventArgs e)
+        //{
+        //    this.WindowState = WindowState.Minimized;
+        //}
+        //private void Window_Maximize(object sender, RoutedEventArgs e)
+        //{
+        //    //if (this.WindowState == WindowState.Normal)
+        //    //{
+        //    //    this.WindowState = WindowState.Maximized;
+        //    //}
+        //    //else
+        //    //{
+        //    //    this.WindowState = WindowState.Normal;
+        //    //}
+        //}
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (PasswordBoxInRegister.Password != "" &&

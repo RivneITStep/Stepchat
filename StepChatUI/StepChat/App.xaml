@@ -1,8 +1,9 @@
-﻿<Application x:Class="LoginRegistration.App"
+﻿<Application x:Class="StepChat.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LoginRegistration"
-             StartupUri="Login_Registration/View/LoginRegistrationWindow.xaml">
+             xmlns:local="clr-namespace:LoginRegistration.Login_Registration.View"
+             StartupUri="RendererWindow/View/RendererWindow.xaml">
+    <!--StartupUri="StepChatWindow/View/StepChatMainWindow.xaml"-->
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
