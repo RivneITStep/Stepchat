@@ -14,7 +14,6 @@ namespace DAL
         {
             context = new ChatDBModel();
         }
-
         public bool Login(string login, string hashPassword)
         {
             User user = context.Users.FirstOrDefault(u => u.Login == login);
@@ -36,7 +35,6 @@ namespace DAL
             context.Users.Add(user);
             context.SaveChanges();
         }
-
         public bool CheckUserExist(string login)
         {
             var existing = context.Users.FirstOrDefault(u => u.Login == login);
@@ -49,7 +47,6 @@ namespace DAL
         {
             return context.Chats.FirstOrDefault(c => c.Id == chatId);
         }
-
         public User GetUserById(int userId)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -69,7 +66,6 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
-
         public IEnumerable<int> GetUserContacts(int userId)
         {
             return context.Users.First(u => u.Id == userId).ContactsIds;
@@ -79,7 +75,6 @@ namespace DAL
             context.Users.First(u => u.Id == userId).ContactsIds.Add(contactId);
             context.SaveChanges();
         }
-
         public User GetUserByLogin(string login)
         {
             var existing = context.Users.FirstOrDefault(u => u.Login == login);
@@ -102,7 +97,6 @@ namespace DAL
                     return false;
             }
         }
-
         public int AddChat(Chat chat)
         {
             context.Chats.Add(chat);
@@ -110,7 +104,6 @@ namespace DAL
 
             return chat.Id;
         }
-
         public void AddMessage(Message message)
         {            
             if (message == null) return;
@@ -118,7 +111,32 @@ namespace DAL
             context.Messages.Add(message);
             context.SaveChanges();
         }
+        public IEnumerable<Message> GetMessages(int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            if (existing == null) return null;
 
+            return existing.Messages;
+        }
+        public void EditMessages(int messageId, Message newMessage)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+            if (existing == null) return;
+
+            existing.Attachments = newMessage.Attachments;
+            existing.Text = newMessage.Text;
+
+            context.SaveChanges();
+        }
+        public void RemoveMessages(int messageId)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+            if (existing == null) return;
+
+            context.Messages.Remove(existing);
+
+            context.SaveChanges();
+        }
         public void EditUser(User newUser)
         {
             var existing = context.Users.FirstOrDefault(u=>u.Id == newUser.Id);
@@ -135,5 +153,39 @@ namespace DAL
 
             context.SaveChanges();
         }
+        public List<Chat> GetUserChats(int userId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            List<Chat> chats = new  List<Chat>();
+
+            foreach (var item in existing.ChatMembers)
+            {
+                chats.Add(item.Chat);
+            }
+
+            return chats;
+        }
+        public void AddChatMemberToChat(ChatMember cm, int chatId)
+        {
+            var existing = context.Chats.FirstOrDefault(u => u.Id == chatId);
+            
+            if (existing == null) return;
+
+            existing.ChatMembers.Add(cm);                       
+            context.SaveChanges();
+        }
+        public void ChangePassword (int userId, string newPass)
+        {            
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return;
+
+            existing.Password = newPass;
+            context.SaveChanges();
+        }
+
     }
 }
