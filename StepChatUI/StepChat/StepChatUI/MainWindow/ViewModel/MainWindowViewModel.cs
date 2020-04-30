@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Service.DTO;
+using StepChat.StepChatService;
 using StepChat.StepChatUI.BaseViewModel;
 using StepChat.StepChatUI.Commands;//нейм спейс з описаним класом DelegateClickCommand
 
@@ -18,6 +19,7 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
         public void ResetUser(object obj)
         {
             user = (obj as User);
+
         }
         private string _message;//приватне поле обов'язкове без нього буде рекурсія
         public string Message//пропертя до якої біндимось
@@ -50,6 +52,17 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
                     //ось тут буде виконуватись код на клік кнопки
                     MessageBox.Show("Ти на кнопку нажал ☺");
                     MessageOut += Message + "\n";
+                });
+            }
+        }
+        public ICommand buttonClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+                    //ось тут буде виконуватись код на клік кнопки
+                    MessageBox.Show("Ти на кнопку нажал ☻");
                 });
             }
         }

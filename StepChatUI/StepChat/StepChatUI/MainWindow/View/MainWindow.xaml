@@ -51,8 +51,8 @@
             <Button Margin="1.7"  Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Click="Button_Click_2" >
                 <materialDesign:PackIcon Kind="Plus" />
             </Button>
-            <Button Margin="1.7" Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom" Click="Button_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
-                <materialDesign:PackIcon Kind="ThemeLightDark" />
+            <Button Margin="1.7" Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom" Click="Button_Click" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave" Command="{Binding buttonClick}">
+                <materialDesign:PackIcon Kind="ThemeLightDark"  />
             </Button>
 
         </DockPanel>
