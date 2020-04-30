@@ -123,7 +123,6 @@ namespace DAL
 
             return contacts;
         }
-
         public User FindContactsbyLogin(int userId, string login)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -138,7 +137,6 @@ namespace DAL
 
             return null;
         }
-
         public void AddContact(int userId, int contactUserId)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -262,6 +260,17 @@ namespace DAL
             existing.Password = newPass;
             context.SaveChanges();
         }
-        
+        public MemberRole GetUserRolebyChatId(int userId, int chatId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            var existingChat = existing.ChatMembers.FirstOrDefault(u => u.ChatId == chatId);
+
+            return existingChat.MemberRole;
+        }
+
+
     }
 }
