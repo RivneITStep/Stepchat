@@ -12,7 +12,7 @@ namespace DAL.Configs
         public ConfigsChat()
         {
             Property(c => c.IsPersonal).IsRequired();
-            Property(c => c.Name).IsRequired();
+            Property(c => c.Name).IsOptional();
             Property(c => c.Description).IsOptional();
             Property(c => c.PhotoPath).IsOptional();
 
