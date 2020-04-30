@@ -16,11 +16,29 @@ namespace Service
 
             ServiceHost host = new ServiceHost(typeof(Service));
 
-            Logger.Debug("Run");
 
+            Console.WriteLine(@"   _____ _              _____ _           _    _____                          ");
+            Console.WriteLine(@"  / ____| |            / ____| |         | |  / ____|                         ");
+            Console.WriteLine(@" | (___ | |_ ___ _ __ | |    | |__   __ _| |_| (___   ___ _ ____   _____ _ __ ");
+            Console.WriteLine(@"  \___ \| __/ _ \ '_ \| |    | '_ \ / _` | __|\___ \ / _ \ '__\ \ / / _ \ '__|");
+            Console.WriteLine(@"  ____) | ||  __/ |_) | |____| | | | (_| | |_ ____) |  __/ |   \ V /  __/ |   ");
+            Console.WriteLine(@" |_____/ \__\___| .__/ \_____|_| |_|\__,_|\__|_____/ \___|_|    \_/ \___|_|   ");
+            Console.WriteLine(@"                | |                                                           ");
+            Console.WriteLine(@"                |_|                                                           ");
+
+
+
+
+
+
+
+
+            Logger.Debug("StepChat Server ");
+            Logger.Debug("Service starting...");
+            Logger.Debug("Service ready. Press Enter to stop");
+            Logger.Debug("Wait client...");
             host.Open();
-            Logger.Debug("Wait clients...");
-            Console.ReadLine();
+            Console.Read();
             host.Close();
             Logger.Debug("Host closed");
         }

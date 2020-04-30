@@ -29,6 +29,8 @@ namespace Service
     [DataContract]
     public class Result // Operation result
     {
+        protected static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         [DataMember]
         public readonly bool IsSuccess;
         [DataMember]
@@ -41,19 +43,22 @@ namespace Service
         public Result()
         {
             IsSuccess = true;
+            Logger.Warn($"Result OK");
+
         }
 
-        
-        public Result(string message)
-        {
-            IsSuccess = false;
-            Message = message;
-        }
+
+        //public Result(string message)
+        //{
+        //    IsSuccess = false;
+        //    Message = message;
+        //}
         public Result(ResultError error, string message = null)
         {
             IsSuccess = false;
             Message = message;
             Error = error;
+            Logger.Warn($"Result error type: {error} message: {message}");
         }
 
         public static Result WithError(ResultError error, string message = null)
@@ -74,6 +79,8 @@ namespace Service
 
         public Result(T data)
         {
+            Logger.Warn($"Result ok with data {data}");
+
             Data = data;
 
         }

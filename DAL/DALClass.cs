@@ -72,7 +72,8 @@ namespace DAL
         }
         public void AddContact(int userId, int contactId)
         {
-            context.Users.First(u => u.Id == userId).ContactsIds.Add(contactId);
+            context.Contacts.Add(new Contact { UserId = userId, UserContactId = contactId });
+
             context.SaveChanges();
         }
         public User GetUserByLogin(string login)
@@ -111,20 +112,40 @@ namespace DAL
             context.Messages.Add(message);
             context.SaveChanges();
         }
-        public IEnumerable<Message> GetMessages(int userId)
+        
+        public IEnumerable<Message> GetMessages(int chatId)
         {
-            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
-            if (existing == null) return null;
-
-            return existing.Messages;
+            return context.Messages.Where(m => m.ChatId == chatId);
         }
-        public void EditMessages(int messageId, Message newMessage)
+        public bool CheckMessageExist(int messageId)
+        {
+            return context.Messages.Any(m => m.Id == messageId);
+        }
+
+        public Message EditMessages(int messageId, Message newMessage)
         {
             var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
-            if (existing == null) return;
+            if (existing == null) return null;
 
             existing.Attachments = newMessage.Attachments;
             existing.Text = newMessage.Text;
+
+            context.SaveChanges();
+            return existing;
+        }
+        public bool CheckChatExist(int chatId)
+        {
+            return context.ChatMembers.Any(c => c.Id == chatId);
+        }
+        public bool CheckChatMember(int chatId, int userId)
+        {
+            return context.ChatMembers.Any(c => c.ChatId == chatId && c.UserId == userId);
+        }
+        public void DeleteChatMember(int chatid, int userId)
+        {
+            context.ChatMembers.Remove(
+                context.ChatMembers.First(c => c.ChatId == chatid && c.UserId == userId)
+            );
 
             context.SaveChanges();
         }

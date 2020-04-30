@@ -12,11 +12,15 @@ namespace Service.DTO
     {
         [DataMember]
         public int Id { get; set; }
-
+        [DataMember]
         public bool IsPersonal { get; set; }
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
         public string Description { get; set; }
+        [DataMember]
         public string PhotoPath { get; set; }
+        [DataMember]
         public int ReadStatusId { get; set; }
     }
 }

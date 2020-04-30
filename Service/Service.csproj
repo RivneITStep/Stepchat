@@ -70,6 +70,7 @@
     <Compile Include="DTO\Chat.cs" />
     <Compile Include="DTO\Message.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="FIleManager.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
