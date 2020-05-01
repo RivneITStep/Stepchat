@@ -17,6 +17,7 @@
             <SolidColorBrush x:Key="PrimarySecondColor" x:Name="PrimarySecondC" Color="#FF303030"/>
             <SolidColorBrush x:Key="AccentColor" x:Name="AccentC" Color="#534bae"/>
             <SolidColorBrush x:Key="ForegroundColor" x:Name="ForegroundC" Color="#ffffff"/>
+            <SolidColorBrush x:Key="BackgroundColor" x:Name="BackgroundC" Color="#FF303030"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using Service.DTO;
 using StepChat.StepChatService;
 using StepChat.StepChatUI.BaseViewModel;
 using StepChat.StepChatUI.Commands;//нейм спейс з описаним класом DelegateClickCommand
+using StepChat.StepChatUI.CustomUIElement.MessageControl;
 
 namespace StepChat.StepChatUI.MainWindow.ViewModel
 {
@@ -19,39 +21,41 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
         public void ResetUser(object obj)
         {
             user = (obj as User);
-
         }
-        private string _message;//приватне поле обов'язкове без нього буде рекурсія
-        public string Message//пропертя до якої біндимось
+        public MainWindowViewModel()
         {
-            get => _message;
+            MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
+        }
+        private string _mainWindowEnterYourMessageTextBox;
+        public string MainWindowEnterYourMessageTextBox
+        {
+            get => _mainWindowEnterYourMessageTextBox;
             set
             {
-                _message = value;//встановлення значення
-                OnPropertyChanged(nameof(Message));//після встановлення значення обов'язково сповіщаємо нашій в'юшці що пропертя змінилась, типа перепиши її в себе
+                _mainWindowEnterYourMessageTextBox = value;
+                OnPropertyChanged(nameof(MainWindowEnterYourMessageTextBox));
             }
         }
-        private string _messageOut;//приватне поле обов'язкове без нього буде рекурсія
-        public string MessageOut//пропертя до якої біндимось
+        private ObservableCollection<MessageControl> _mainWindowMessageControlListView { get; set; }
+        public ObservableCollection<MessageControl> MainWindowMessageControlListView
         {
-            get => _messageOut;
+            get { return _mainWindowMessageControlListView; }
             set
             {
-                _messageOut = value;//встановлення значення
-                OnPropertyChanged(nameof(MessageOut));//після встановлення значення обов'язково сповіщаємо нашій в'юшці що пропертя змінилась, типа перепиши її в себе
+                _mainWindowMessageControlListView = value;
+                OnPropertyChanged(nameof(MainWindowMessageControlListView));
             }
         }
 
-        //У кнопки є пропертя Command забіндивши її на нашу пропертю ICommand можна відслідковувати кліки
         public ICommand MainWindow_SendMessageButtonClick
         {
             get
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    //ось тут буде виконуватись код на клік кнопки
-                    MessageBox.Show("Ти на кнопку нажал ☺");
-                    MessageOut += Message + "\n";
+                    var res = new MessageControl(MainWindowEnterYourMessageTextBox, DateTime.Now);
+                    res.HorizontalAlignment = HorizontalAlignment.Right;
+                    MainWindowMessageControlListView.Add(res);
                 });
             }
         }

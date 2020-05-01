@@ -74,7 +74,7 @@
                 <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="Messages"   Margin="8,0,8,8"  VerticalAlignment="Stretch"  Background="#FF494747" Text="{Binding MessageOut}"></TextBlock>
+            <ListView ItemsSource="{Binding MainWindowMessageControlListView}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -82,7 +82,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBox Name="messageText"  VerticalAlignment="Stretch"  Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimarySecondColor}"
-    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Text="{Binding Message}"
+    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}" Text="{Binding MainWindowEnterYourMessageTextBox}"
     Margin="8,0,8,8"
     AcceptsReturn="True"
     TextWrapping="Wrap"
