@@ -26,6 +26,9 @@ namespace Service
         [OperationContract]
         Result<IEnumerable<DTO.User>> GetContacts();
 
+        [OperationContract]
+        Result<List<DTO.User>> SearchUsers(string query);
+
 
         [OperationContract]
         Result<DTO.Chat> CreatePrivateChat(int withUserId);
