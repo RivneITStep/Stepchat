@@ -81,6 +81,13 @@ namespace DAL
 
             return contacts;
         }
+        public void RemoveChatMember(int chatId, int userId)
+        {
+            context.ChatMembers.Remove(
+                context.ChatMembers.First(cm => cm.UserId == userId && cm.ChatId == chatId)
+            );
+        }
+
         public void RemoveContact(int contactId)
         {
             var existing = context.Contacts.FirstOrDefault(u => u.Id == contactId);
@@ -107,6 +114,22 @@ namespace DAL
 
             return contacts;
         }
+
+        public List<User> SearchUsers(string query)
+        {
+            return context.Users.Where(u => u.FirstName.Contains(query) ||
+                                            u.LastName.Contains(query) || 
+                                            u.Login.Contains(query)).ToList()
+                                .Select(u => new User
+                                {
+                                    Id = u.Id,
+                                    FirstName = u.FirstName,
+                                    LastName = u.LastName,
+                                    LastOnlineDate = u.LastOnlineDate,
+                                    PhotoPath = u.PhotoPath
+                                }).ToList();
+        }
+
         public List<User> FindContactsbySurname(int userId, string surname)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -157,6 +180,16 @@ namespace DAL
 
             else return existing;
         }
+
+        public bool CheckChatExist(int chatId)
+        {
+            return context.Chats.Any(c => c.Id == chatId);
+        }
+        public bool CheckChatMember(int chatId, int userId)
+        {
+            return context.Chats.First(c => c.Id == chatId).ChatMembers.Any(c => c.UserId == userId);
+        }
+
         public bool CheckUserPassword(string password, string login)
         {
             var existing = context.Users.FirstOrDefault(u => u.Login == login);
@@ -192,15 +225,19 @@ namespace DAL
 
             return existing.Messages;
         }
-        public void EditMessages(int messageId, Message newMessage)
+        public bool CheckMessageExist(int messageId)
+        {
+            return context.Messages.Any(m => m.Id == messageId);
+        }
+        public Message EditMessage(int messageId, Message newMessage)
         {
             var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
-            if (existing == null) return;
 
             existing.Attachments = newMessage.Attachments;
             existing.Text = newMessage.Text;
 
             context.SaveChanges();
+            return existing;
         }
         public void RemoveMessages(int messageId)
         {
