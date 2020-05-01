@@ -66,14 +66,87 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
-        public IEnumerable<int> GetUserContacts(int userId)
+        public List<User> GetUserContacts(int userId)
         {
-            return context.Users.First(u => u.Id == userId).ContactsIds;
-        }
-        public void AddContact(int userId, int contactId)
-        {
-            context.Contacts.Add(new Contact { UserId = userId, UserContactId = contactId });
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
+            if (existing == null) return null;
+
+            List<User> contacts = new  List<User>();
+
+            foreach (var item in existing.Contacts)
+            {
+                contacts.Add(item.UserContact);
+            }
+
+            return contacts;
+        }
+        public void RemoveContact(int contactId)
+        {
+            var existing = context.Contacts.FirstOrDefault(u => u.Id == contactId);
+            
+            if (existing == null) return;         
+
+            context.Contacts.Remove(existing);
+            
+            context.SaveChanges();
+        }
+        public List<User> FindContactsbyName(int userId, string name)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            List<User> contacts = new List<User>();
+
+            foreach (var item in existing.Contacts)
+            {
+                if (item.UserContact.FirstName == name)
+                    contacts.Add(item.UserContact);
+            }
+
+            return contacts;
+        }
+        public List<User> FindContactsbySurname(int userId, string surname)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            List<User> contacts = new List<User>();
+
+            foreach (var item in existing.Contacts)
+            {
+                if (item.UserContact.LastName == surname)
+                    contacts.Add(item.UserContact);
+            }
+
+            return contacts;
+        }
+        public User FindContactsbyLogin(int userId, string login)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            foreach (var item in existing.Contacts)
+            {
+                if (item.UserContact.Login == login)
+                    return item.UserContact;
+            }
+
+            return null;
+        }
+        public void AddContact(int userId, int contactUserId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            var existingContact = context.Users.FirstOrDefault(u => u.Id == contactUserId);
+
+            if (existing == null) return;
+            if (existingContact == null) return;
+
+            context.Contacts.Add(new Contact() { UserId = userId, UserContactId = contactUserId });
+            
             context.SaveChanges();
         }
         public User GetUserByLogin(string login)
@@ -112,40 +185,20 @@ namespace DAL
             context.Messages.Add(message);
             context.SaveChanges();
         }
-        
-        public IEnumerable<Message> GetMessages(int chatId)
+        public IEnumerable<Message> GetMessages(int userId)
         {
-            return context.Messages.Where(m => m.ChatId == chatId);
-        }
-        public bool CheckMessageExist(int messageId)
-        {
-            return context.Messages.Any(m => m.Id == messageId);
-        }
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+            if (existing == null) return null;
 
-        public Message EditMessages(int messageId, Message newMessage)
+            return existing.Messages;
+        }
+        public void EditMessages(int messageId, Message newMessage)
         {
             var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
-            if (existing == null) return null;
+            if (existing == null) return;
 
             existing.Attachments = newMessage.Attachments;
             existing.Text = newMessage.Text;
-
-            context.SaveChanges();
-            return existing;
-        }
-        public bool CheckChatExist(int chatId)
-        {
-            return context.ChatMembers.Any(c => c.Id == chatId);
-        }
-        public bool CheckChatMember(int chatId, int userId)
-        {
-            return context.ChatMembers.Any(c => c.ChatId == chatId && c.UserId == userId);
-        }
-        public void DeleteChatMember(int chatid, int userId)
-        {
-            context.ChatMembers.Remove(
-                context.ChatMembers.First(c => c.ChatId == chatid && c.UserId == userId)
-            );
 
             context.SaveChanges();
         }
@@ -207,6 +260,17 @@ namespace DAL
             existing.Password = newPass;
             context.SaveChanges();
         }
+        public MemberRole GetUserRolebyChatId(int userId, int chatId)
+        {
+            var existing = context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (existing == null) return null;
+
+            var existingChat = existing.ChatMembers.FirstOrDefault(u => u.ChatId == chatId);
+
+            return existingChat.MemberRole;
+        }
+
 
     }
 }
