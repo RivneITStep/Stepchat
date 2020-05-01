@@ -24,6 +24,12 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
         {
             this.user = user;
             this.service = service;
+            service.CreateChat("Chat1");   
+            service.CreateChat("Chat2");   
+            service.CreateChat("Chat3");
+            service.CreatePrivateChat(2);
+            service.CreatePrivateChat(3);
+            LoadChats();
         }
         private void LoadChats()
         {
