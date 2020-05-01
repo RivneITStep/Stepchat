@@ -17,7 +17,6 @@
     
     <Grid>
         <DockPanel Grid.Column="3">
-            <Button></Button>
             <Button DockPanel.Dock="Right"  WindowChrome.IsHitTestVisibleInChrome="True"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                     materialDesign:ButtonAssist.CornerRadius="0"
