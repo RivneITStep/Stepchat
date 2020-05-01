@@ -85,10 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="RendererWindow\ViewModel\RendererWindowViewModel.cs" />
-    <Compile Include="RendererWindow\View\RendererWindow.xaml.cs">
-      <DependentUpon>RendererWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StepChatUI\BaseViewModel\BaseViewModel.cs" />
     <Compile Include="StepChatUI\Commands\DelegateClickCommand.cs" />
     <Compile Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml.cs">
@@ -101,14 +97,11 @@
     <Compile Include="StepChatUI\CustomUIElement\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StepChatUI\LoginRegistration\Model\LoginRegistrationModel.cs" />
-    <Compile Include="StepChatUI\LoginRegistration\ViewModel\LoginRegistrationViewModel.cs" />
-    <Compile Include="StepChatUI\LoginRegistration\View\LoginRegistrationWindow.xaml.cs">
-      <DependentUpon>LoginRegistrationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="StepChatUI\MainWindow\ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="StepChatUI\MainWindow\View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\MainWindowUIViewModel.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\MainWindowViewModel.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\MainWindowUIViewModel.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\View\MainWindowUI.xaml.cs">
+      <DependentUpon>MainWindowUI.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -183,10 +176,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="RendererWindow\View\RendererWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,17 +188,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StepChatUI\LoginRegistration\View\LoginRegistrationWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StepChatUI\MainWindow\View\MainWindow.xaml">
+    <Page Include="StepChatUI\MainWindowUI\View\MainWindowUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="StepChatUI\MainWindow\Model\" />
+    <Folder Include="StepChatUI\MainWindowUI\Model\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />

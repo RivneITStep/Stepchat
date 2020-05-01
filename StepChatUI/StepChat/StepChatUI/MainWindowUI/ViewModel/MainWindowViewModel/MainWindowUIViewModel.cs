@@ -1,57 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using StepChat.ServiceReference1;
-using StepChat.StepChatUI.BaseViewModel;
+﻿using StepChat.ServiceReference1;
 using StepChat.StepChatUI.Commands;
 using StepChat.StepChatUI.CustomUIElement.MessageControl;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
-namespace StepChat.StepChatUI.MainWindow.ViewModel
+namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 {
-    class MainWindowViewModel : BaseViewModelUI
+    partial class MainWindowUIViewModel : BaseViewModel.BaseViewModelUI
     {
-        User user;
-        ServiceClient service;
         public void ResetUser(User user, ServiceClient service)
         {
-            this.user = user;
-            this.service = service;
-            service.CreateChat("Chat1");   
-            service.CreateChat("Chat2");   
-            service.CreateChat("Chat3");
-            service.CreatePrivateChat(2);
-            service.CreatePrivateChat(3);
-            LoadChats();
+            User = user;
+            Service = service;
+            //service.CreateChat("Chat1");   
+            //service.CreateChat("Chat2");   
+            //service.CreateChat("Chat3");
+            //service.CreatePrivateChat(2);
+            //service.CreatePrivateChat(3);
+            //LoadChats();
         }
         private void LoadChats()
         {
+            //MainWindowContactListListView.Clear();
+            //var res = service.GetChats();
+            //foreach (var item in service.GetChats().Data.OrderByDescending(q => q.Id))
+            //{
+            //    MainWindowContactListListView.Add(new PersonControl(new Contact(item.Id, item.Name, "last name", item.Description)));
+            //}
             Task.Run(() =>
             {
-                MainWindowContactListListView.Clear();
-                var res = service.GetChats();
-                foreach (var item in service.GetChats().Data.OrderByDescending(q => q.Id))
-                {
-                    MainWindowContactListListView.Add(new PersonControl(new Contact(item.Id, item.Name, "last name", item.Description)));
-                }
             });
         }
         private void LoadMessage(int ChatId)
         {
+            //MainWindowMessageControlListView.Clear();
+            //foreach (var item in service.GetMessages(ChatId, 0, 100).Data)
+            //{
+            //    MainWindowMessageControlListView.Add(new MessageControl(item));
+            //}
             Task.Run(() =>
             {
-                MainWindowMessageControlListView.Clear();
-                foreach (var item in service.GetMessages(ChatId, 0, 100).Data)
-                {
-                    MainWindowMessageControlListView.Add(new MessageControl(item));
-                }
             });
         }
         private PersonControl _mainWindowContactListListViewSelectedItem;
@@ -67,10 +61,6 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
                 OnPropertyChanged(nameof(MainWindowContactListListViewSelectedItem));
                 LoadMessage(_mainWindowContactListListViewSelectedItem.contact.ID);
             }
-        }
-        public MainWindowViewModel()
-        {
-            MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
         }
         private string _mainWindowEnterYourMessageTextBox;
         public string MainWindowEnterYourMessageTextBox
@@ -109,7 +99,7 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    
+
                 });
             }
         }
@@ -120,9 +110,10 @@ namespace StepChat.StepChatUI.MainWindow.ViewModel
                 return new DelegateClickCommand((obj) =>
                 {
                     //ось тут буде виконуватись код на клік кнопки
-                    MessageBox.Show("Ти на кнопку нажал ☻");
                 });
             }
         }
     }
+
 }
+

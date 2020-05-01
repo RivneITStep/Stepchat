@@ -1,5 +1,4 @@
-﻿using StepChat.StepChatUI.CustomUIElement.PersonControl;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +10,103 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StepChat.StepChatUI.MainWindow.View
+namespace StepChat.StepChatUI.MainWindowUI.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindowUI.xaml
     /// </summary>
-    public partial class MainWindow :  UserControl
+    public partial class MainWindowUI : Window
     {
-        private ColorConverter colorConverter;
-        private bool isDarkTheme;
-        public MainWindow()
+        private bool _isPasswordConfirmed = false;
+        public MainWindowUI()
         {
             InitializeComponent();
+            WindowControlPanel_.ButtonClose_MouseClick_Handler += Window_Closed;
+            WindowControlPanel_.ButtonMinimize_MouseClick_Handler += Window_Minimize;
+            WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
+            RegistratinWindow_NextButton.IsEnabled = false;
             isDarkTheme = true;
+
         }
+        private void Window_Closed(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void Window_Minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void Window_Maximize(object sender, RoutedEventArgs e)
+        {
+            //if (this.WindowState == WindowState.Normal)
+            //{
+            //    this.WindowState = WindowState.Maximized;
+            //}
+            //else
+            //{
+            //    this.WindowState = WindowState.Normal;
+            //}
+        }
+        #region LoginRegistration
+        //#####################################################################################
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBoxInRegister.Password != "" &&
+                ConfirmPasswordBox.Password != PasswordBoxInRegister.Password)
+            {
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(210, 0, 0));
+                PasswordBoxInRegister.Foreground = new SolidColorBrush(Color.FromRgb(210, 0, 0));
+                _isPasswordConfirmed = false;
+            }
+            else
+            {
+                ConfirmPasswordBox.Foreground = new SolidColorBrush(Color.FromRgb(230, 230, 230));
+                PasswordBoxInRegister.Foreground = new SolidColorBrush(Color.FromRgb(230, 230, 230));
+                _isPasswordConfirmed = true;
+            }
+            InputDataValidator();
+        }
+
+        private void RegistratinWindow_NextButtonClick(object sender, RoutedEventArgs e)
+        {
+            //ConfirmPasswordBox.Password = "";
+            //PasswordBoxInRegister.Password = "";
+            //RegistrationWindow_EmailTextBox.Text = "";
+            //RegistrationWindow_FirstNameTextBox.Text = "";
+            //RegistrationWindow_LastNameTextBox.Text = "";
+            //RegistrationWindow_LoginTextBox.Text = "";
+        }
+
+        private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputDataValidator();
+        }
+        private void InputDataValidator()
+        {
+            if (RegistrationWindow_EmailTextBox.Text != "" &&
+               RegistrationWindow_FirstNameTextBox.Text != "" &&
+               RegistrationWindow_LastNameTextBox.Text != "" &&
+               RegistrationWindow_LoginTextBox.Text != "" &&
+               PasswordBoxInRegister.Password != "" &&
+               ConfirmPasswordBox.Password != "" &&
+               _isPasswordConfirmed
+               )
+            {
+                RegistratinWindow_NextButton.IsEnabled = true;
+            }
+            else
+            {
+                RegistratinWindow_NextButton.IsEnabled = false;
+            }
+        }
+        //#####################################################################################
+        #endregion
+        #region MainWindow
+        //#####################################################################################
+        private ColorConverter colorConverter;
+        private bool isDarkTheme;
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -146,5 +225,7 @@ namespace StepChat.StepChatUI.MainWindow.View
         {
             CloseAllMenus();
         }
+        //#####################################################################################
+        #endregion
     }
 }
