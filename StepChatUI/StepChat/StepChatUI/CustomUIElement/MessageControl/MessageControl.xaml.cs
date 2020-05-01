@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StepChat.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,11 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
     }
     public partial class MessageControl : UserControl
     {
-        public MessageControl(string message, DateTime timeSended)
+        public MessageControl(Message message)
         {
             InitializeComponent();
-            SetMessage(message);
-            SetTimeSended(timeSended);
+            SetMessage(message.Text);
+            SetTimeSended(message.SendDate);
             SetMessageState(MessageState.Readed);
         }
         public void SetMessageState(MessageState state)
@@ -34,12 +35,12 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
             switch (state)
             {
                 case MessageState.Readed:
-                    Check.Visibility = Visibility.Hidden;
+                    Check.Visibility = Visibility.Collapsed;
                     Checks.Visibility = Visibility.Visible;
                     break;
                 case MessageState.NotReaded:
                     Check.Visibility = Visibility.Visible;
-                    Checks.Visibility = Visibility.Hidden;
+                    Checks.Visibility = Visibility.Collapsed;
                     break;
                 default:
                     break;
@@ -55,7 +56,7 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
         }
         private void SetTimeSended(DateTime time)
         {
-            Date.Text = time.Hour + time.Minute+"";
+            Date.Text = (time.Hour/10==0?"0"+ time.Hour : time.Hour.ToString()) + ":" + (time.Minute / 10 == 0 ? "0" + time.Minute : time.Minute.ToString());
         }
     }
 }

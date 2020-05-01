@@ -29,8 +29,12 @@ namespace Service
     [DataContract]
     public class Result // Operation result
     {
+        protected static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         [DataMember]
         public readonly bool IsSuccess;
+        [DataMember]
+        public readonly string Message;
         [DataMember]
         public ResultError Error = ResultError.Null;
         [DataMember]
@@ -39,17 +43,31 @@ namespace Service
         public Result()
         {
             IsSuccess = true;
+            Logger.Warn($"Result OK");
+
         }
 
-        public static Result WithError(ResultError error)
+
+        //public Result(string message)
+        //{
+        //    IsSuccess = false;
+        //    Message = message;
+        //}
+        public Result(ResultError error, string message = null)
+        {
+            IsSuccess = false;
+            Message = message;
+            Error = error;
+            Logger.Warn($"Result error type: {error} message: {message}");
+        }
+
+        public static Result WithError(ResultError error, string message = null)
         {
             return new Result(error);
         }
-
-        public Result(ResultError error)
+        public static Result WithError(Result result)
         {
-            Error = error;
-            IsSuccess = false;
+            return new Result(result.Error, result.Message);
         }
     }
 
@@ -61,9 +79,14 @@ namespace Service
 
         public Result(T data)
         {
+            Logger.Warn($"Result ok with data {data}");
+
             Data = data;
 
         }
+
+        public Result(ResultError error, string message) : base(error, message) {}
+
         public Result(ResultError error) : base(error) { }
 
         public new static Result<T> OK(T data)
@@ -74,6 +97,10 @@ namespace Service
         public new static Result<T> WithError(ResultError error)
         {
             return new Result<T>(error);
+        }
+        public static Result<T> WithError(ResultError error, string message)
+        {
+            return new Result<T>(error, message);
         }
     }
 }

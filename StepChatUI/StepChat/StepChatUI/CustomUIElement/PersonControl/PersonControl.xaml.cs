@@ -17,7 +17,7 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
 {
     public partial class PersonControl : UserControl
     {
-        private Contact contact;
+        public Contact contact;
 
         private string contactLastMessage;
         private DateTime timeOfLastMessage;

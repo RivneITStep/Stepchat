@@ -1,5 +1,4 @@
 ﻿using StepChat.RendererWindow.View;
-using StepChat.StepChatService;
 using StepChat.StepChatUI.BaseViewModel;
 using StepChat.StepChatUI.Commands;
 using System;
@@ -13,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using StepChat.RendererWindow.ViewModel;
+using StepChat.ServiceReference1;
 
 namespace StepChat.StepChatUI.LoginRegistration.ViewModel
 {
@@ -149,18 +149,16 @@ namespace StepChat.StepChatUI.LoginRegistration.ViewModel
                         SetProgressBarVisibility(Visibility.Visible);
                         try
                         {
-                            using (ServiceClient proxy = new ServiceClient())
+                            ServiceClient proxy = new ServiceClient();
+                            var res = proxy.Login(LoginText, (obj as PasswordBox).Password);
+                            if (!res.IsSuccess)
                             {
-                                var res = proxy.Login(LoginText, (obj as PasswordBox).Password);
-                                if (!res.IsSuccess)
-                                {
-                                    LoginWindow_ErrorTextBox = res.Error.ToString();
+                                LoginWindow_ErrorTextBox = res.Error.ToString();
 
-                                }
-                                else
-                                {
-                                    RendererWindowViewModel.RWVM.Swich(RendererWindowState.MainWindow,res.Data);
-                                }
+                            }
+                            else
+                            {
+                                RendererWindowViewModel.RWVM.Swich(RendererWindowState.MainWindow, res.Data, proxy);
                             }
                         }
                         catch (Exception ex)
@@ -171,9 +169,6 @@ namespace StepChat.StepChatUI.LoginRegistration.ViewModel
                         {
                             SetProgressBarVisibility(Visibility.Hidden);
                         }
-                        //Task.Run(() =>
-                        //{
-                        //});
                     }));
                     t.SetApartmentState(ApartmentState.STA);
                     t.IsBackground = true;
@@ -192,20 +187,19 @@ namespace StepChat.StepChatUI.LoginRegistration.ViewModel
                         SetProgressBarVisibility(Visibility.Visible);
                         try
                         {
-                            using (ServiceClient proxy = new ServiceClient())
+                            ServiceClient proxy = new ServiceClient();
+                            var res = proxy.Register(ConfigurateUserDTO(obj as PasswordBox));
+                            if (!res.IsSuccess)
                             {
-                                var res = proxy.Register(ConfigurateUserDTO(obj as PasswordBox));
-                                if (!res.IsSuccess)
-                                {
-                                    RegistrationWindow_ErrorTextBox = res.Error.ToString();
-                                }
-                                else
-                                {
-                                    LoginWindowVisibility = Visibility.Visible;
-                                    RegistrationWindowVisibility = Visibility.Hidden;
-                                    RegistrationWindow_ErrorTextBox = "";
-                                }
+                                RegistrationWindow_ErrorTextBox = res.Error.ToString();
                             }
+                            else
+                            {
+                                LoginWindowVisibility = Visibility.Visible;
+                                RegistrationWindowVisibility = Visibility.Hidden;
+                                RegistrationWindow_ErrorTextBox = "";
+                            }
+
                         }
                         catch (Exception ex)
                         {
@@ -252,12 +246,13 @@ namespace StepChat.StepChatUI.LoginRegistration.ViewModel
                 });
             }
         }
-        private Service.DTO.User ConfigurateUserDTO(PasswordBox password)
+
+        private User ConfigurateUserDTO(PasswordBox password)
         {
-            Service.DTO.User user = null;
+            User user = null;
             using (ServiceClient proxy = new ServiceClient())
             {
-                user = new Service.DTO.User()
+                user = new User()
                 {
                     Email = RegistrationWindow_EmailTextBox,
                     Login = RegistrationWindow_LoginTextBox,

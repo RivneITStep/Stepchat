@@ -11,55 +11,43 @@ namespace Service
     [ServiceContract]
     public interface IService
     {
+
         [OperationContract]
         Result<DTO.User> Login(string login, string password);
-
         [OperationContract]
         Result<DTO.User> Register(DTO.User user);
-
         [OperationContract]
-        Result SendMessage(int chatId, string message);
-
-        [OperationContract]
-        Result CreateChat(string name);
-
-        [OperationContract]
-        Result AddContact(int contactId);
-
-        [OperationContract]
-        Result<IEnumerable<int>> GetContacts();
-
-        [OperationContract]
-        Result CreatePrivateChat(int userId);
-
-        [OperationContract]
-        Result AddUserToChat(int userId, int chatId);
-
-        [OperationContract]
-        Result JoinToChat(int chatId);
-
-        [OperationContract]
-        Result LeaveFromChat(int chatId);
-
-        [OperationContract]
-        Result<IEnumerable<DTO.User>> SearchUsers(string query);
-
-        [OperationContract]
-        Result<IEnumerable<DTO.Chat>> SearchChats(string query);
-
-        [OperationContract]
-        Result<IEnumerable<DTO.Chat>> GetChats();
-
-        [OperationContract]
-        Result EditName(string newFirstname, string newLastname, string newBio);
-
+        Result<DTO.User> EditUserInfo(DTO.User newUser);
         [OperationContract]
         Result ChangePassword(string newPassword);
 
         [OperationContract]
-        Result<IEnumerable<DTO.Message>> GetChatHistory(int chatId);
+        Result AddContact(int userId);
+        [OperationContract]
+        Result<IEnumerable<DTO.User>> GetContacts();
 
 
+        [OperationContract]
+        Result<DTO.Chat> CreatePrivateChat(int withUserId);
+        [OperationContract]
+        Result<DTO.Chat> CreateChat(string name);
+        [OperationContract]
+        Result<DTO.Chat> JoinChat(int chatId);
+        [OperationContract]
+        Result LeaveChat(int chatId);
+        [OperationContract]
+        Result<IEnumerable<DTO.Chat>> GetChats();
+
+
+
+        [OperationContract]
+        Result<DTO.Message> SendMessage(int chatId, string text);
+        [OperationContract]
+        Result<DTO.Message> EditMessage(int messageId, string newText);
+        [OperationContract]
+        Result DeleteMessage(int messageId);
+        [OperationContract]
+        Result<IEnumerable<DTO.Message>> GetMessages(int chatId, int offset = 0, int size = 50);
     }
 
 }

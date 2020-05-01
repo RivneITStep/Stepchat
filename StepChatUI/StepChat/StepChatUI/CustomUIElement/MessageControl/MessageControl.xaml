@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StepChat.StepChatUI.CustomUIElement.MessageControl"
              mc:Ignorable="d" 
-             MaxWidth="700" MinWidth="200"  MinHeight="80" Height="auto" Width="auto"
+             MaxWidth="700" MinWidth="200"  Height="auto" Width="auto"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
                      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"

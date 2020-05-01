@@ -67,7 +67,7 @@ namespace StepChat.RendererWindow.ViewModel
                 OnPropertyChanged(nameof(Min_MaxWindowHeight));
             }
         }
-        public void Swich(RendererWindowState state, object obj = null)
+        public void Swich(RendererWindowState state, object obj = null, ServiceReference1.ServiceClient proxy = null)
         {
             switch (state)
             {
@@ -77,12 +77,12 @@ namespace StepChat.RendererWindow.ViewModel
                     Min_MaxWindowWidth = 500;
                     break;
                 case RendererWindowState.MainWindow:
-                    if(obj==null)
+                    if (obj == null)
                     {
                         return;
                     }
                     CurrentViewModel = MainWindowViewModel;
-                    MainWindowViewModel.ResetUser(obj);
+                    //MainWindowViewModel.ResetUser(obj as User, proxy);
                     Min_MaxWindowHeight = 800;
                     Min_MaxWindowWidth = 1248;
                     break;

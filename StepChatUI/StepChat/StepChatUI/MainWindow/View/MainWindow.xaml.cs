@@ -116,14 +116,14 @@ namespace StepChat.StepChatUI.MainWindow.View
             OpenSettingsMenu();
         }
 
-        private void AddContact(PersonControl person)
-        {
-            contactsList.Items.Add(person);
-        }
-        private void Delete(int id)
-        {
-            contactsList.Items.RemoveAt(id);
-        }
+        //private void AddContact(PersonControl person)
+        //{
+        //    contactsList.Items.Add(person);
+        //}
+        //private void Delete(int id)
+        //{
+        //    contactsList.Items.RemoveAt(id);
+        //}
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

@@ -59,11 +59,9 @@
         <DockPanel Grid.Column="1" Grid.Row="1" Name="contactsDockPanel" LastChildFill="False" Background="{DynamicResource PrimaryColor}" >
             <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
             </DockPanel>
-            <ListBox  Name="contactsList" SelectionChanged="ListBox_SelectionChanged">
-                <personcontrol:PersonControl ></personcontrol:PersonControl>
-                <personcontrol:PersonControl ></personcontrol:PersonControl>
-                <personcontrol:PersonControl ></personcontrol:PersonControl>
-            </ListBox>
+            <ListView SelectedItem="{Binding MainWindowContactListListViewSelectedItem, Mode=TwoWay}" ItemsSource="{Binding MainWindowContactListListView}">
+                <personcontrol:PersonControl/>
+            </ListView>
 
 
         </DockPanel>

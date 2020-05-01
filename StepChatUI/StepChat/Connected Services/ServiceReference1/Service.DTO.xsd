@@ -21,24 +21,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="Chat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsPersonal" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhotoPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReadStatusId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Chat" nillable="true" type="tns:Chat" />
   <xs:complexType name="ArrayOfChat">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Chat" nillable="true" type="tns:Chat" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfChat" nillable="true" type="tns:ArrayOfChat" />
-  <xs:complexType name="Chat">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Chat" nillable="true" type="tns:Chat" />
-  <xs:complexType name="ArrayOfMessage">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
   <xs:complexType name="Message">
     <xs:sequence>
       <xs:element minOccurs="0" name="ChatId" type="xs:int" />
@@ -49,4 +48,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
 </xs:schema>
