@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace StepChat.StepChatUI.CustomUIElement.PersonControl
 {
-    public partial class PersonControl : UserControl
+    public partial  class PersonControl : UserControl
     {
         public int ChatId { get; set; }
         private string _lastMessage;

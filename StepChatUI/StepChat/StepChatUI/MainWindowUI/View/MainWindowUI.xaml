@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StepChat.StepChatUI.MainWindowUI.View" xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel" 
         xmlns:viewmodel="clr-namespace:StepChat.StepChatUI.MainWindowUI.ViewModel"
-        xmlns:myns="clr-namespace:StepChat.StepChatUI.CustomUIElement.SearchPersonControl" 
+            xmlns:myns="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonalInfoControl" 
+        xmlns:myns2="clr-namespace:StepChat.StepChatUI.CustomUIElement.SearchPersonControl" 
+        
+        
+        
                WindowStyle="None"
         AllowsTransparency="False"
         
@@ -37,7 +41,7 @@
         </Grid.RowDefinitions>
         <windowcontrolpanel:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
         <Grid Grid.Row="1">
-
+           
             <!--###########################################################################################-->
             <Grid Visibility="{Binding MainWindow_Visibility}">
                 <Grid.ColumnDefinitions>
@@ -46,7 +50,7 @@
                     <ColumnDefinition Width="837*"/>
                 </Grid.ColumnDefinitions>
                 <DockPanel   Background="{DynamicResource PrimarySecondColor}"  Grid.Row="1" Grid.Column="0" LastChildFill="False">
-                    <Button Height="42" Width="42" DockPanel.Dock="Top"  Margin="0,0,0,10" Background="{StaticResource AccentColor}"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Person" >
+                    <Button Height="42" Width="42" DockPanel.Dock="Top"  Margin="0,0,0,10" Background="{StaticResource AccentColor}"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Person" Command="{Binding OpenPersonalInfoButtonClick}" >
                         <Button.BorderBrush>
                             <RadialGradientBrush>
                                 <GradientStop Color="Black" Offset="0"/>
@@ -82,7 +86,14 @@
 
 
                 </DockPanel>
+                <DockPanel Grid.Column="1" Grid.Row="1" Name="contactPersonalInfoDockPanel" >
+                    <Button Height="24"  Margin="0,0,10,0"    FontSize="16"  DockPanel.Dock="Top"    Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1"     >
+                        X
+                    </Button>
 
+                </DockPanel>
+                
+                
                 <Grid Grid.Column="2" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100*"/>

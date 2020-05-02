@@ -4,10 +4,7 @@ using StepChat.StepChatUI.CustomUIElement.MessageControl;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
 using StepChat.StepChatUI.CustomUIElement.SearchPersonControl;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -210,6 +207,28 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 });
             }
         }
+        public ICommand OpenPersonalInfoButtonClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+                 
+                });
+            }
+        }
+        public ICommand PersonalInfoDeleteButtonClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+
+                });
+            }
+        }
+        
+
     }
 }
 

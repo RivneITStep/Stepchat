@@ -1,12 +1,4 @@
 ﻿using StepChat.ServiceReference1;
-using StepChat.StepChatUI.CustomUIElement.MessageControl;
-using StepChat.StepChatUI.CustomUIElement.PersonControl;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace StepChat.StepChatUI.MainWindowUI.ViewModel
@@ -22,6 +14,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         private ServiceClient Service { get; set; }
         private void SetRengerState(RendererWindow window)
         {
+            
             switch (window)
             {
                 case RendererWindow.LoginRegistrationWindow:
@@ -52,12 +45,14 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             }
         }
 
+        #region Properties
         private int _minWindowWidth ;
         private int _minWindowHeight; 
         private int _windowWidth;
         private int _windowHeight;
         private int _maxWindowWidth;
         private int _maxWindowHeight;
+
         public int WindowWidth
         {
             get => _windowWidth;
@@ -112,6 +107,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(MinWindowHeight));
             }
         }
+        #endregion
 
         private bool _searchWindowAddButtonIsEnabled { get; set; }
         private Visibility _mainWindow_Visibility;

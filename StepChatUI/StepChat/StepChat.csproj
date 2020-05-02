@@ -90,6 +90,9 @@
     <Compile Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml.cs">
       <DependentUpon>MessageControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StepChatUI\CustomUIElement\PersonalInfoControl\PersonalInfoControl.xaml.cs">
+      <DependentUpon>PersonalInfoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StepChatUI\CustomUIElement\PersonControl\PersonControl.xaml.cs">
       <DependentUpon>PersonControl.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StepChatUI\CustomUIElement\PersonalInfoControl\PersonalInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
