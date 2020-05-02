@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -7,6 +8,12 @@ using System.Text;
 
 namespace Service
 {
+    [ServiceContract]
+    public interface IServiceStream
+    {
+        [OperationContract]
+        Result SetPicture(Stream stream);
+    }
 
     [ServiceContract]
     public interface IService
@@ -18,6 +25,7 @@ namespace Service
         Result<DTO.User> Register(DTO.User user);
         [OperationContract]
         Result<DTO.User> EditUserInfo(DTO.User newUser);
+        
         [OperationContract]
         Result ChangePassword(string newPassword);
 
