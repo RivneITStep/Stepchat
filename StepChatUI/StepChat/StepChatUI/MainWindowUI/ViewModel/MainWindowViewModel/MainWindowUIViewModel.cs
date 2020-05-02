@@ -21,7 +21,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             Service = service;
             LoadChats();
             SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
-
         }
         private string _searchWindowTextBoxText;
 
@@ -37,7 +36,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 var res = Service.GetChats();
                 foreach (var item in Service.GetChats().Data)
                 {
-                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", "Osass Bibla",DateTime.Now));
+                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", "Osass Bibla", DateTime.Now));
                 }
             });
             });
@@ -67,7 +66,14 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 }
                 foreach (var item in r.Data)
                 {
-                    MainWindowMessageControlListView.Add(new MessageControl(item));
+                    if (item.SenderId == User.Id)
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
+                    }
+                    else
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+                    }
                 }
             });
             });
@@ -132,27 +138,27 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 
             }
         }
+        bool s = false;
         public ICommand MainWindow_SendMessageButtonClick
         {
             get
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    if(MainWindowContactListListViewSelectedItem==null)
+                    if (MainWindowContactListListViewSelectedItem == null)
                     {
                         return;
                     }
-                    Service.SendMessage(MainWindowContactListListViewSelectedItem.ChatId, MainWindowEnterYourMessageTextBox);
-                });
-            }
-        }
-        public ICommand buttonClick
-        {
-            get
-            {
-                return new DelegateClickCommand((obj) =>
-                {
-                    //ось тут буде виконуватись код на клік кнопки
+                    if (s)
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(MainWindowEnterYourMessageTextBox) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
+                    }
+                    else
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(MainWindowEnterYourMessageTextBox) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+                    }
+                    s = !s;
+                    //Service.SendMessage(MainWindowContactListListViewSelectedItem.ChatId, MainWindowEnterYourMessageTextBox);
                 });
             }
         }

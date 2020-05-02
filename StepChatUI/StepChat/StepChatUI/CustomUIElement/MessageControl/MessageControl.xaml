@@ -13,7 +13,7 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      Background="Transparent"
-         FontFamily="{DynamicResource MaterialDesignFont}"
+         FontFamily="{DynamicResource MaterialDesignFont}" HorizontalAlignment="Right"
         >
     <Border Width="auto" Height="auto" BorderBrush="Transparent"
                 CornerRadius="10">

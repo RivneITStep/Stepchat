@@ -180,10 +180,12 @@ namespace StepChat.StepChatUI.MainWindowUI.View
         {
 
         }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void SendMessageButtonClick(object sender, RoutedEventArgs e)
         {
-
+            if (!(MessageList.Items.Count == 0))
+            {
+                MessageList.ScrollIntoView(MessageList.Items[MessageList.Items.Count-1]);
+            }
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)

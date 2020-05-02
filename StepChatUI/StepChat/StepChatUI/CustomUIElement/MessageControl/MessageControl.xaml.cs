@@ -30,7 +30,14 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
             SetTimeSended(message.SendDate);
             SetMessageState(MessageState.Readed);
         }
-        public void SetMessageState(MessageState state)
+        public MessageControl(string message)
+        {
+            InitializeComponent();
+            SetMessage(message);
+            SetTimeSended(DateTime.Now);
+            SetMessageState(MessageState.Readed);
+        }
+            public void SetMessageState(MessageState state)
         {
             switch (state)
             {
