@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+  <xs:complexType name="ResultOfUserQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q1:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfUserQo1Oyztf" nillable="true" type="tns:ResultOfUserQo1Oyztf" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="tns:ResultError" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:simpleType name="ResultError">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Null" />
+      <xs:enumeration value="LoginIsUsed" />
+      <xs:enumeration value="UserNotExist" />
+      <xs:enumeration value="ChatNotExist" />
+      <xs:enumeration value="PasswordIsIncorrect" />
+      <xs:enumeration value="NotImplemented" />
+      <xs:enumeration value="NoAuthorized" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultError" nillable="true" type="tns:ResultError" />
+  <xs:complexType name="ResultOfArrayOfUserQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfUser" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q2:ArrayOfUser" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfUserQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfUserQo1Oyztf" />
+  <xs:complexType name="ResultOfChatQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Chat" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q3:Chat" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfChatQo1Oyztf" nillable="true" type="tns:ResultOfChatQo1Oyztf" />
+  <xs:complexType name="ResultOfArrayOfChatQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfChat" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q4:ArrayOfChat" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfChatQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfChatQo1Oyztf" />
+  <xs:complexType name="ResultOfMessageQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Message" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q5:Message" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfMessageQo1Oyztf" nillable="true" type="tns:ResultOfMessageQo1Oyztf" />
+  <xs:complexType name="ResultOfArrayOfMessageQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfMessage" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q6:ArrayOfMessage" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfMessageQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfMessageQo1Oyztf" />
+</xs:schema>

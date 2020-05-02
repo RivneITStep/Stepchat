@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="StepChat.StepChatUI.CustomUIElement.PersonControl.PersonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      
+             mc:Ignorable="d" 
+             
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+    <Border Width="auto" Height="auto" BorderBrush="Transparent"
+                CornerRadius="1,3,3,1">
+        <Border.Background>
+            <SolidColorBrush Color="#FF303030">
+            </SolidColorBrush>
+        </Border.Background>
+        <Grid Width="250" >
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel LastChildFill="True" Grid.ColumnSpan="2" >
+
+            <Button DockPanel.Dock="Left" Margin="10,2,0,2"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Click="OpenPersonalInfoClick" >
+                <Button.Background>
+                    <ImageBrush ImageSource="Screenshot_4.png" x:Name="UserImage"/>
+                </Button.Background>
+                <Button.BorderBrush>
+                    <RadialGradientBrush RadiusX="1" RadiusY="1" Center="5,5">
+                        <GradientStop Color="#FF2746B0"/>
+                    </RadialGradientBrush>
+                </Button.BorderBrush>
+                <materialDesign:PackIcon  Name="userImage" Kind="Person" Height="48" Width="48" Visibility="Hidden"/>
+            </Button>
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False" MaxWidth="200">
+
+                <Label Name="contactNameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="16" Margin="5,0,5,5" >Person</Label >
+                <Label Name="lastSendedMessageTime" Foreground="{StaticResource ForegroundColor}" DockPanel.Dock="Right" FontSize="10"  Margin="0,1,4,0">12:05</Label>
+            </DockPanel>
+            <TextBlock DockPanel.Dock="Top" VerticalAlignment="Center"  Foreground="{StaticResource ForegroundColor}"  Name="lastMessage" FontSize="12" Margin="15,-5,5,5" AllowDrop="True"  >Hello there how are you?</TextBlock>
+
+        </DockPanel>
+    </Grid>
+    </Border>
+
+</UserControl>
