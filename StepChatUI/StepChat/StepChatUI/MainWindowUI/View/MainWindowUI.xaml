@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StepChat.StepChatUI.MainWindowUI.View" xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel" 
         xmlns:viewmodel="clr-namespace:StepChat.StepChatUI.MainWindowUI.ViewModel"
+        xmlns:myns="clr-namespace:StepChat.StepChatUI.CustomUIElement.SearchPersonControl" 
                WindowStyle="None"
         AllowsTransparency="False"
+        
+        
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:personcontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonControl" xmlns:messagecontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.MessageControl"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -144,7 +147,7 @@
 
                 </Grid>
 
-                <Grid Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="searchMenuGrid">
+                <Grid Visibility="Visible" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="searchMenuGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.1*"/>
                         <RowDefinition Height="0.2*"/>
@@ -156,7 +159,9 @@
                         </Button>
                     </DockPanel>
                     <TextBox Grid.Row="1" TextChanged="TextBox_TextChanged" FontSize="20" Background="{DynamicResource PrimarySecondColor}" BorderBrush="Black" BorderThickness="1" Margin="5"   materialDesign:HintAssist.Hint="Search"   Text="{Binding SearchWindowTextBoxText,UpdateSourceTrigger=PropertyChanged}"/>
-                    <ListBox Grid.Row="2" Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=SearchWindowContactsList}"></ListBox>
+                    <ListBox Grid.Row="2" Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=SearchWindowContactsList}">
+                        
+                    </ListBox>
                 </Grid>
                 <Grid  Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="settingsMenuGrid">
                     <Grid.RowDefinitions>

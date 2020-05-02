@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StepChat.ServiceReference1;
 
 namespace StepChat.StepChatUI.CustomUIElement.SearchPersonControl
 {
@@ -24,11 +25,21 @@ namespace StepChat.StepChatUI.CustomUIElement.SearchPersonControl
         {
             InitializeComponent();
         }
-        public SearchPersonControl(string name, string surname)
+        public SearchPersonControl(User user)
         {
             InitializeComponent();
-            contactNameLabel.Content = name;
-            contactSurnameLabel.Content = surname;
+            contactNameLabel.Content = user.FirstName;
+            contactSurnameLabel.Content = user.LastName;
+            if(user.IsOnline)
+            {
+                isContactOnline.Content = "Online";
+                isContactOnline.Foreground = new SolidColorBrush(Colors.Green);
+            }
+            else
+            {
+                isContactOnline.Content = "Offline";
+                isContactOnline.Foreground = new SolidColorBrush(Colors.Red);
+            }
         }
     }
 }

@@ -37,7 +37,7 @@
                 <Label Name="contactNameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="20" Margin="5,10,5,5" >Person</Label >
                 <Label Name="contactSurnameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="20" Margin="5,10,5,5" >Person</Label >
             </DockPanel>
-
+            <Label HorizontalAlignment="Right"  Name="isContactOnline" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="14"  >Online</Label >
         </DockPanel>
     </Grid>
     

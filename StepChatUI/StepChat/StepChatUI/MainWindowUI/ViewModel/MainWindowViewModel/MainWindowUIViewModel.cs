@@ -47,11 +47,13 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             get { return _searchWindowTextBoxText; }
             set { _searchWindowTextBoxText = value; OnPropertyChanged(nameof(SearchWindowTextBoxText)); OnTextChanged.Invoke(); }
         }
-        private static ObservableCollection<SearchPersonControl> _searchWindowContactsList;
+
+        #region Properties
+        private static ObservableCollection<SearchPersonControl> _searchWindowContactsList { get; set; }
         public ObservableCollection<SearchPersonControl> SearchWindowContactsList
         {
             get { return _searchWindowContactsList; }
-            set { _searchWindowContactsList = value; }
+            set { _searchWindowContactsList = value; OnPropertyChanged(nameof(SearchWindowContactsList)); }
         }
         private void LoadMessages(int ChatId)
         {
@@ -116,20 +118,27 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(MainWindowContactListListView));
             }
         }
-        private void OnSearchWindowTextBoxTextChanged()
-        {
-            SearchWindowContactsList.Clear();
-            var res = Service.SearchUsers($"Select * from Users as U where U.Login like '[{SearchWindowTextBoxText}]%' or U.FirstName like '[{SearchWindowTextBoxText}]%' or U.LastName like '[{SearchWindowTextBoxText}]%'");
-            if (res.IsSuccess)
-            {
-                foreach (var it in res.Data)
-                {
-                    SearchWindowContactsList.Add(new SearchPersonControl(it.FirstName, it.LastName));
-                }
-            }
-            else
-            {
+        #endregion
 
+        private void OnSearchWindowTextBoxTextChanged()
+       {
+            if (SearchWindowTextBoxText.Length!=0)
+            {
+                SearchWindowContactsList.Clear();
+                var res = Service.SearchUsers(SearchWindowTextBoxText);
+                //   $"Select * from Users as U where U.Login like '[{SearchWindowTextBoxText}]%' or U.FirstName like '[{SearchWindowTextBoxText}]%' or U.LastName like '[{SearchWindowTextBoxText}]%'"
+                if (res.IsSuccess)
+                {
+                    foreach (var it in res.Data)
+                    {
+                        
+                        SearchWindowContactsList.Add(new SearchPersonControl(it));
+                    }
+                }
+                else
+                {
+                    SearchWindowContactsList.Clear();
+                }
             }
         }
         public ICommand MainWindow_SendMessageButtonClick
