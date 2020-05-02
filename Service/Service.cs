@@ -163,7 +163,7 @@ namespace Service
                 return Result<DTO.Message>.WithError(ResultError.Null, "You aren't member this chat");
 
 
-            dal.DeleteChatMember(chatId, ActiveUser.Id);
+            dal.RemoveChatMember(chatId, ActiveUser.Id);
 
 
             return Result.WithError(ResultError.NotImplemented);
@@ -206,7 +206,7 @@ namespace Service
             if (!dal.CheckMessageExist(messageId))
                 return Result<DTO.Message>.WithError(ResultError.Null, $"Message id {messageId} not exist");
 
-            Message msg = dal.EditMessages(messageId, new Message { Text = newText });
+            Message msg = dal.EditMessage(messageId, new Message { Text = newText });
 
 
 
@@ -239,6 +239,16 @@ namespace Service
         private bool IsNotAuth()
         {
             return ActiveUser == null;
+        }
+
+        public Result<List<DTO.User>> SearchUsers(string query)
+        {
+            if (IsNotAuth())
+                return Result<List<DTO.User>>.WithError(ResultError.NoAuthorized);
+
+            Logger.Debug($"User {ActiveUser.Login} search users with query: '{query}'");
+
+            return Result<List<DTO.User>>.OK(mapper.Map<List<DTO.User>>(dal.SearchUsers(query)));
         }
     }
 }
