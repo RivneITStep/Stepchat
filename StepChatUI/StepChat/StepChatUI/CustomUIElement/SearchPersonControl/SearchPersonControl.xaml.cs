@@ -21,16 +21,19 @@ namespace StepChat.StepChatUI.CustomUIElement.SearchPersonControl
     /// </summary>
     public partial class SearchPersonControl : UserControl
     {
+        private User user;
+        public User User { get { return user; } set { if (value != null) user = value; } }
         public SearchPersonControl()
         {
             InitializeComponent();
         }
-        public SearchPersonControl(User user)
+        public SearchPersonControl(User usr)
         {
             InitializeComponent();
-            contactNameLabel.Content = user.FirstName;
-            contactSurnameLabel.Content = user.LastName;
-            if(user.IsOnline)
+            User = usr;
+            contactNameLabel.Content = usr.FirstName;
+            contactSurnameLabel.Content = usr.LastName;
+            if(usr.IsOnline)
             {
                 isContactOnline.Content = "Online";
                 isContactOnline.Foreground = new SolidColorBrush(Colors.Green);
@@ -40,6 +43,11 @@ namespace StepChat.StepChatUI.CustomUIElement.SearchPersonControl
                 isContactOnline.Content = "Offline";
                 isContactOnline.Foreground = new SolidColorBrush(Colors.Red);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

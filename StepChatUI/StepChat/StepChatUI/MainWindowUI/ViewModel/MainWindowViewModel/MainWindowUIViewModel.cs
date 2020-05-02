@@ -23,10 +23,25 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
 
         }
+        public MainWindowUIViewModel()
+        {
+            SetRengerState(RendererWindow.LoginRegistrationWindow);
+            MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
+            MainWindowContactListListView = new ObservableCollection<PersonControl>();
+
+            ////#############################################################################
+            SearchWindowAddButtonIsEnabled = false;
+            SearchWindowAddButtonIsEnabled = true;
+            //#############################################################################
+            OnTextChanged += OnSearchWindowTextBoxTextChanged;
+            OnSelectionChanged += OnSearchWindowSelectionChanged;
+        }
+
         private string _searchWindowTextBoxText;
 
-        private delegate void textChancgedDelegate();
-        private event textChancgedDelegate OnTextChanged;
+        private delegate void emptyDelegate();
+        private event emptyDelegate OnTextChanged;
+        private event emptyDelegate OnSelectionChanged;
         private void LoadChats()
         {
             Task.Run(() =>
@@ -34,10 +49,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 App.Current.Dispatcher.Invoke((Action)delegate
             {
                 MainWindowContactListListView.Clear();
-                var res = Service.GetChats();
-                foreach (var item in Service.GetChats().Data)
+                var res = Service.GetContacts();
+                foreach (var item in res.Data)
                 {
-                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", "Osass Bibla",DateTime.Now));
+                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", item.FirstName, DateTime.Now));
                 }
             });
             });
@@ -50,11 +65,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 
         #region Properties
         private static ObservableCollection<SearchPersonControl> _searchWindowContactsList { get; set; }
-        public ObservableCollection<SearchPersonControl> SearchWindowContactsList
-        {
-            get { return _searchWindowContactsList; }
-            set { _searchWindowContactsList = value; OnPropertyChanged(nameof(SearchWindowContactsList)); }
-        }
         private void LoadMessages(int ChatId)
         {
             Task.Run(() =>
@@ -75,6 +85,26 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             });
         }
         private PersonControl _mainWindowContactListListViewSelectedItem;
+        private string _mainWindowEnterYourMessageTextBox;
+        private ObservableCollection<MessageControl> _mainWindowMessageControlListView { get; set; }
+        private ObservableCollection<PersonControl> _mainWindowContactListListView { get; set; }
+        private SearchPersonControl _searchSelectedItem { get; set; }
+
+        public SearchPersonControl SearchSelectedItem { get { return _searchSelectedItem; }
+            set {
+               if (value != null && value != _searchSelectedItem)
+                {
+                    SearchWindowAddButtonIsEnabled = true;
+                    _searchSelectedItem = value; OnSelectionChanged.Invoke();
+                }
+                else
+                { OnSelectionChanged.Invoke();
+                    SearchWindowAddButtonIsEnabled = false; } } }
+        public ObservableCollection<SearchPersonControl> SearchWindowContactsList
+        {
+            get { return _searchWindowContactsList; }
+            set { _searchWindowContactsList = value; OnPropertyChanged(nameof(SearchWindowContactsList)); }
+        }
         public PersonControl MainWindowContactListListViewSelectedItem
         {
             get
@@ -88,7 +118,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 LoadMessages(_mainWindowContactListListViewSelectedItem.ChatId);
             }
         }
-        private string _mainWindowEnterYourMessageTextBox;
         public string MainWindowEnterYourMessageTextBox
         {
             get => _mainWindowEnterYourMessageTextBox;
@@ -98,7 +127,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(MainWindowEnterYourMessageTextBox));
             }
         }
-        private ObservableCollection<MessageControl> _mainWindowMessageControlListView { get; set; }
         public ObservableCollection<MessageControl> MainWindowMessageControlListView
         {
             get { return _mainWindowMessageControlListView; }
@@ -108,7 +136,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(MainWindowMessageControlListView));
             }
         }
-        private ObservableCollection<PersonControl> _mainWindowContactListListView { get; set; }
         public ObservableCollection<PersonControl> MainWindowContactListListView
         {
             get { return _mainWindowContactListListView; }
@@ -126,7 +153,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 SearchWindowContactsList.Clear();
                 var res = Service.SearchUsers(SearchWindowTextBoxText);
-                //   $"Select * from Users as U where U.Login like '[{SearchWindowTextBoxText}]%' or U.FirstName like '[{SearchWindowTextBoxText}]%' or U.LastName like '[{SearchWindowTextBoxText}]%'"
                 if (res.IsSuccess)
                 {
                     foreach (var it in res.Data)
@@ -140,6 +166,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                     SearchWindowContactsList.Clear();
                 }
             }
+        }
+        private void OnSearchWindowSelectionChanged()
+        {
+
         }
         public ICommand MainWindow_SendMessageButtonClick
         {
@@ -162,6 +192,21 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 return new DelegateClickCommand((obj) =>
                 {
                     //ось тут буде виконуватись код на клік кнопки
+                });
+            }
+        }
+        public ICommand MainWindowAddNewContactClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+                    PersonControl contactToAdd = new PersonControl(SearchSelectedItem.User.Id, "A binary tree is made of nodes, where each node contains ", SearchSelectedItem.User.Bio, DateTime.Now,null);
+               if (!MainWindowContactListListView.Contains(contactToAdd))
+                    {
+                        MainWindowContactListListView.Add(contactToAdd);
+                        Service.AddContact(SearchSelectedItem.User.Id);
+                    }
                 });
             }
         }

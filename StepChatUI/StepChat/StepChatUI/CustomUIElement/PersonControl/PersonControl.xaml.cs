@@ -58,14 +58,18 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
                 SetImage(value);
             }
         }
-        public PersonControl(int id, string lastMessage, string contactName, DateTime lastSendedMessageTime, ImageSource image = null)
+        public PersonControl(int id, string lastMessage, string contactName, DateTime _lastSendedMessageTime, ImageSource image = null)
         {
             InitializeComponent();
             //SetImage(image);
             ChatId = id;
             LastMessage = lastMessage;
             ContactName = contactName;
-            TimeOfLastMessage = lastSendedMessageTime;
+            TimeOfLastMessage = _lastSendedMessageTime;
+            contactNameLabel.Content = ContactName;
+            lastSendedMessageTime.Content = TimeOfLastMessage.ToShortTimeString();
+
+
         }
         private void SetImage(ImageSource image)
         {

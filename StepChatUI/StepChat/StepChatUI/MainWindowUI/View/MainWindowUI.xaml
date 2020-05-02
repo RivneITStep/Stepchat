@@ -141,13 +141,11 @@
     Width="24" />
                         </Button>
 
-
-
                     </DockPanel>
 
                 </Grid>
 
-                <Grid Visibility="Visible" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="searchMenuGrid">
+                <Grid Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="searchMenuGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.1*"/>
                         <RowDefinition Height="0.2*"/>
@@ -158,10 +156,16 @@
                             X
                         </Button>
                     </DockPanel>
-                    <TextBox Grid.Row="1" TextChanged="TextBox_TextChanged" FontSize="20" Background="{DynamicResource PrimarySecondColor}" BorderBrush="Black" BorderThickness="1" Margin="5"   materialDesign:HintAssist.Hint="Search"   Text="{Binding SearchWindowTextBoxText,UpdateSourceTrigger=PropertyChanged}"/>
-                    <ListBox Grid.Row="2" Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=SearchWindowContactsList}">
-                        
-                    </ListBox>
+                    <TextBox Grid.Row="1" DockPanel.Dock="Left" TextChanged="TextBox_TextChanged" FontSize="20" Background="{DynamicResource PrimarySecondColor}" BorderBrush="Black" BorderThickness="1" Margin="5"   materialDesign:HintAssist.Hint="Search"   Text="{Binding SearchWindowTextBoxText,UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <DockPanel Grid.Row="2" LastChildFill="True"  >
+                        <Button Margin="4" DockPanel.Dock="Bottom"  IsEnabled="{Binding Path= SearchWindowAddButtonIsEnabled,Mode=OneWay}" Command="{Binding MainWindowAddNewContactClick}">Add</Button >
+                        <ListBox  Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=SearchWindowContactsList}" SelectedItem="{Binding SearchSelectedItem,Mode=OneWayToSource}">
+                        </ListBox>
+                    </DockPanel>
+                    
+                   
+
                 </Grid>
                 <Grid  Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="settingsMenuGrid">
                     <Grid.RowDefinitions>

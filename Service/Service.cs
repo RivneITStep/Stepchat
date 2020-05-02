@@ -100,7 +100,7 @@ namespace Service
             if (dal.GetUserById(userId) == null)
                 return Result.WithError(ResultError.UserNotExist, $"User id {userId} not exist!");
 
-            //dal.AddContact(ActiveUser.Id, userId);
+            dal.AddContact(ActiveUser.Id, userId);
             return Result.OK;
         }
 

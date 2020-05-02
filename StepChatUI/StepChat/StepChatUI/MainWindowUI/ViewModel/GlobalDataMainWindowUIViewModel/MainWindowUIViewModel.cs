@@ -20,20 +20,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
     {
         private User User { get; set; }
         private ServiceClient Service { get; set; }
-        public MainWindowUIViewModel()
-        {
-            SetRengerState(RendererWindow.LoginRegistrationWindow);
-            MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
-            MainWindowContactListListView = new ObservableCollection<PersonControl>();
-
-            ////#############################################################################
-            
-
-            ////#############################################################################
-            //#############################################################################
-            //#############################################################################
-            OnTextChanged += OnSearchWindowTextBoxTextChanged;
-        }
         private void SetRengerState(RendererWindow window)
         {
             switch (window)
@@ -127,9 +113,19 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             }
         }
 
+        private bool _searchWindowAddButtonIsEnabled { get; set; }
         private Visibility _mainWindow_Visibility;
         private Visibility _loginRegistrationWindow_Visibility;
 
+        public bool SearchWindowAddButtonIsEnabled
+        {
+            get => _searchWindowAddButtonIsEnabled;
+            set
+            {
+                _searchWindowAddButtonIsEnabled = value;
+                OnPropertyChanged(nameof(_searchWindowAddButtonIsEnabled));
+            }
+        }
         public Visibility MainWindow_Visibility
         {
             get => _mainWindow_Visibility;
