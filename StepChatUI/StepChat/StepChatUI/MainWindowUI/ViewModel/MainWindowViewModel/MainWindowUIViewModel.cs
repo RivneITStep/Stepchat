@@ -90,7 +90,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(SearchWindowAddButtonIsEnabled));
             }
         }
-        private ObservableCollection<PersonalInfoControl> PersonalUserInfoItem { get { return _personalUserInfoItem; } set { _personalUserInfoItem = value; OnPropertyChanged(nameof(PersonalUserInfoItem)); } }
+        public ObservableCollection<PersonalInfoControl> PersonalUserInfoItem { get { return _personalUserInfoItem; } set { _personalUserInfoItem = value; OnPropertyChanged(nameof(PersonalUserInfoItem)); } }
         public SearchPersonControl SearchSelectedItem { get { return _searchSelectedItem; }
             set {
                if (value != null && value != _searchSelectedItem)
@@ -150,7 +150,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 
         private void OnSearchWindowTextBoxTextChanged()
        {
-            if (SearchWindowTextBoxText.Length!=0)
+            if (SearchWindowTextBoxText.Length!=0 && SearchWindowTextBoxText != null && SearchWindowTextBoxText !="")
             {
                 SearchWindowContactsList.Clear();
                 var res = Service.SearchUsers(SearchWindowTextBoxText);
@@ -232,6 +232,17 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 });
             }
         }
+        public ICommand MainWindowSaveChanges
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+
+                });
+            }
+        }
+        
 
     }
 }

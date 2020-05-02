@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonalInfoControl"
-             mc:Ignorable="d" Height="231.196" Width="350"
+             mc:Ignorable="d" Height="111.862" Width="350"
              
                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:personcontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonControl" xmlns:messagecontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.MessageControl"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -16,11 +16,11 @@
          FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid Background="{DynamicResource PrimaryColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="35*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" LastChildFill="False"  >
+        <DockPanel Grid.Row="0" LastChildFill="False" Margin="0,0,0,46" Grid.RowSpan="2"  >
         </DockPanel>
         <DockPanel Grid.Row="1" LastChildFill="False" Grid.RowSpan="1">
 
@@ -39,14 +39,17 @@
             <Label  Name="userFirstNameLabel" DockPanel.Dock="Left" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
             <Label  Name="userLastNameLabel" DockPanel.Dock="Left" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
         </DockPanel>
-        <DockPanel Grid.Row="2" LastChildFill="False">
-            <Label  Name="userEmail" DockPanel.Dock="Top" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
-            <DockPanel LastChildFill="False" DockPanel.Dock="Bottom">
+        <DockPanel Grid.Row="2" LastChildFill="True">
+            <DockPanel>
                 <Button  Margin="3" DockPanel.Dock="Right"  Command="{Binding PersonalInfoDeleteButtonClick}">
                     <materialDesign:PackIcon Kind="DeleteForever" />
                 </Button>
+                <Label  Name="userEmail" DockPanel.Dock="Right" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
             </DockPanel>
-         
+
+
+
+
         </DockPanel>
 
     </Grid>

@@ -42,7 +42,7 @@
         </Grid.RowDefinitions>
         <windowcontrolpanel:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
         <Grid Grid.Row="1">
-           
+
             <!--###########################################################################################-->
             <Grid Visibility="{Binding MainWindow_Visibility}">
                 <Grid.ColumnDefinitions>
@@ -87,15 +87,15 @@
 
 
                 </DockPanel>
-                <DockPanel Grid.Column="1" Grid.Row="1" Name="contactPersonalInfoDockPanel" Visibility="{Binding PersonalUserInfoItemVisability}">
+                <DockPanel  Grid.Column="1" Grid.Row="1" Name="contactPersonalInfoDockPanel" Visibility="Collapsed">
                     <Button Height="24"  Margin="0,0,10,0"    FontSize="16"  DockPanel.Dock="Top"    Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1"     >
                         X
                     </Button>
                     <ListView ItemsSource="{Binding PersonalUserInfoItem}" >
                     </ListView>
                 </DockPanel>
-                
-                
+
+
                 <Grid Grid.Column="2" Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100*"/>
@@ -176,29 +176,29 @@
                         <ListBox  Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=SearchWindowContactsList}" SelectedItem="{Binding SearchSelectedItem,Mode=OneWayToSource}">
                         </ListBox>
                     </DockPanel>
-             
-                   
+
+
 
                 </Grid>
-                <Grid  Visibility="Visible" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="settingsMenuGrid">
+                <Grid Visibility="Collapsed"   Background="{DynamicResource PrimarySecondColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="settingsMenuGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.1*"/>
-                        <RowDefinition Height="2.2*"/>
+                        <RowDefinition Height="12*"/>
+                        <RowDefinition Height="126*"/>
+                        <RowDefinition Height="113*"/>
                     </Grid.RowDefinitions>
-                    <Button HorizontalAlignment="Right" Grid.Row="0" Height="24"  Margin="0,0,10,0"    FontSize="16"      Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" Click="Button_Click_7"    >
+                    <Button HorizontalAlignment="Right" Grid.Row="0" Height="Auto"  Margin="0,3,10,3"    FontSize="16"      Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" Click="Button_Click_7" Width="42"    >
                         X
                     </Button>
-                    <DockPanel Grid.Row="1"  LastChildFill="True" >
-                   
+                    <DockPanel Grid.Row="1"  LastChildFill="True"  >
+
                         <Grid DockPanel.Dock="Top"  Background="{DynamicResource PrimaryColor}">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="15*"/>
-                                <RowDefinition Height="35*"/>
-                                <RowDefinition Height="80*"/>
+                                <RowDefinition Height="27*"/>
+                                <RowDefinition Height="79*"/>
+                                <RowDefinition Height="29*"/>
+                                <RowDefinition Height="104*"/>
                             </Grid.RowDefinitions>
-                            <DockPanel Grid.Row="0" LastChildFill="False"  >
-                            </DockPanel>
-                            <DockPanel Grid.Row="1" LastChildFill="False" Grid.RowSpan="1">
+                            <DockPanel Margin="4" Background="{DynamicResource PrimarySecondColor}" Grid.Row="1" LastChildFill="False" Grid.RowSpan="1">
 
                                 <Button Height="54" Width="54" DockPanel.Dock="Left"  Margin="5" Background="{StaticResource AccentColor}"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}" ToolTip="Person"  >
                                     <Button.BorderBrush>
@@ -212,21 +212,19 @@
 
                                     <materialDesign:PackIcon Kind="Person" Height="24" Width="24" />
                                 </Button>
-                                <Label  Name="userFirstNameLabel" DockPanel.Dock="Left" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
-                                <Label  Name="userLastNameLabel" DockPanel.Dock="Left" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
+                                <TextBox  Name="userFirstNameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</TextBox >
+                                <TextBox  Name="userLastNameLabel" DockPanel.Dock="Left" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</TextBox >
                             </DockPanel>
-                            <DockPanel Grid.Row="2" LastChildFill="False">
-                                <Label  Name="userEmail" DockPanel.Dock="Top" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</Label >
-                                <DockPanel LastChildFill="False" DockPanel.Dock="Bottom">
-                                    <Button  Margin="3" DockPanel.Dock="Right"  Command="{Binding PersonalInfoDeleteButtonClick}">
-                                        <materialDesign:PackIcon Kind="DeleteForever" />
-                                    </Button>
-                                </DockPanel>
-
+                            <DockPanel Background="{DynamicResource PrimarySecondColor}" Margin="5,5,5,0" Grid.Row="2" LastChildFill="False" Grid.RowSpan="2">
+                                <TextBox  Name="userEmail" DockPanel.Dock="Top" VerticalContentAlignment="Center" Foreground=  "{StaticResource ForegroundColor}"   FontSize="24" Margin="5" >Person</TextBox >
+                                <Button  Margin="3" DockPanel.Dock="Right"   Command="{Binding MainWindowSaveChanges}">
+                                    <materialDesign:PackIcon Kind="Done" />
+                                </Button>
                             </DockPanel>
 
                         </Grid>
                     </DockPanel>
+                    <Border  Grid.Row="2" Background="{DynamicResource PrimaryColor}"></Border>
 
 
                 </Grid>

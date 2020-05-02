@@ -223,5 +223,10 @@ namespace StepChat.StepChatUI.MainWindowUI.View
         }
         //#####################################################################################
         #endregion
+
+        private void SaveChages(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
