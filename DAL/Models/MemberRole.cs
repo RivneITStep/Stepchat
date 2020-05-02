@@ -12,6 +12,6 @@ namespace DAL
         public string Name { get; set; }
                
         // Navigation properties       
-        public virtual List<ChatMember> ChatMember { get; set; }
+        public virtual ICollection<ChatMember> ChatMember { get; set; }
     }
 }
