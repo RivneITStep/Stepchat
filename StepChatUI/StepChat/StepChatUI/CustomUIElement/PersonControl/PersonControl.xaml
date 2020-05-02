@@ -30,8 +30,8 @@
                     <ImageBrush ImageSource="Screenshot_4.png" x:Name="UserImage"/>
                 </Button.Background>
                 <Button.BorderBrush>
-                    <RadialGradientBrush>
-                        <GradientStop Color="#FFC76A35"/>
+                    <RadialGradientBrush RadiusX="1" RadiusY="1" Center="5,5">
+                        <GradientStop Color="#FF2746B0"/>
                     </RadialGradientBrush>
                 </Button.BorderBrush>
                 <materialDesign:PackIcon  Name="userImage" Kind="Person" Height="48" Width="48" Visibility="Hidden"/>
