@@ -12,6 +12,7 @@ namespace StepChat.StepChatUI.CustomUIElement.SearchPersonControl
     {
         private User user;
         public User User { get { return user; } set { if (value != null) user = value; } }
+
         public SearchPersonControl()
         {
             InitializeComponent();

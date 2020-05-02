@@ -1,4 +1,7 @@
 ﻿using StepChat.ServiceReference1;
+using StepChat.StepChatUI.CustomUIElement.MessageControl;
+using StepChat.StepChatUI.CustomUIElement.PersonControl;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace StepChat.StepChatUI.MainWindowUI.ViewModel
@@ -10,8 +13,24 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
     }
     partial class MainWindowUIViewModel
     {
+
         private User User { get; set; }
         private ServiceClient Service { get; set; }
+        public MainWindowUIViewModel()
+        {
+            SetRengerState(RendererWindow.LoginRegistrationWindow);
+            PersonalUserInfoItemVisability = Visibility.Collapsed;
+            MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
+            MainWindowContactListListView = new ObservableCollection<PersonControl>();
+
+            ////#############################################################################
+            SearchWindowAddButtonIsEnabled = false;
+            //#############################################################################
+            OnTextChanged += OnSearchWindowTextBoxTextChanged;
+            OnSelectionChanged += OnSearchWindowSelectionChanged;
+            
+        }
+
         private void SetRengerState(RendererWindow window)
         {
             
@@ -109,19 +128,9 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         }
         #endregion
 
-        private bool _searchWindowAddButtonIsEnabled { get; set; }
         private Visibility _mainWindow_Visibility;
         private Visibility _loginRegistrationWindow_Visibility;
-
-        public bool SearchWindowAddButtonIsEnabled
-        {
-            get => _searchWindowAddButtonIsEnabled;
-            set
-            {
-                _searchWindowAddButtonIsEnabled = value;
-                OnPropertyChanged(nameof(_searchWindowAddButtonIsEnabled));
-            }
-        }
+      
         public Visibility MainWindow_Visibility
         {
             get => _mainWindow_Visibility;

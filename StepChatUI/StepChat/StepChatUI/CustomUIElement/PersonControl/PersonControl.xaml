@@ -26,7 +26,7 @@
 
         <DockPanel LastChildFill="True" Grid.ColumnSpan="2" >
 
-            <Button DockPanel.Dock="Left" Margin="10,2,0,2"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
+            <Button DockPanel.Dock="Left" Margin="10,2,0,2"  Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Click="OpenPersonalInfoClick" >
                 <Button.Background>
                     <ImageBrush ImageSource="Screenshot_4.png" x:Name="UserImage"/>
                 </Button.Background>

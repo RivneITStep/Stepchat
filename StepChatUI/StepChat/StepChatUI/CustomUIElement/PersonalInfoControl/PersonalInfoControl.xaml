@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonalInfoControl"
-             mc:Ignorable="d" Height="258.196" Width="350"
+             mc:Ignorable="d" Height="231.196" Width="350"
              
                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:personcontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonControl" xmlns:messagecontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.MessageControl"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"

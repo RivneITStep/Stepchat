@@ -58,6 +58,8 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
                 SetImage(value);
             }
         }
+        public delegate void EmptyDelegate(object sender, RoutedEventArgs e);
+        public event EmptyDelegate OpenPersonalInfo;
         public PersonControl(int id, string lastMessage, string contactName, DateTime _lastSendedMessageTime, ImageSource image = null)
         {
             InitializeComponent();
@@ -90,6 +92,16 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
         private void SetTimeSended(DateTime time)
         {
             lastSendedMessageTime.Content = (time.Hour / 10 == 0 ? "0" + time.Hour : time.Hour.ToString()) + ":" + (time.Minute / 10 == 0 ? "0" + time.Minute : time.Minute.ToString());
+        }
+
+     
+
+        private void OpenPersonalInfoClick(object sender, RoutedEventArgs e)
+        {
+            if(OpenPersonalInfo!=null)
+            {
+                OpenPersonalInfo.Invoke(sender, e);
+            }
         }
     }
 }

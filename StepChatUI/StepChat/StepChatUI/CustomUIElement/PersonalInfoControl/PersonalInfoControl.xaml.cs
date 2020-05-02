@@ -20,6 +20,12 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonalInfoControl
     {
         private User user;
         public User User { get { return user; } set { if (value != null) user = value; } }
+
+        public int UserID { get; set; }
+        public PersonalInfoControl()
+        {
+
+        }
         public PersonalInfoControl(User usr)
         {
             InitializeComponent();
