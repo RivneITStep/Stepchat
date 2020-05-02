@@ -37,7 +37,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 var res = Service.GetChats();
                 foreach (var item in Service.GetChats().Data)
                 {
-                    MainWindowContactListListView.Add(new PersonControl(item.Id, "Приблизна діаграми БД, можете на неї орієнтуватися", "Osass",DateTime.Now));
+                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", "Osass Bibla",DateTime.Now));
                 }
             });
             });

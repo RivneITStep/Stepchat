@@ -17,11 +17,11 @@
      Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}"
         Title="StepChat" 
-        Width="{Binding Min_MaxWindowWidth}" Height="{Binding Min_MaxWindowHeight}"
-        MinWidth="{Binding Min_MaxWindowWidth}"
-        MinHeight="{Binding Min_MaxWindowHeight}"
-        MaxWidth="{Binding Min_MaxWindowWidth}"
-        MaxHeight="{Binding Min_MaxWindowHeight}"
+        Width="{Binding WindowWidth}" Height="{Binding WindowHeight}"
+        MinWidth="{Binding MinWindowWidth}"
+        MinHeight="{Binding MinWindowHeight}"
+        MaxWidth="{Binding MaxWindowWidth}"
+        MaxHeight="{Binding MaxWindowHeight}"
         d:DataContext="" 
         >
     <Window.DataContext>
@@ -34,12 +34,12 @@
         </Grid.RowDefinitions>
         <windowcontrolpanel:WindowControlPanel x:Name="WindowControlPanel_" Grid.Row="0"/>
         <Grid Grid.Row="1">
-            
+
             <!--###########################################################################################-->
             <Grid Visibility="{Binding MainWindow_Visibility}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="250*"/>
+                    <ColumnDefinition Width="268"/>
                     <ColumnDefinition Width="837*"/>
                 </Grid.ColumnDefinitions>
                 <DockPanel   Background="{DynamicResource PrimarySecondColor}"  Grid.Row="1" Grid.Column="0" LastChildFill="False">
@@ -82,9 +82,9 @@
 
                 <Grid Grid.Column="2" Grid.Row="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1.4*"/>
-                        <RowDefinition Height="0.2*"/>
-                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="100*"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <ListView ItemsSource="{Binding MainWindowMessageControlListView}"/>
                     <Grid Grid.Row="1">

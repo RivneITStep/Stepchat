@@ -16,10 +16,10 @@
     <Border Width="auto" Height="auto" BorderBrush="Transparent"
                 CornerRadius="1,3,3,1">
         <Border.Background>
-            <SolidColorBrush Color="#FF41443E">
+            <SolidColorBrush Color="#FF303030">
             </SolidColorBrush>
         </Border.Background>
-        <Grid Width="248" >
+        <Grid Width="250" >
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
 
