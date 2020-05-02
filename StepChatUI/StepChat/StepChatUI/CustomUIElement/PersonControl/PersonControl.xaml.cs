@@ -17,39 +17,75 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
 {
     public partial class PersonControl : UserControl
     {
-        public Contact contact;
-
-        private string contactLastMessage;
-        private DateTime timeOfLastMessage;
-
-        public PersonControl()
+        public int ChatId { get; set; }
+        private string _lastMessage;
+        public string LastMessage
+        {
+            get => _lastMessage;
+            set
+            {
+                _lastMessage = value;
+                SetMessage(value);
+            }
+        }
+        private string _contactName;
+        public string ContactName
+        {
+            get => _contactName;
+            set
+            {
+                _contactName = value;
+                contactNameLabel.Content = _contactName;
+            }
+        }
+        private DateTime _timeOfLastMessage;
+        public DateTime TimeOfLastMessage
+        {
+            get => _timeOfLastMessage;
+            set
+            {
+                _timeOfLastMessage = value;
+                SetTimeSended(value);
+            }
+        }
+        private ImageSource _userImage;
+        public ImageSource ImageSource
+        {
+            get => _userImage;
+            set
+            {
+                _userImage = value;
+                SetImage(value);
+            }
+        }
+        public PersonControl(int id, string lastMessage, string contactName, DateTime lastSendedMessageTime, ImageSource image = null)
         {
             InitializeComponent();
+            //SetImage(image);
+            ChatId = id;
+            LastMessage = lastMessage;
+            ContactName = contactName;
+            TimeOfLastMessage = lastSendedMessageTime;
         }
-        public PersonControl(Contact contact_)
+        private void SetImage(ImageSource image)
         {
-            InitializeComponent();
-            contact = contact_;
-
-            contactNameLabel.Content = contact.FirstName;
+            if (image == null)
+            {
+                userImage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                userImage.Visibility = Visibility.Hidden;
+                UserImage.ImageSource = image;
+            }
         }
-
-
-        public void EditContactName(string userName)
+        private void SetMessage(string message)
         {
-            contact.FirstName = userName;
-            contactNameLabel.Content = contact.FirstName;
+            lastMessage.Text = message.Substring(0, 20) + "...";
         }
-        public void EditContactMessage(string message, DateTime time)
+        private void SetTimeSended(DateTime time)
         {
-            timeOfLastMessage = time;
-            lastSendedMessageTime.Content = timeOfLastMessage.ToShortTimeString();
-
-            contactLastMessage = message;
-            lastMessage.Text = contactLastMessage;
-        }
-        public void EditContactImage(Image image)
-        {
+            lastSendedMessageTime.Content = (time.Hour / 10 == 0 ? "0" + time.Hour : time.Hour.ToString()) + ":" + (time.Minute / 10 == 0 ? "0" + time.Minute : time.Minute.ToString());
         }
     }
 }

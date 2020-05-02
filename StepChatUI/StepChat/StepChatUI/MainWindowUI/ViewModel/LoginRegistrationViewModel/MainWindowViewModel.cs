@@ -137,8 +137,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 Thread t = new Thread(new ThreadStart(() =>
                 {
                     SetProgressBarVisibility(Visibility.Visible);
-                    try
-                    {
                         ServiceClient proxy = new ServiceClient();
                         var res = proxy.Login(LoginText, (obj as PasswordBox).Password);
                         if (!res.IsSuccess)
@@ -149,9 +147,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                         else
                         {
                             SetRengerState(RendererWindow.MainWindow);
-                            Service = proxy;
-                            User = res.Data;
+                            ResetUser(res.Data,proxy);
                         }
+                    try
+                    {
                     }
                     catch (Exception ex)
                     {

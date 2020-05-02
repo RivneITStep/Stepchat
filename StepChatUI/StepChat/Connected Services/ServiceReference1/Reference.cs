@@ -723,6 +723,12 @@ namespace StepChat.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetContacts", ReplyAction="http://tempuri.org/IService/GetContactsResponse")]
         System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf> GetContactsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsers", ReplyAction="http://tempuri.org/IService/SearchUsersResponse")]
+        StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf SearchUsers(string query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsers", ReplyAction="http://tempuri.org/IService/SearchUsersResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf> SearchUsersAsync(string query);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreatePrivateChat", ReplyAction="http://tempuri.org/IService/CreatePrivateChatResponse")]
         StepChat.ServiceReference1.ResultOfChatQo1Oyztf CreatePrivateChat(int withUserId);
         
@@ -851,6 +857,14 @@ namespace StepChat.ServiceReference1 {
         
         public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf> GetContactsAsync() {
             return base.Channel.GetContactsAsync();
+        }
+        
+        public StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf SearchUsers(string query) {
+            return base.Channel.SearchUsers(query);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf> SearchUsersAsync(string query) {
+            return base.Channel.SearchUsersAsync(query);
         }
         
         public StepChat.ServiceReference1.ResultOfChatQo1Oyztf CreatePrivateChat(int withUserId) {

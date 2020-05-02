@@ -23,21 +23,20 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         public MainWindowUIViewModel()
         {
             SetRengerState(RendererWindow.LoginRegistrationWindow);
-
-
             MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
             MainWindowContactListListView = new ObservableCollection<PersonControl>();
 
-            //#############################################################################
-            //Login Registration
+            ////#############################################################################
             ProgressBarVisibility = Visibility.Hidden;
             LoginWindowVisibility = Visibility.Visible;
             RegistrationWindowVisibility = Visibility.Hidden;
-            //#############################################################################
+
+            ////#############################################################################
             //#############################################################################
             Min_MaxWindowHeight = 500;
             Min_MaxWindowWidth = 500;
             //#############################################################################
+            OnTextChanged += OnSearchWindowTextBoxTextChanged;
         }
         private void SetRengerState(RendererWindow window)
         {
@@ -60,8 +59,8 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             }
         }
 
-        private int _min_maxWidth;
-        private int _min_maxHeight;
+        private int _min_maxWidth ;
+        private int _min_maxHeight ;
         public int Min_MaxWindowWidth
         {
             get => _min_maxWidth;

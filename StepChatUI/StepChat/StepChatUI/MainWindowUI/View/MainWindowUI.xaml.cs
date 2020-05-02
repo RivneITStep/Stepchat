@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace StepChat.StepChatUI.MainWindowUI.View
 {
-    /// <summary>
-    /// Interaction logic for MainWindowUI.xaml
-    /// </summary>
     public partial class MainWindowUI : Window
     {
         private bool _isPasswordConfirmed = false;
@@ -28,7 +25,6 @@ namespace StepChat.StepChatUI.MainWindowUI.View
             WindowControlPanel_.ButtonMaximize_MouseClick_Handler += Window_Maximize;
             RegistratinWindow_NextButton.IsEnabled = false;
             isDarkTheme = true;
-
         }
         private void Window_Closed(object sender, RoutedEventArgs e)
         {

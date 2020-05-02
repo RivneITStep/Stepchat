@@ -90,9 +90,11 @@
     <Compile Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml.cs">
       <DependentUpon>MessageControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StepChatUI\CustomUIElement\PersonControl\Contact.cs" />
     <Compile Include="StepChatUI\CustomUIElement\PersonControl\PersonControl.xaml.cs">
       <DependentUpon>PersonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StepChatUI\CustomUIElement\SearchPersonControl\SearchPersonControl.xaml.cs">
+      <DependentUpon>SearchPersonControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="StepChatUI\CustomUIElement\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
@@ -184,6 +186,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="StepChatUI\CustomUIElement\SearchPersonControl\SearchPersonControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StepChatUI\CustomUIElement\WindowControlPanel\WindowControlPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +216,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="StepChatUI\CustomUIElement\PersonControl\Screenshot_4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />
