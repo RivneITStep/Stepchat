@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.Configuration;
 using System.Text;
 using AutoMapper;
 using DAL;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Service
 {
 
 
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
-    public class Service : IService
+    public class Service : IService, IServiceStream
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static DALClass dal = new DALClass();
@@ -32,6 +35,14 @@ namespace Service
                 cfg.CreateMap<Message, DTO.Message>().PreserveReferences();
             });
             mapper = config.CreateMapper();
+
+            string userPhotosDir = ConfigurationManager.AppSettings["UsersPhotosDirectory"];
+
+            if (Directory.Exists(userPhotosDir))
+            {
+                Logger.Warn($"Create user photos directory '{userPhotosDir}'");
+                Directory.CreateDirectory(userPhotosDir);
+            }
             
         }
 
@@ -192,7 +203,7 @@ namespace Service
                 return Result<DTO.Message>.WithError(ResultError.Null, "You aren't member this chat");
 
 
-            Message msg = new Message { Chat = chat, Text = text, Sender = ActiveUser };
+            Message msg = new Message { Chat = chat, Text = text, Sender = ActiveUser, SendDate = DateTime.Now };
 
             dal.AddMessage(msg);
 
@@ -223,12 +234,12 @@ namespace Service
             return Result.OK;
         }
 
-        public Result<IEnumerable<DTO.Message>> GetMessages(int chatId, int offset = 0, int size = 50)
+        public Result<IEnumerable<DTO.Message>> GetMessages(int chatId)
         {
             if (IsNotAuth())
                 return Result<IEnumerable<DTO.Message>>.WithError(ResultError.NoAuthorized);
             Logger.Debug($"User {ActiveUser.Login} get message from chat {chatId}");
-            if (dal.CheckChatExist(chatId))
+            if (!dal.CheckChatExist(chatId))
                 return Result<IEnumerable<DTO.Message>>.WithError(ResultError.ChatNotExist, $"Chat id {chatId} not exist");
             List<DTO.Message> msgs = mapper.Map<List<DTO.Message>>(dal.GetMessages(chatId));
 
@@ -249,6 +260,33 @@ namespace Service
             Logger.Debug($"User {ActiveUser.Login} search users with query: '{query}'");
 
             return Result<List<DTO.User>>.OK(mapper.Map<List<DTO.User>>(dal.SearchUsers(query)));
+        }
+
+
+        public Result SetPicture(Stream stream)
+        {
+            if (IsNotAuth())
+                return Result.WithError(ResultError.NoAuthorized);
+            Logger.Debug($"User {ActiveUser.Login} set picture");
+
+            try
+            {
+                string filename = System.Guid.NewGuid().ToString();
+                
+                //TODO: save file name in data base
+
+
+                using(var fs =new FileStream(filename, FileMode.Create))
+                {
+                    stream.CopyTo(fs);
+                }
+                return Result.OK;
+            }
+            catch (Exception e)
+            {
+
+                return Result.WithError(ResultError.Null, e.Message);
+            }
         }
     }
 }
