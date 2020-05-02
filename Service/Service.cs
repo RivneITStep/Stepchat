@@ -203,7 +203,7 @@ namespace Service
                 return Result<DTO.Message>.WithError(ResultError.Null, "You aren't member this chat");
 
 
-            Message msg = new Message { Chat = chat, Text = text, Sender = ActiveUser };
+            Message msg = new Message { Chat = chat, Text = text, Sender = ActiveUser, SendDate = DateTime.Now };
 
             dal.AddMessage(msg);
 
@@ -234,12 +234,12 @@ namespace Service
             return Result.OK;
         }
 
-        public Result<IEnumerable<DTO.Message>> GetMessages(int chatId, int offset = 0, int size = 50)
+        public Result<IEnumerable<DTO.Message>> GetMessages(int chatId)
         {
             if (IsNotAuth())
                 return Result<IEnumerable<DTO.Message>>.WithError(ResultError.NoAuthorized);
             Logger.Debug($"User {ActiveUser.Login} get message from chat {chatId}");
-            if (dal.CheckChatExist(chatId))
+            if (!dal.CheckChatExist(chatId))
                 return Result<IEnumerable<DTO.Message>>.WithError(ResultError.ChatNotExist, $"Chat id {chatId} not exist");
             List<DTO.Message> msgs = mapper.Map<List<DTO.Message>>(dal.GetMessages(chatId));
 

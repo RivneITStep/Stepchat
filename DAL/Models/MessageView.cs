@@ -8,7 +8,7 @@ namespace DAL
 {
     public class MessageView
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
         //// Foreign key
         //public int MessageId { get; set; }
         //public int UserId { get; set; }

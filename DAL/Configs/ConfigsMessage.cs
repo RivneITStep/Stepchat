@@ -15,15 +15,16 @@ namespace DAL.Configs
             Property(a => a.SendDate).IsRequired();
 
             HasRequired<Chat>(m => m.Chat).WithMany(c => c.Messages).HasForeignKey(m => m.ChatId);
-            HasRequired<User>(m => m.Sender).WithMany(u => u.Messages).HasForeignKey(m => m.SenderId);
+            HasRequired<User>(m => m.Sender).WithMany(u => u.Messages).HasForeignKey(m => m.SenderId).WillCascadeOnDelete(false);
 
-            
-            HasMany<User>(m => m.ReadUsers).WithMany(u => u.ReadMessages).Map(cs =>
-            {
-                cs.MapLeftKey("MessagesRefId");
-                cs.MapRightKey("UserRefId");
-                cs.ToTable("MessageUser");
-            });
+      
+            HasMany<User>(m => m.ReadUsers).WithMany(u => u.ReadMessages);
+            //    .Map(cs =>
+            //{
+            //    cs.MapLeftKey("MessagesRefId");
+            //    cs.MapRightKey("UserRefId");
+            //    cs.ToTable("MessageUser");
+            //});
 
 
         }

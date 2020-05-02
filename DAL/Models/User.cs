@@ -26,7 +26,7 @@ namespace DAL
         public virtual ICollection<Contact> Contacts { get; set; }
         public virtual ICollection<Contact> UserContacts { get; set; }        
         public virtual ICollection<Message> Messages { get; set; }
-       // public virtual ICollection<MessageView> MessageViews { get; set; }
+        // public virtual ICollection<MessageView> MessageViews { get; set; }
         public virtual ICollection<ReadStatus> ReadStatuses { get; set; }
         public virtual ICollection<ChatMember> ChatMembers { get; set; }
         public virtual ICollection<Message> ReadMessages { get; set; }

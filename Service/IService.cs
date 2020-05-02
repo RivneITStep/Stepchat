@@ -58,7 +58,7 @@ namespace Service
         [OperationContract]
         Result DeleteMessage(int messageId);
         [OperationContract]
-        Result<IEnumerable<DTO.Message>> GetMessages(int chatId, int offset = 0, int size = 50);
+        Result<IEnumerable<DTO.Message>> GetMessages(int chatId);
     }
 
 }

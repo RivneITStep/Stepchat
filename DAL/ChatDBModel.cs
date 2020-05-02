@@ -1,6 +1,7 @@
 ﻿using DAL.Configs;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 
 namespace DAL
@@ -27,6 +28,9 @@ namespace DAL
             modelBuilder.Configurations.Add(new ConfigsMessageView());
             modelBuilder.Configurations.Add(new ConfigsReadStatus());
             modelBuilder.Configurations.Add(new ConfigsUser());
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
         public virtual DbSet<Attachment> Attachments { get; set; }
