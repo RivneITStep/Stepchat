@@ -66,7 +66,14 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 }
                 foreach (var item in r.Data)
                 {
-                    MainWindowMessageControlListView.Add(new MessageControl(item));
+                    if (item.SenderId == User.Id)
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
+                    }
+                    else
+                    {
+                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+                    }
                 }
             });
             });

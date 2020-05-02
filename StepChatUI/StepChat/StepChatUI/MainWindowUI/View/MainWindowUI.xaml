@@ -102,7 +102,7 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}"/>
+                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
