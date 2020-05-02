@@ -61,7 +61,6 @@
     <Compile Include="Configs\ConfigsContact.cs" />
     <Compile Include="Configs\ConfigsMemberRole.cs" />
     <Compile Include="Configs\ConfigsMessage.cs" />
-    <Compile Include="Configs\ConfigsMessageView.cs" />
     <Compile Include="Configs\ConfigsReadStatus.cs" />
     <Compile Include="Configs\ConfigsUser.cs" />
     <Compile Include="DALClass.cs" />
@@ -71,7 +70,6 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\MemberRole.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\MessageView.cs" />
     <Compile Include="Models\ReadStatus.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

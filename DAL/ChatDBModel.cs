@@ -25,7 +25,6 @@ namespace DAL
             modelBuilder.Configurations.Add(new ConfigsContact());
             modelBuilder.Configurations.Add(new ConfigsMemberRole());
             modelBuilder.Configurations.Add(new ConfigsMessage());
-            modelBuilder.Configurations.Add(new ConfigsMessageView());
             modelBuilder.Configurations.Add(new ConfigsReadStatus());
             modelBuilder.Configurations.Add(new ConfigsUser());
 
@@ -39,7 +38,6 @@ namespace DAL
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<MemberRole> MemberRoles { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<MessageView> MessageViews { get; set; }
         public virtual DbSet<ReadStatus> ReadStatuses { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
