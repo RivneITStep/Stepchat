@@ -8,13 +8,13 @@ namespace DAL
 {
     public class MessageView
     {
-        public int Id { get; set; }
-        // Foreign key
-        public int MessageId { get; set; }
-        public int UserId { get; set; }
+        //public int Id { get; set; }
+        //// Foreign key
+        //public int MessageId { get; set; }
+        //public int UserId { get; set; }
 
-        // Navigation properties
-        public virtual Message Message { get; set; }
-        public virtual User User { get; set; }
+        //// Navigation properties
+        //public virtual Message Message { get; set; }
+        //public virtual User User { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace DAL.Configs
     {
         public ConfigsMessageView()
         {
-            HasRequired<User>(mv => mv.User).WithMany(u => u.MessageViews).HasForeignKey(mv => mv.UserId);
-            HasRequired<Message>(mv => mv.Message).WithRequiredPrincipal().Map(d => d.MapKey("MessageId"));
+            //HasRequired<User>(mv => mv.User).WithMany(u => u.MessageViews).HasForeignKey(mv => mv.UserId);
+            //HasRequired<Message>(mv => mv.Message).WithRequiredPrincipal().Map(d => d.MapKey("MessageId"));
 
         }
     }

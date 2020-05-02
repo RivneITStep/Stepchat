@@ -20,6 +20,7 @@ namespace DAL
         public virtual Chat Chat { get; set; }
         public virtual User Sender { get; set; }
         public virtual ICollection<Attachment> Attachments { get; set; }
+        public virtual ICollection<User> ReadUsers { get; set; }
         
     }
 }
