@@ -225,6 +225,13 @@ namespace DAL
 
             return existing.Messages;
         }
+        public IEnumerable<Message> GetChatMessages(int chatId)
+        {
+            var existing = context.Chats.FirstOrDefault(u => u.Id == chatId);
+            if (existing == null) return null;
+
+            return existing.Messages;
+        }
         public bool CheckMessageExist(int messageId)
         {
             return context.Messages.Any(m => m.Id == messageId);

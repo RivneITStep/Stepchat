@@ -778,10 +778,10 @@ namespace StepChat.ServiceReference1 {
         System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> DeleteMessageAsync(int messageId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMessages", ReplyAction="http://tempuri.org/IService/GetMessagesResponse")]
-        StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf GetMessages(int chatId, int offset, int size);
+        StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf GetMessages(int chatId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMessages", ReplyAction="http://tempuri.org/IService/GetMessagesResponse")]
-        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId, int offset, int size);
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -931,12 +931,59 @@ namespace StepChat.ServiceReference1 {
             return base.Channel.DeleteMessageAsync(messageId);
         }
         
-        public StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf GetMessages(int chatId, int offset, int size) {
-            return base.Channel.GetMessages(chatId, offset, size);
+        public StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf GetMessages(int chatId) {
+            return base.Channel.GetMessages(chatId);
         }
         
-        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId, int offset, int size) {
-            return base.Channel.GetMessagesAsync(chatId, offset, size);
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId) {
+            return base.Channel.GetMessagesAsync(chatId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServiceStream")]
+    public interface IServiceStream {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SetPicture", ReplyAction="http://tempuri.org/IServiceStream/SetPictureResponse")]
+        StepChat.ServiceReference1.Result SetPicture(System.IO.Stream stream);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SetPicture", ReplyAction="http://tempuri.org/IServiceStream/SetPictureResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> SetPictureAsync(System.IO.Stream stream);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServiceStreamChannel : StepChat.ServiceReference1.IServiceStream, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ServiceStreamClient : System.ServiceModel.ClientBase<StepChat.ServiceReference1.IServiceStream>, StepChat.ServiceReference1.IServiceStream {
+        
+        public ServiceStreamClient() {
+        }
+        
+        public ServiceStreamClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ServiceStreamClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServiceStreamClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServiceStreamClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public StepChat.ServiceReference1.Result SetPicture(System.IO.Stream stream) {
+            return base.Channel.SetPicture(stream);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> SetPictureAsync(System.IO.Stream stream) {
+            return base.Channel.SetPictureAsync(stream);
         }
     }
 }

@@ -241,7 +241,7 @@ namespace Service
             Logger.Debug($"User {ActiveUser.Login} get message from chat {chatId}");
             if (!dal.CheckChatExist(chatId))
                 return Result<IEnumerable<DTO.Message>>.WithError(ResultError.ChatNotExist, $"Chat id {chatId} not exist");
-            List<DTO.Message> msgs = mapper.Map<List<DTO.Message>>(dal.GetMessages(chatId));
+            List<DTO.Message> msgs = mapper.Map<List<DTO.Message>>(dal.GetChatMessages(chatId));
 
             return Result<IEnumerable<DTO.Message>>.OK(msgs);
         }

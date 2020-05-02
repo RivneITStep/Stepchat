@@ -59,7 +59,8 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 App.Current.Dispatcher.Invoke((Action)delegate
             {
                 MainWindowMessageControlListView.Clear();
-                var r = Service.GetMessages(ChatId, 0, 100);
+                var g = User.Id;
+                var r = Service.GetMessages(ChatId);
                 if (r.Data == null)
                 {
                     return;
@@ -68,11 +69,11 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 {
                     if (item.SenderId == User.Id)
                     {
-                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
+                        MainWindowMessageControlListView.Add(new MessageControl(item,HorizontalAlignment.Right));
                     }
                     else
                     {
-                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+                        MainWindowMessageControlListView.Add(new MessageControl(item,HorizontalAlignment.Left));
                     }
                 }
             });
@@ -190,16 +191,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                         return;
                     }
                     Service.SendMessage(MainWindowContactListListViewSelectedItem.ChatId, MainWindowEnterYourMessageTextBox);
-                });
-            }
-        }
-        public ICommand buttonClick
-        {
-            get
-            {
-                return new DelegateClickCommand((obj) =>
-                {
-                    //ось тут буде виконуватись код на клік кнопки
                 });
             }
         }

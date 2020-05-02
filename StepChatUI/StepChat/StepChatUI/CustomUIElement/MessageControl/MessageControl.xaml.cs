@@ -23,12 +23,13 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
     }
     public partial class MessageControl : UserControl
     {
-        public MessageControl(Message message)
+        public MessageControl(Message message, HorizontalAlignment horizontalAlignment)
         {
             InitializeComponent();
             SetMessage(message.Text);
             SetTimeSended(message.SendDate);
             SetMessageState(MessageState.Readed);
+            this.HorizontalAlignment = horizontalAlignment;
         }
         public void SetMessageState(MessageState state)
         {

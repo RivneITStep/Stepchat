@@ -710,6 +710,7 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Service" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+      <xsd:import namespace="http://schemas.microsoft.com/Message" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Login_InputMessage">
@@ -808,6 +809,12 @@
   <wsdl:message name="IService_GetMessages_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceStream_SetPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPicture" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStream_SetPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPictureResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Login" message="tns:IService_Login_InputMessage" />
@@ -872,6 +879,12 @@
     <wsdl:operation name="GetMessages">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMessages" message="tns:IService_GetMessages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMessagesResponse" message="tns:IService_GetMessages_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IServiceStream">
+    <wsdl:operation name="SetPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStream/SetPicture" message="tns:IServiceStream_SetPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStream/SetPictureResponse" message="tns:IServiceStream_SetPicture_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IService" type="tns:IService">
@@ -1054,6 +1067,18 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IServiceStream" type="tns:IServiceStream">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetPicture">
+      <soap:operation soapAction="http://tempuri.org/IServiceStream/SetPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="Service">
     <wsdl:port name="WSHttpBinding_IService" binding="tns:WSHttpBinding_IService">
       <soap12:address location="http://localhost:8733/Design_Time_Addresses/Service/Service1/" />
@@ -1063,6 +1088,9 @@
           <Dns>localhost</Dns>
         </Identity>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IServiceStream" binding="tns:BasicHttpBinding_IServiceStream">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/Service/Service1/stream" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
