@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
 namespace StepChat.StepChatUI.CustomUIElement.PersonControl
 {
-    public partial  class PersonControl : UserControl
+    public partial class PersonControl : UserControl
     {
         public int ChatId { get; set; }
         private string _lastMessage;
@@ -66,7 +66,7 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
             //SetImage(image);
             ChatId = id;
             this.LastMessage = LastMessage;
-            ContactName = ChatName+" | ChatId:"+id;
+            ContactName = ChatName;
             TimeOfLastMessage = LastSendedMessageTime;
         }
         private void SetImage(ImageSource image)
@@ -83,18 +83,25 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
         }
         private void SetMessage(string message)
         {
-            lastMessage.Text = message.Substring(0, 20) + "...";
+            if (message.Length > 20)
+            {
+                lastMessage.Text = message.Substring(0, 20) + "...";
+            }
+            else
+            {
+                lastMessage.Text = message;
+            }
         }
         private void SetTimeSended(DateTime time)
         {
             lastSendedMessageTime.Content = (time.Hour / 10 == 0 ? "0" + time.Hour : time.Hour.ToString()) + ":" + (time.Minute / 10 == 0 ? "0" + time.Minute : time.Minute.ToString());
         }
 
-     
+
 
         private void OpenPersonalInfoClick(object sender, RoutedEventArgs e)
         {
-            if(OpenPersonalInfo!=null)
+            if (OpenPersonalInfo != null)
             {
                 OpenPersonalInfo.Invoke(sender, e);
             }

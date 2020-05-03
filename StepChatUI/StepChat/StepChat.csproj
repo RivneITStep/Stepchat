@@ -102,9 +102,18 @@
     <Compile Include="StepChatUI\CustomUIElement\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\MainWindowUIViewModel.cs" />
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\MainWindowViewModel.cs" />
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\MainWindowUIViewModel.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\PrivateFields.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Properties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Methods_GlobalConstructor.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Methods.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\PrivateFields.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Properties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Methods.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\PrivateFieldsANDProperties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Properties.cs" />
     <Compile Include="StepChatUI\MainWindowUI\View\MainWindowUI.xaml.cs">
       <DependentUpon>MainWindowUI.xaml</DependentUpon>
     </Compile>

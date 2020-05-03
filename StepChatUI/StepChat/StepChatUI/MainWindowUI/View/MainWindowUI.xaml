@@ -31,11 +31,13 @@
         MaxWidth="{Binding MaxWindowWidth}"
         MaxHeight="{Binding MaxWindowHeight}"
         d:DataContext="" 
+        d:DesignWidth="1248"
+        d:DesignHeight="825"
         >
     <Window.DataContext>
         <viewmodel:MainWindowUIViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
@@ -102,7 +104,7 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}"  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Name="MessageList"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}"  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Name="MessageList"  ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectiveScrollingGrid.SelectiveScrollingOrientation="None"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -231,7 +233,7 @@
             </Grid>
             <!--###########################################################################################-->
             <!--###########################################################################################-->
-            <Grid Visibility="{Binding LoginRegistrationWindow_Visibility}">
+            <Grid Visibility="{Binding LoginRegistrationWindow_Visibility}" d:IsHidden="true">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="*"/>
