@@ -315,6 +315,27 @@ namespace DAL
             return existingChat.MemberRole;
         }
 
+        public void AddAttachment(int messageId, Attachment attachment)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+
+            if (existing == null) return;
+
+            existing.Attachments.Add(attachment);
+
+            context.SaveChanges();
+        }
+        public void RemoveAttachment(int messageId, Attachment attachment)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+
+            if (existing == null) return;
+
+            existing.Attachments.Remove(attachment);
+
+            context.SaveChanges();
+        }
+
 
     }
 }
