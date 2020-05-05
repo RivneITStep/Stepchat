@@ -66,6 +66,10 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
+        public Attachment GetAttachment(int id)
+        {
+            return context.Attachments.FirstOrDefault(a => a.Id == id);
+        }
         public List<User> GetUserContacts(int userId)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);

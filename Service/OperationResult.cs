@@ -23,7 +23,9 @@ namespace Service
         [EnumMember]
         NotImplemented,
         [EnumMember]
-        NoAuthorized
+        NoAuthorized,
+        [EnumMember]
+        NotExist
     };
 
     [DataContract]
@@ -63,7 +65,7 @@ namespace Service
 
         public static Result WithError(ResultError error, string message = null)
         {
-            return new Result(error);
+            return new Result(error, message);
         }
         public static Result WithError(Result result)
         {
