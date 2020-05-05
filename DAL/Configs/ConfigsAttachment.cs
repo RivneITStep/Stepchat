@@ -11,7 +11,7 @@ namespace DAL.Configs
     {
         public ConfigsAttachment()
         {
-            Property(a => a.Path).IsRequired();
+            Property(a => a.FilePath).IsRequired();
 
             HasRequired<Message>(a => a.Message).WithMany(m => m.Attachments).HasForeignKey(a => a.MessageId);
         }

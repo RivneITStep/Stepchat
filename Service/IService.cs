@@ -12,7 +12,10 @@ namespace Service
     public interface IServiceStream
     {
         [OperationContract]
-        Result SetPicture(Stream stream);
+        Result<int> SendFile(Stream stream);
+
+        [OperationContract]
+        Stream GetFile(int code, int fileId);
     }
 
     [ServiceContract]
@@ -53,12 +56,20 @@ namespace Service
 
         [OperationContract]
         Result<DTO.Message> SendMessage(int chatId, string text);
+
+
+     
         [OperationContract]
         Result<DTO.Message> EditMessage(int messageId, string newText);
         [OperationContract]
         Result DeleteMessage(int messageId);
         [OperationContract]
         Result<IEnumerable<DTO.Message>> GetMessages(int chatId);
+        [OperationContract]
+        Result DeleteAttachment(int id);
+
+        [OperationContract]
+        Result<int> CreateSecretCode();
     }
 
 }
