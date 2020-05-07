@@ -126,7 +126,7 @@ namespace Service
 
             Chat chat = new Chat { IsPersonal = true };
 
-            chat.ChatMembers.Add(new ChatMember { User = ActiveUser, ChatId=chat.Id, MemberRoleId=1});
+          //  chat.ChatMembers.Add(new ChatMember { User = ActiveUser, ChatId=chat.Id, MemberRoleId=1}); 
             chat.ChatMembers.Add(new ChatMember { UserId = userId, ChatId=chat.Id, MemberRoleId = 1 });
 
             dal.AddChat(chat);

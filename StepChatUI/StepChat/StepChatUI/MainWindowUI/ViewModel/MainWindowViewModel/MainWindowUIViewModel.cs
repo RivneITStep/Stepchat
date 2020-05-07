@@ -274,13 +274,19 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    PersonControl contactToAdd = new PersonControl(SearchSelectedItem.User.Id, "A binary tree is made of nodes, where each node contains ", SearchSelectedItem.User.FirstName, DateTime.Now,null);
-               if (!MainWindowChatsList.Contains(contactToAdd))
+                    foreach(var it in ContactWindowContactsList)
                     {
-                        MainWindowChatsList.Add(contactToAdd);
-                        Service.AddContact(SearchSelectedItem.User.Id);
-                        Service.CreatePrivateChat(SearchSelectedItem.User.Id);
+                        if (it.User.Id == SearchSelectedItem.User.Id)
+                            return;
                     }
+
+                    PersonControl contactToAdd = new PersonControl(SearchSelectedItem.User.Id, "A binary tree is made of nodes, where each node contains ", SearchSelectedItem.User.FirstName, DateTime.Now, null);
+
+                    Service.AddContact(SearchSelectedItem.User.Id);
+                        Service.CreatePrivateChat(SearchSelectedItem.User.Id);
+
+                        LoadContacts();
+                        LoadChats();
                 });
             }
         }
@@ -320,7 +326,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-
+                   //Waiting for methods in service...
                 });
             }
         }
