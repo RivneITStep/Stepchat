@@ -5,15 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StepChat.StepChatUI.MainWindowUI.View" xmlns:windowcontrolpanel="clr-namespace:StepChat.StepChatUI.CustomUIElement.WindowControlPanel" 
         xmlns:viewmodel="clr-namespace:StepChat.StepChatUI.MainWindowUI.ViewModel"
-        
         xmlns:myns2="clr-namespace:StepChat.StepChatUI.CustomUIElement.SearchPersonControl" 
-        
-        
-        
                WindowStyle="None"
         AllowsTransparency="False"
-        
-        
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:personcontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonControl" xmlns:messagecontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.MessageControl"
         xmlns:personalinfocontrol="clr-namespace:StepChat.StepChatUI.CustomUIElement.PersonalInfoControl"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -82,7 +76,7 @@
                     <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
                     </DockPanel>
                     <ListView 
-                        SelectedItem="{Binding MainWindowContactListListViewSelectedItem, Mode=TwoWay}" ItemsSource="{Binding MainWindowContactListListView}">
+                        SelectedItem="{Binding MainWindowContactListListViewSelectedItem, Mode=TwoWay}" ItemsSource="{Binding MainWindowChatsList}">
                     </ListView>
 
 
@@ -228,10 +222,34 @@
 
 
                 </Grid>
+                <Grid Visibility="Collapsed" Background="{DynamicResource PrimaryColor}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="contactMenuGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0"  LastChildFill="False">
+                        <Button Height="24"  Margin="0,0,10,0"    FontSize="16"  DockPanel.Dock="Right"    Foreground="{DynamicResource ForegroundColor}" Background="{DynamicResource PrimaryColor}" BorderBrush="Black" BorderThickness="1" Click="Button_Click_7"    >
+                            X
+                        </Button>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1" Grid.RowSpan="2" LastChildFill="True"  >
+                        <Button Margin="4" DockPanel.Dock="Bottom"  IsEnabled="{Binding Path= ContactWindowIsDeleteButtonEnabled,Mode=OneWay}" Command="{Binding ContactWindowDeleteButtonClick}">
+                            <materialDesign:PackIcon Kind="DeleteForever" Width="32" Height="26" />
+                        </Button >
+                        <ListBox  Margin="10" Background="{DynamicResource PrimarySecondColor}" ItemsSource="{Binding Path=ContactWindowContactsList}" SelectedItem="{Binding ContactWindowSelectedContact,Mode=OneWayToSource}">
+                        </ListBox>
+                    </DockPanel>
+
+
+
+                </Grid>
+
             </Grid>
             <!--###########################################################################################-->
             <!--###########################################################################################-->
             <Grid Visibility="{Binding LoginRegistrationWindow_Visibility}">
+                <!--<Grid Visibility="Collapsed">-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="*"/>

@@ -4,6 +4,7 @@ using StepChat.StepChatUI.CustomUIElement.MessageControl;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
 using StepChat.StepChatUI.CustomUIElement.SearchPersonControl;
 using StepChat.StepChatUI.CustomUIElement.PersonalInfoControl;
+using StepChat.StepChatUI.CustomUIElement.ContactControl;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -14,79 +15,29 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 {
     partial class MainWindowUIViewModel : BaseViewModel.BaseViewModelUI
     {
-        private void ResetUser(User user, ServiceClient service)
-        {
-            User = user;
-            Service = service;
-            LoadChats();
-            SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
-            
-        }
-      
-
-        private string _searchWindowTextBoxText;
-
         private delegate void emptyDelegate();
-        private event emptyDelegate OnTextChanged;
-        private event emptyDelegate OnSelectionChanged;
-        private void LoadChats()
-        {
-            Task.Run(() =>
-            {
-                App.Current.Dispatcher.Invoke((Action)delegate
-            {
-                MainWindowContactListListView.Clear();
-                var res = Service.GetChats();
-                foreach (var item in res.Data)
-                {
-                    MainWindowContactListListView.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", item.Name, DateTime.Now));
-                }
-            });
-            });
-        }
-        public string SearchWindowTextBoxText
-        {
-            get { return _searchWindowTextBoxText; }
-            set { _searchWindowTextBoxText = value; OnPropertyChanged(nameof(SearchWindowTextBoxText)); OnTextChanged.Invoke(); }
-        }
+
 
         #region Properties
-        private static ObservableCollection<SearchPersonControl> _searchWindowContactsList { get; set; }
-        private void LoadMessages(int ChatId)
-        {
-            Task.Run(() =>
-            {
-                App.Current.Dispatcher.Invoke((Action)delegate
-            {
-                MainWindowMessageControlListView.Clear();
-                var r = Service.GetMessages(ChatId, 0, 100);
-                if (r.Data == null)
-                {
-                    return;
-                }
-                foreach (var item in r.Data)
-                {
-                    if (item.SenderId == User.Id)
-                    {
-                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
-                    }
-                    else
-                    {
-                        MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
-                    }
-                }
-            });
-            });
-        }
-        private PersonControl _mainWindowContactListListViewSelectedItem;
-        private string _mainWindowEnterYourMessageTextBox;
-        private ObservableCollection<MessageControl> _mainWindowMessageControlListView { get; set; }
-        private ObservableCollection<PersonControl> _mainWindowContactListListView { get; set; }
-        private SearchPersonControl _searchSelectedItem { get; set; }
         private ObservableCollection<PersonalInfoControl> _personalUserInfoItem { get; set; }
+        private ObservableCollection<ContactControl> _contactWindowContactsList { get; set; }
+        private static ObservableCollection<SearchPersonControl> _searchWindowContactsList { get; set; }
+        private ObservableCollection<MessageControl> _mainWindowMessageControlListView { get; set; }
+        private ObservableCollection<PersonControl> _mainWindowChatsListView { get; set; }
+
+        private PersonControl _mainWindowContactListListViewSelectedItem;
+        private SearchPersonControl _searchSelectedItem { get; set; }
+        private ContactControl _contactWindowSelectedContact { get; set; }
+
+        private event emptyDelegate OnTextChanged;
+
+        private string _mainWindowEnterYourMessageTextBox;
+        private string _searchWindowTextBoxText;
         private bool _searchWindowAddButtonIsEnabled { get; set; }
+        private bool _contactWindowIsDeleteButtonEnabled { get; set; }
         private Visibility _personalUserInfoItemVisability { get; set; }
 
+        #region PublicProps
         public Visibility PersonalUserInfoItemVisability { get { return _personalUserInfoItemVisability; } set { _personalUserInfoItemVisability = value; OnPropertyChanged(nameof(PersonalUserInfoItemVisability)); } }
         public bool SearchWindowAddButtonIsEnabled
         {
@@ -97,22 +48,79 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(SearchWindowAddButtonIsEnabled));
             }
         }
+        public bool ContactWindowIsDeleteButtonEnabled
+        {
+            get => _contactWindowIsDeleteButtonEnabled;
+            set
+            {
+                _contactWindowIsDeleteButtonEnabled = value;
+                OnPropertyChanged(nameof(ContactWindowIsDeleteButtonEnabled));
+            }
+        }
         public ObservableCollection<PersonalInfoControl> PersonalUserInfoItem { get { return _personalUserInfoItem; } set { _personalUserInfoItem = value; OnPropertyChanged(nameof(PersonalUserInfoItem)); } }
-        public SearchPersonControl SearchSelectedItem { get { return _searchSelectedItem; }
-            set {
-               if (value != null && value != _searchSelectedItem)
+        public SearchPersonControl SearchSelectedItem
+        {
+            get { return _searchSelectedItem; }
+            set
+            {
+                if (value != null && value != _searchSelectedItem)
                 {
                     SearchWindowAddButtonIsEnabled = true;
-                    _searchSelectedItem = value; OnSelectionChanged.Invoke();
+                    _searchSelectedItem = value; ;
                 }
                 else
-                { OnSelectionChanged.Invoke();
-                    SearchWindowAddButtonIsEnabled = false; } } }
+                {
+                    SearchWindowAddButtonIsEnabled = false;
+                }
+            }
+        }
+        public ContactControl ContactWindowSelectedContact
+        {
+            get { return _contactWindowSelectedContact; }
+            set
+            {
+                if (value != null && value != _contactWindowSelectedContact)
+                {
+                    ContactWindowIsDeleteButtonEnabled = true;
+                    _contactWindowSelectedContact = value;
+                    OnPropertyChanged(nameof( ContactWindowSelectedContact));
+                }
+                else
+                {
+                    ContactWindowIsDeleteButtonEnabled = false;
+                }
+            }
+        }
+
         public ObservableCollection<SearchPersonControl> SearchWindowContactsList
         {
             get { return _searchWindowContactsList; }
             set { _searchWindowContactsList = value; OnPropertyChanged(nameof(SearchWindowContactsList)); }
         }
+        public ObservableCollection<ContactControl> ContactWindowContactsList
+        {
+            get { return _contactWindowContactsList; }
+            set { _contactWindowContactsList = value; OnPropertyChanged(nameof(ContactWindowContactsList)); }
+        }
+        public ObservableCollection<MessageControl> MainWindowMessageControlListView
+        {
+            get { return _mainWindowMessageControlListView; }
+            set
+            {
+                _mainWindowMessageControlListView = value;
+                OnPropertyChanged(nameof(MainWindowMessageControlListView));
+            }
+        }
+        public ObservableCollection<PersonControl> MainWindowChatsList
+        {
+            get { return _mainWindowChatsListView; }
+            set
+            {
+                _mainWindowChatsListView = value;
+                OnPropertyChanged(nameof(MainWindowChatsList));
+            }
+        }
+
         public PersonControl MainWindowContactListListViewSelectedItem
         {
             get
@@ -126,6 +134,12 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 LoadMessages(_mainWindowContactListListViewSelectedItem.ChatId);
             }
         }
+
+        public string SearchWindowTextBoxText
+        {
+            get { return _searchWindowTextBoxText; }
+            set { _searchWindowTextBoxText = value; OnPropertyChanged(nameof(SearchWindowTextBoxText)); OnTextChanged.Invoke(); }
+        }
         public string MainWindowEnterYourMessageTextBox
         {
             get => _mainWindowEnterYourMessageTextBox;
@@ -135,26 +149,70 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 OnPropertyChanged(nameof(MainWindowEnterYourMessageTextBox));
             }
         }
-        public ObservableCollection<MessageControl> MainWindowMessageControlListView
-        {
-            get { return _mainWindowMessageControlListView; }
-            set
-            {
-                _mainWindowMessageControlListView = value;
-                OnPropertyChanged(nameof(MainWindowMessageControlListView));
-            }
-        }
-        public ObservableCollection<PersonControl> MainWindowContactListListView
-        {
-            get { return _mainWindowContactListListView; }
-            set
-            {
-                _mainWindowContactListListView = value;
-                OnPropertyChanged(nameof(MainWindowContactListListView));
-            }
-        }
+
         #endregion
 
+
+        #endregion
+
+        #region Methods & Commands
+        
+        private void LoadChats()
+        {
+            Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    MainWindowChatsList.Clear();
+                    var res = Service.GetChats();
+                    foreach (var item in res.Data)
+                    {
+                        MainWindowChatsList.Add(new PersonControl(item.Id, "A binary tree is made of nodes, where each node contains ", item.Name, DateTime.Now));
+                    }
+                });
+            });
+        }
+        private void LoadContacts()
+        {
+            Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    ContactWindowContactsList.Clear();
+                    var res = Service.GetContacts();
+                    foreach (var item in res.Data)
+                    {
+                        ContactWindowContactsList.Add(new ContactControl(item));
+                    }
+                });
+            });
+        }
+        private void LoadMessages(int ChatId)
+        {
+            Task.Run(() =>
+            {
+                App.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    MainWindowMessageControlListView.Clear();
+                    var r = Service.GetMessages(ChatId, 0, 100);
+                    if (r.Data == null)
+                    {
+                        return;
+                    }
+                    foreach (var item in r.Data)
+                    {
+                        if (item.SenderId == User.Id)
+                        {
+                            MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Right });
+                        }
+                        else
+                        {
+                            MainWindowMessageControlListView.Add(new MessageControl(item) { HorizontalAlignment = System.Windows.HorizontalAlignment.Left });
+                        }
+                    }
+                });
+            });
+        }
         private void OnSearchWindowTextBoxTextChanged()
        {
             if (SearchWindowTextBoxText.Length!=0 && SearchWindowTextBoxText != null && SearchWindowTextBoxText !="")
@@ -175,10 +233,17 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 }
             }
         }
-        private void OnSearchWindowSelectionChanged()
+        private void ResetUser(User user, ServiceClient service)
         {
+            User = user;
+            Service = service;
+            LoadChats();
+            LoadContacts();
+            SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
 
         }
+
+
         public ICommand MainWindow_SendMessageButtonClick
         {
             get
@@ -210,9 +275,9 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 return new DelegateClickCommand((obj) =>
                 {
                     PersonControl contactToAdd = new PersonControl(SearchSelectedItem.User.Id, "A binary tree is made of nodes, where each node contains ", SearchSelectedItem.User.FirstName, DateTime.Now,null);
-               if (!MainWindowContactListListView.Contains(contactToAdd))
+               if (!MainWindowChatsList.Contains(contactToAdd))
                     {
-                        MainWindowContactListListView.Add(contactToAdd);
+                        MainWindowChatsList.Add(contactToAdd);
                         Service.AddContact(SearchSelectedItem.User.Id);
                         Service.CreatePrivateChat(SearchSelectedItem.User.Id);
                     }
@@ -249,7 +314,18 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 });
             }
         }
-        
+        public ICommand ContactWindowDeleteButtonClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+
+                });
+            }
+        }
+        #endregion
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using StepChat.ServiceReference1;
+using StepChat.StepChatUI.CustomUIElement.ContactControl;
 using StepChat.StepChatUI.CustomUIElement.MessageControl;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
 using System.Collections.ObjectModel;
@@ -21,13 +22,13 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             SetRengerState(RendererWindow.LoginRegistrationWindow);
             PersonalUserInfoItemVisability = Visibility.Collapsed;
             MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
-            MainWindowContactListListView = new ObservableCollection<PersonControl>();
+            MainWindowChatsList = new ObservableCollection<PersonControl>();
+            ContactWindowContactsList = new ObservableCollection<ContactControl>();
 
             ////#############################################################################
             SearchWindowAddButtonIsEnabled = false;
             //#############################################################################
             OnTextChanged += OnSearchWindowTextBoxTextChanged;
-            OnSelectionChanged += OnSearchWindowSelectionChanged;
             
         }
 
