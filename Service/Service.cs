@@ -387,5 +387,22 @@ namespace Service
             Logger.Debug($"Generate new secret code '{code}' for user {ActiveUser.Login}");
             return Result<int>.OK(code);
         }
+
+        public Result<DTO.Chat> AddContactToChat(int contactId, int chatId)
+        {
+            if (IsNotAuth())
+                return Result<DTO.Chat>.WithError(ResultError.NoAuthorized);
+
+            if (!dal.GetUserContacts(ActiveUser.Id).Any(c => c.Id == contactId))
+                return Result<DTO.Chat>.WithError(ResultError.Null, $"Contact id '{contactId}' not exist");
+
+            if(!dal.CheckChatExist(chatId))
+                return Result<DTO.Chat>.WithError(ResultError.Null, $"Chat id '{chatId}' not exist");
+
+
+            dal.AddChatMemberToChat(new ChatMember { UserId = contactId, ChatId = chatId, MemberRoleId = 3 }, chatId);
+
+            return Result<DTO.Chat>.OK(mapper.Map<DTO.Chat>(dal.GetChatById(chatId)));
+        }
     }
 }

@@ -57,7 +57,9 @@ namespace Service
         [OperationContract]
         Result<DTO.Message> SendMessage(int chatId, string text);
 
-
+        [OperationContract]
+        Result<DTO.Chat> AddContactToChat(int contactId, int chatId);
+ 
      
         [OperationContract]
         Result<DTO.Message> EditMessage(int messageId, string newText);
