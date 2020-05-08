@@ -41,6 +41,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         private string _personalInfoSecondName { get; set; }
         private string _personalInfoEmail { get; set; }
         private string _personalInfoPassword { get; set; }
+        private string _personalInfoLogin { get; set; }
 
         #region PublicProps
         public Visibility PersonalUserInfoItemVisability { get { return _personalUserInfoItemVisability; } set { _personalUserInfoItemVisability = value; OnPropertyChanged(nameof(PersonalUserInfoItemVisability)); } }
@@ -159,6 +160,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         public string PersonalInfoSecondName { get { return _personalInfoSecondName; } set { if (value != null) _personalInfoSecondName = value; OnPropertyChanged(nameof(PersonalInfoSecondName)); } }
         public string PersonalInfoEmail { get { return _personalInfoEmail; } set { if (value != null) _personalInfoEmail = value; OnPropertyChanged(nameof(PersonalInfoEmail)); } }
         public string PersonalInfoPassword { get { return _personalInfoPassword; } set { if (value != null) _personalInfoPassword = value; OnPropertyChanged(nameof(PersonalInfoPassword)); } }
+        public string PersonalInfoLogin { get { return _personalInfoLogin; } set { if (value != null) _personalInfoLogin = value; OnPropertyChanged(nameof(PersonalInfoLogin)); } }
 
 
         #endregion
@@ -256,6 +258,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             PersonalInfoFirstName = User.FirstName;
             PersonalInfoSecondName = User.LastName;
             PersonalInfoPassword = User.Password;
+            PersonalInfoLogin = User.Login;
 
         }
 
@@ -322,7 +325,11 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
+                    User newUserInfo = new User() { Id = User.Id, FirstName = PersonalInfoFirstName, LastName = PersonalInfoSecondName, Email = PersonalInfoEmail, Password = PersonalInfoPassword,
+                        Login = PersonalInfoLogin, PhotoPath = "Not Done", Bio = PersonalInfoFirstName + " " + PersonalInfoSecondName,LastOnlineDate=DateTime.Now };
 
+                    Service.EditUserInfo(newUserInfo);
+                    ResetUser(newUserInfo, Service);
                 });
             }
         }

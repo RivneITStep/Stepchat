@@ -74,7 +74,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null) return null;
+            if (existing == null||existing.Contacts==null) return null;
 
             List<User> contacts = new  List<User>();
 
@@ -270,6 +270,7 @@ namespace DAL
             existing.Bio = newUser.Bio;
             existing.Email = newUser.Email;
             existing.PhotoPath = newUser.PhotoPath;
+            existing.Password = newUser.Password;
             existing.Login = newUser.Login;
             existing.LastOnlineDate = newUser.LastOnlineDate;
 

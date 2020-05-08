@@ -238,5 +238,10 @@ namespace StepChat.StepChatUI.MainWindowUI.View
         {
 
         }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            CloseAllMenus();
+        }
     }
 }
