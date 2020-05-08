@@ -22,5 +22,10 @@ namespace DAL
         public virtual ICollection<Attachment> Attachments { get; set; }
         public virtual ICollection<User> ReadUsers { get; set; }
         
+        public Message()
+        {
+            Attachments = new HashSet<Attachment>();
+            ReadUsers = new HashSet<User>();
+        }
     }
 }

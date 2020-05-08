@@ -29,7 +29,8 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             SearchWindowAddButtonIsEnabled = false;
             //#############################################################################
             OnTextChanged += OnSearchWindowTextBoxTextChanged;
-            
+        
+
         }
 
         private void SetRengerState(RendererWindow window)

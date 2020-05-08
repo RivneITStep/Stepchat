@@ -37,6 +37,11 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         private bool _contactWindowIsDeleteButtonEnabled { get; set; }
         private Visibility _personalUserInfoItemVisability { get; set; }
 
+        private string _personalInfoFirstName { get; set; }
+        private string _personalInfoSecondName { get; set; }
+        private string _personalInfoEmail { get; set; }
+        private string _personalInfoPassword { get; set; }
+
         #region PublicProps
         public Visibility PersonalUserInfoItemVisability { get { return _personalUserInfoItemVisability; } set { _personalUserInfoItemVisability = value; OnPropertyChanged(nameof(PersonalUserInfoItemVisability)); } }
         public bool SearchWindowAddButtonIsEnabled
@@ -150,13 +155,19 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             }
         }
 
+        public string PersonalInfoFirstName { get { return _personalInfoFirstName; } set { if (value != null) _personalInfoFirstName = value; OnPropertyChanged(nameof(PersonalInfoFirstName)); } }
+        public string PersonalInfoSecondName { get { return _personalInfoSecondName; } set { if (value != null) _personalInfoSecondName = value; OnPropertyChanged(nameof(PersonalInfoSecondName)); } }
+        public string PersonalInfoEmail { get { return _personalInfoEmail; } set { if (value != null) _personalInfoEmail = value; OnPropertyChanged(nameof(PersonalInfoEmail)); } }
+        public string PersonalInfoPassword { get { return _personalInfoPassword; } set { if (value != null) _personalInfoPassword = value; OnPropertyChanged(nameof(PersonalInfoPassword)); } }
+
+
         #endregion
 
 
         #endregion
 
         #region Methods & Commands
-        
+
         private void LoadChats()
         {
             Task.Run(() =>
@@ -194,7 +205,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 App.Current.Dispatcher.Invoke((Action)delegate
                 {
                     MainWindowMessageControlListView.Clear();
-                    var r = Service.GetMessages(ChatId, 0, 100);
+                    var r = Service.GetMessages(ChatId);
                     if (r.Data == null)
                     {
                         return;
@@ -223,7 +234,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 {
                     foreach (var it in res.Data)
                     {
-                        
+                        if(it.Id != User.Id)
                         SearchWindowContactsList.Add(new SearchPersonControl(it));
                     }
                 }
@@ -240,6 +251,11 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             LoadChats();
             LoadContacts();
             SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
+
+            PersonalInfoEmail = User.Email;
+            PersonalInfoFirstName = User.FirstName;
+            PersonalInfoSecondName = User.LastName;
+            PersonalInfoPassword = User.Password;
 
         }
 
@@ -300,17 +316,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 });
             }
         }
-        public ICommand PersonalInfoDeleteButtonClick
-        {
-            get
-            {
-                return new DelegateClickCommand((obj) =>
-                {
-
-                });
-            }
-        }
-        public ICommand MainWindowSaveChanges
+        public ICommand PersonalWindowSaveChangesButtonClick
         {
             get
             {
@@ -326,7 +332,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                   //Waiting for methods in service...
+                    Service.DeleteContact(ContactWindowSelectedContact.User.Id);
+
+                    LoadContacts();
+                    LoadChats();
                 });
             }
         }

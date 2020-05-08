@@ -66,6 +66,10 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
+        public Attachment GetAttachment(int id)
+        {
+            return context.Attachments.FirstOrDefault(a => a.Id == id);
+        }
         public List<User> GetUserContacts(int userId)
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -90,7 +94,7 @@ namespace DAL
 
         public void RemoveContact(int contactId)
         {
-            var existing = context.Contacts.FirstOrDefault(u => u.Id == contactId);
+            var existing = context.Contacts.FirstOrDefault(u => u.UserContactId == contactId);
             
             if (existing == null) return;         
 
@@ -225,6 +229,13 @@ namespace DAL
 
             return existing.Messages;
         }
+        public IEnumerable<Message> GetChatMessages(int chatId)
+        {
+            var existing = context.Chats.FirstOrDefault(u => u.Id == chatId);
+            if (existing == null) return null;
+
+            return existing.Messages;
+        }
         public bool CheckMessageExist(int messageId)
         {
             return context.Messages.Any(m => m.Id == messageId);
@@ -268,7 +279,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null) return null;
+            if (existing == null||existing.ChatMembers==null) return null;
 
             List<Chat> chats = new  List<Chat>();
 
@@ -306,6 +317,27 @@ namespace DAL
             var existingChat = existing.ChatMembers.FirstOrDefault(u => u.ChatId == chatId);
 
             return existingChat.MemberRole;
+        }
+
+        public void AddAttachment(int messageId, Attachment attachment)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+
+            if (existing == null) return;
+
+            existing.Attachments.Add(attachment);
+
+            context.SaveChanges();
+        }
+        public void RemoveAttachment(int messageId, Attachment attachment)
+        {
+            var existing = context.Messages.FirstOrDefault(u => u.Id == messageId);
+
+            if (existing == null) return;
+
+            existing.Attachments.Remove(attachment);
+
+            context.SaveChanges();
         }
 
 

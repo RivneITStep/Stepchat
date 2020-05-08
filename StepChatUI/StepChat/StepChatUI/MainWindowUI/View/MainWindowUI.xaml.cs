@@ -188,7 +188,7 @@ namespace StepChat.StepChatUI.MainWindowUI.View
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            OpenSettingsMenu();
+            OpenPersonalInfoMenu();
         }
 
         //private void AddContact(PersonControl person)
@@ -207,16 +207,16 @@ namespace StepChat.StepChatUI.MainWindowUI.View
         private void CloseAllMenus()
         {
             searchMenuGrid.Visibility = Visibility.Collapsed;
-            settingsMenuGrid.Visibility = Visibility.Collapsed;
+            editPersonalMenuGrid.Visibility = Visibility.Collapsed;
             contactMenuGrid.Visibility = Visibility.Collapsed;
         }
         private void OpenSearchMenu()
         {
             searchMenuGrid.Visibility = Visibility.Visible;
         }
-        private void OpenSettingsMenu()
+        private void OpenPersonalInfoMenu()
         {
-            settingsMenuGrid.Visibility = Visibility.Visible;
+            editPersonalMenuGrid.Visibility = Visibility.Visible;
         }
         private void OpenContactsMenu()
         {
@@ -230,6 +230,11 @@ namespace StepChat.StepChatUI.MainWindowUI.View
         #endregion
 
         private void SaveChages(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
         {
 
         }
