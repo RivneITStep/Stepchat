@@ -36,7 +36,8 @@ namespace Service
         Result AddContact(int userId);
         [OperationContract]
         Result<IEnumerable<DTO.User>> GetContacts();
-
+        [OperationContract]
+        Result DeleteContact(int id);
         [OperationContract]
         Result<List<DTO.User>> SearchUsers(string query);
 
