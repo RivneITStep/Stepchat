@@ -70,6 +70,8 @@ namespace Service
         Result<IEnumerable<DTO.Message>> GetMessages(int chatId);
         [OperationContract]
         Result DeleteAttachment(int id);
+        [OperationContract]
+        Result<List<DTO.Attachment>> GetMessageAttachments(int messageId);
 
         [OperationContract]
         Result<int> CreateSecretCode();

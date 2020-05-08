@@ -66,6 +66,10 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
+        public List<Attachment> GetMessageAttachments(int messageId)
+        {
+            return context.Messages.First(m => m.Id == messageId).Attachments.ToList();
+        }
         public Attachment GetAttachment(int id)
         {
             return context.Attachments.FirstOrDefault(a => a.Id == id);
