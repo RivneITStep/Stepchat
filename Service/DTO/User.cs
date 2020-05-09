@@ -28,7 +28,6 @@ namespace Service.DTO
         public DateTime LastOnlineDate { get; set; }
         [DataMember]
         public string Email { get; set; }
-        [DataMember]
-        public string Password { get; set; }
+      
     }
 }
