@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using System.Linq;
+using StepChat.StepChatUI.CustomUIElement.AttachControl;
+using System.Collections.Generic;
 
 namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 {
@@ -21,7 +23,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             Service = service;
             LoadPrivateChats();
             SearchWindowContactsList = new ObservableCollection<SearchPersonControl>();
-            
+
         }
         private void LoadPrivateChats()
         {
@@ -34,7 +36,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 foreach (var item in res.Data)
                 {
                     Message m = Service.GetMessages(item.Id).Data.LastOrDefault();
-                    MainWindowContactListListView.Add(new PersonControl(item.Id, m.Text, "NULL", m.SendDate));
+                    if (m != null)
+                    {
+                        MainWindowContactListListView.Add(new PersonControl(item.Id, m.Text, "NULL", m.SendDate));
+                    }
                 }
             });
             });
@@ -53,21 +58,33 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 }
                 foreach (var item in r.Data)
                 {
+                    List<AttachControl> attaches = new List<AttachControl>();
+                    var res = Service.GetMessageAttachments(item.Id);
+                    foreach (var item2 in res.Data)
+                    {
+                        AttachControl ac = new AttachControl(item2.FileName, item2.FileType, item2.Id);
+                        ac.Button_MouseClick_Handler += AttachmentHandlerButtonClick;
+                        attaches.Add(ac);
+                    }
                     if (item.SenderId == User.Id)
                     {
-                        MainWindowMessageControlListView.Add(new MessageControl(item,HorizontalAlignment.Right));
+                        MainWindowMessageControlListView.Add(new MessageControl(item, HorizontalAlignment.Right, attaches));
                     }
                     else
                     {
-                        MainWindowMessageControlListView.Add(new MessageControl(item,HorizontalAlignment.Left));
+                        MainWindowMessageControlListView.Add(new MessageControl(item, HorizontalAlignment.Left, attaches));
                     }
                 }
             });
             });
         }
+        private void AttachmentHandlerButtonClick(object sender, RoutedEventArgs e,int id)
+        {
+            ApiStream.ApiStream.GetFile(Service,id);
+        }
         private void OnSearchWindowTextBoxTextChanged()
-       {
-            if (SearchWindowTextBoxText.Length!=0 && SearchWindowTextBoxText != null && SearchWindowTextBoxText !="")
+        {
+            if (SearchWindowTextBoxText.Length != 0 && SearchWindowTextBoxText != null && SearchWindowTextBoxText != "")
             {
                 SearchWindowContactsList.Clear();
                 var res = Service.SearchUsers(SearchWindowTextBoxText);
@@ -75,7 +92,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 {
                     foreach (var it in res.Data)
                     {
-                        
+
                         SearchWindowContactsList.Add(new SearchPersonControl(it));
                     }
                 }

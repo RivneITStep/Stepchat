@@ -23,9 +23,14 @@ namespace StepChat.StepChatUI.CustomUIElement.MessageControl
     }
     public partial class MessageControl : UserControl
     {
-        public MessageControl(Message message, HorizontalAlignment horizontalAlignment)
+        public MessageControl(Message message, HorizontalAlignment horizontalAlignment,List<AttachControl.AttachControl> attaches)
         {
             InitializeComponent();
+            foreach (var item in attaches)
+            {
+                item.Margin = new Thickness(0,0,2,0);
+                DockPanel.Children.Add(item);
+            }
             SetMessage(message.Text);
             SetTimeSended(message.SendDate);
             SetMessageState(MessageState.Readed);

@@ -85,8 +85,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="StepChatUI\ApiStream\ApiStream.cs" />
     <Compile Include="StepChatUI\BaseViewModel\BaseViewModel.cs" />
     <Compile Include="StepChatUI\Commands\DelegateClickCommand.cs" />
+    <Compile Include="StepChatUI\CustomUIElement\AttachControl\AttachControl.xaml.cs">
+      <DependentUpon>AttachControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml.cs">
       <DependentUpon>MessageControl.xaml</DependentUpon>
     </Compile>
@@ -155,6 +159,9 @@
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfArrayOfChatQo1Oyztf.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -165,6 +172,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfChatQo1Oyztf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfMessageQo1Oyztf.datasource">
@@ -193,6 +203,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="StepChatUI\CustomUIElement\AttachControl\AttachControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

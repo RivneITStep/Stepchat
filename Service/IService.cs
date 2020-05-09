@@ -36,7 +36,8 @@ namespace Service
         Result AddContact(int userId);
         [OperationContract]
         Result<IEnumerable<DTO.User>> GetContacts();
-
+        [OperationContract]
+        Result DeleteContact(int id);
         [OperationContract]
         Result<List<DTO.User>> SearchUsers(string query);
 
@@ -57,7 +58,9 @@ namespace Service
         [OperationContract]
         Result<DTO.Message> SendMessage(int chatId, string text);
 
-
+        [OperationContract]
+        Result<DTO.Chat> AddContactToChat(int contactId, int chatId);
+ 
      
         [OperationContract]
         Result<DTO.Message> EditMessage(int messageId, string newText);
@@ -67,6 +70,8 @@ namespace Service
         Result<IEnumerable<DTO.Message>> GetMessages(int chatId);
         [OperationContract]
         Result DeleteAttachment(int id);
+        [OperationContract]
+        Result<List<DTO.Attachment>> GetMessageAttachments(int messageId);
 
         [OperationContract]
         Result<int> CreateSecretCode();

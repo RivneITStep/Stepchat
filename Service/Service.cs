@@ -8,23 +8,20 @@ using System.Configuration;
 using System.Text;
 using AutoMapper;
 using DAL;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Service
 {
-
-
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService, IServiceStream
     {
         private static Random rand = new Random(44);
         private static Dictionary<int, User> SecretCodes = new Dictionary<int, User>();
+        private static string userPhotosDir = ConfigurationManager.AppSettings["UsersPhotosDirectory"];
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static DALClass dal = new DALClass();
         private static IMapper mapper;
         private User ActiveUser = null;
 
-        private static string userPhotosDir = ConfigurationManager.AppSettings["UsersPhotosDirectory"];
 
         static Service()
         {
@@ -37,6 +34,9 @@ namespace Service
 
                 cfg.CreateMap<DTO.Message, Message>().PreserveReferences();
                 cfg.CreateMap<Message, DTO.Message>().PreserveReferences();
+
+                cfg.CreateMap<DTO.Attachment, Attachment>().PreserveReferences();
+                cfg.CreateMap<Attachment, DTO.Attachment>().PreserveReferences();
             });
             mapper = config.CreateMapper();
 
@@ -112,6 +112,10 @@ namespace Service
         {
             if (IsNotAuth()) return Result.WithError(ResultError.NoAuthorized);
             Logger.Debug($"User {ActiveUser.Login} add contect id {userId}");
+            if (ActiveUser.Id == userId)
+                return Result<DTO.Chat>.WithError(ResultError.Null, "You can't add yourself contact");
+
+
             if (dal.GetUserById(userId) == null)
                 return Result.WithError(ResultError.UserNotExist, $"User id {userId} not exist!");
 
@@ -125,6 +129,9 @@ namespace Service
             if (IsNotAuth()) return Result<DTO.Chat>.WithError(ResultError.NoAuthorized);
             
             Logger.Debug($"User {ActiveUser.Login} create private chat with user id: {userId}");
+            if (ActiveUser.Id == userId)
+                return Result<DTO.Chat>.WithError(ResultError.Null, "You can't create chat with yourself");
+
             if (dal.GetUserById(userId) == null)
                 return Result<DTO.Chat>.WithError(ResultError.UserNotExist, $"User id {userId} not exist");
 
@@ -159,7 +166,8 @@ namespace Service
 
             if (chat == null)
                 return Result<DTO.Chat>.WithError(ResultError.ChatNotExist, $"Chat id {chatId} not exst");
-
+            if (chat.IsPersonal)
+                return Result<DTO.Chat>.WithError(ResultError.Null, "This chat is private");
 
             dal.AddChatMemberToChat(new ChatMember { Chat = chat, User = ActiveUser, MemberRoleId = 3}, chat.Id);
 
@@ -386,6 +394,55 @@ namespace Service
             SecretCodes.Add(code, ActiveUser);
             Logger.Debug($"Generate new secret code '{code}' for user {ActiveUser.Login}");
             return Result<int>.OK(code);
+        }
+
+        public Result<DTO.Chat> AddContactToChat(int contactId, int chatId)
+        {
+            if (IsNotAuth())
+                return Result<DTO.Chat>.WithError(ResultError.NoAuthorized);
+            Logger.Debug($"User {ActiveUser.Login} add contact '{contactId}' to chat '{chatId}'");
+            if (!dal.GetUserContacts(ActiveUser.Id).Any(c => c.Id == contactId))
+                return Result<DTO.Chat>.WithError(ResultError.Null, $"Contact id '{contactId}' not exist");
+
+            if(!dal.CheckChatExist(chatId))
+                return Result<DTO.Chat>.WithError(ResultError.Null, $"Chat id '{chatId}' not exist");
+
+
+            dal.AddChatMemberToChat(new ChatMember { UserId = contactId, ChatId = chatId, MemberRoleId = 3 }, chatId);
+
+            return Result<DTO.Chat>.OK(mapper.Map<DTO.Chat>(dal.GetChatById(chatId)));
+        }
+
+        public Result DeleteContact(int id)
+        {
+            if (IsNotAuth())
+                return Result.WithError(ResultError.NoAuthorized);
+            Logger.Debug($"User '{ActiveUser.Login}' delete contact id '{id}'");
+            try
+            {
+                dal.RemoveContact(id);
+            }
+            catch (Exception)
+            {
+                return Result.WithError(ResultError.NotExist, $"Contact id '{id}' not exist");
+            }
+
+            return Result.OK;
+        }
+
+        public Result<List<DTO.Attachment>> GetMessageAttachments(int messageId)
+        {
+            if (IsNotAuth())
+                return Result<List<DTO.Attachment>>.WithError(ResultError.NoAuthorized);
+            Logger.Debug($"User '{ActiveUser.Login}' get message '{messageId}' attachments");
+
+            if(!dal.CheckMessageExist(messageId))
+                return Result<List<DTO.Attachment>>.WithError(ResultError.NotExist, $"Message id '{messageId}' not exist");
+
+
+            List<DTO.Attachment> attachments = mapper.Map<List<DTO.Attachment>>(dal.GetMessageAttachments(messageId));
+
+            return Result<List<DTO.Attachment>>.OK(attachments);
         }
     }
 }

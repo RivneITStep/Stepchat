@@ -324,6 +324,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_DeleteContact_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_DeleteContact_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IService_SearchUsers_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -590,6 +628,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_AddContactToChat_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_AddContactToChat_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IService_EditMessage_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -704,6 +780,120 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_DeleteAttachment_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_DeleteAttachment_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetMessageAttachments_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_GetMessageAttachments_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_CreateSecretCode_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IService_CreateSecretCode_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -749,6 +939,12 @@
   <wsdl:message name="IService_GetContacts_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetContactsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_DeleteContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContact" />
+  </wsdl:message>
+  <wsdl:message name="IService_DeleteContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContactResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_SearchUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchUsers" />
   </wsdl:message>
@@ -791,6 +987,12 @@
   <wsdl:message name="IService_SendMessage_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_AddContactToChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactToChat" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddContactToChat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddContactToChatResponse" />
+  </wsdl:message>
   <wsdl:message name="IService_EditMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:EditMessage" />
   </wsdl:message>
@@ -809,11 +1011,35 @@
   <wsdl:message name="IService_GetMessages_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
   </wsdl:message>
-  <wsdl:message name="IServiceStream_SetPicture_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetPicture" />
+  <wsdl:message name="IService_DeleteAttachment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAttachment" />
   </wsdl:message>
-  <wsdl:message name="IServiceStream_SetPicture_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetPictureResponse" />
+  <wsdl:message name="IService_DeleteAttachment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMessageAttachments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageAttachments" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetMessageAttachments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageAttachmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSecretCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSecretCode" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateSecretCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSecretCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStream_SendFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFile" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStream_SendFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStream_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="IServiceStream_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="Login">
@@ -839,6 +1065,10 @@
     <wsdl:operation name="GetContacts">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetContacts" message="tns:IService_GetContacts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetContactsResponse" message="tns:IService_GetContacts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteContact" message="tns:IService_DeleteContact_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteContactResponse" message="tns:IService_DeleteContact_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SearchUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SearchUsers" message="tns:IService_SearchUsers_InputMessage" />
@@ -868,6 +1098,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMessage" message="tns:IService_SendMessage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SendMessageResponse" message="tns:IService_SendMessage_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddContactToChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddContactToChat" message="tns:IService_AddContactToChat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddContactToChatResponse" message="tns:IService_AddContactToChat_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="EditMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/EditMessage" message="tns:IService_EditMessage_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/EditMessageResponse" message="tns:IService_EditMessage_OutputMessage" />
@@ -880,11 +1114,27 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMessages" message="tns:IService_GetMessages_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMessagesResponse" message="tns:IService_GetMessages_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteAttachment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DeleteAttachment" message="tns:IService_DeleteAttachment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DeleteAttachmentResponse" message="tns:IService_DeleteAttachment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageAttachments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetMessageAttachments" message="tns:IService_GetMessageAttachments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetMessageAttachmentsResponse" message="tns:IService_GetMessageAttachments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSecretCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateSecretCode" message="tns:IService_CreateSecretCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateSecretCodeResponse" message="tns:IService_CreateSecretCode_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IServiceStream">
-    <wsdl:operation name="SetPicture">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStream/SetPicture" message="tns:IServiceStream_SetPicture_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStream/SetPictureResponse" message="tns:IServiceStream_SetPicture_OutputMessage" />
+    <wsdl:operation name="SendFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStream/SendFile" message="tns:IServiceStream_SendFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStream/SendFileResponse" message="tns:IServiceStream_SendFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceStream/GetFile" message="tns:IServiceStream_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceStream/GetFileResponse" message="tns:IServiceStream_GetFile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IService" type="tns:IService">
@@ -953,6 +1203,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_IService_GetContacts_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContact">
+      <soap12:operation soapAction="http://tempuri.org/IService/DeleteContact" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_DeleteContact_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_DeleteContact_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -1033,6 +1294,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddContactToChat">
+      <soap12:operation soapAction="http://tempuri.org/IService/AddContactToChat" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_AddContactToChat_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_AddContactToChat_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EditMessage">
       <soap12:operation soapAction="http://tempuri.org/IService/EditMessage" style="document" />
       <wsdl:input>
@@ -1066,11 +1338,53 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeleteAttachment">
+      <soap12:operation soapAction="http://tempuri.org/IService/DeleteAttachment" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_DeleteAttachment_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_DeleteAttachment_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageAttachments">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetMessageAttachments" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetMessageAttachments_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_GetMessageAttachments_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSecretCode">
+      <soap12:operation soapAction="http://tempuri.org/IService/CreateSecretCode" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_CreateSecretCode_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IService_CreateSecretCode_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IServiceStream" type="tns:IServiceStream">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SetPicture">
-      <soap:operation soapAction="http://tempuri.org/IServiceStream/SetPicture" style="document" />
+    <wsdl:operation name="SendFile">
+      <soap:operation soapAction="http://tempuri.org/IServiceStream/SendFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/IServiceStream/GetFile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -130,9 +130,8 @@
                     </Grid>
                     <DockPanel  Grid.Row="2" Background="{DynamicResource PrimaryColor}" LastChildFill="False">
 
-                        <Button DockPanel.Dock="Left" Foreground="{DynamicResource ForegroundColor}"
- Style="{StaticResource MaterialDesignIconForegroundButton}"
-  ToolTip="MaterialDesignFloatingActionMiniLightButton" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <Button DockPanel.Dock="Left" Foreground="{DynamicResource ForegroundColor}" Command="{Binding MainWindowAttachFileButtonClick}"
+ Style="{StaticResource MaterialDesignIconForegroundButton}" Background="{x:Null}" BorderBrush="{x:Null}">
                             <materialDesign:PackIcon
     Kind="File"
     Height="24"
@@ -140,8 +139,7 @@
                         </Button>
 
                         <Button DockPanel.Dock="Left" Foreground="{DynamicResource ForegroundColor}"
-  Style="{StaticResource MaterialDesignIconForegroundButton}"
-  ToolTip="MaterialDesignFloatingActionMiniLightButton" Background="{x:Null}" BorderBrush="{x:Null}">
+  Style="{StaticResource MaterialDesignIconForegroundButton}" Background="{x:Null}" BorderBrush="{x:Null}">
                             <materialDesign:PackIcon
     Kind="Microphone"
     Height="24"
