@@ -28,7 +28,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock x:Name="Message" Margin="10" Foreground="#FFCCCCCC" FontFamily="Comic Sans MS" TextWrapping="WrapWithOverflow">
+                <TextBlock x:Name="Message" Margin="10" Foreground="#FFCCCCCC" FontFamily="Comic Sans MS" TextWrapping="Wrap">
                 </TextBlock>
                 <DockPanel LastChildFill="False" HorizontalAlignment="Right" Name="DockPanel">
                 </DockPanel>

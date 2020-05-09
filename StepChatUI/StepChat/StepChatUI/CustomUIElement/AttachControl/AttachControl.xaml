@@ -16,15 +16,15 @@
     <Border Width="auto" Height="auto" BorderBrush="Transparent"
                 CornerRadius="2">
         <Border.Background>
-            <SolidColorBrush Color="#FF373174">
+            <SolidColorBrush Color="Transparent">
             </SolidColorBrush>
         </Border.Background>
-        <Grid x:Name="ToolTipGrid">
+        <Grid x:Name="ToolTipGrid" Margin="2">
             <DockPanel>
-                <Button Click="Button_Click" Height="auto" Margin="2" Padding="1" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto">
-                    <materialDesign:PackIcon Kind="FileDocumentOutline" Foreground="#FF9B9B9B" />
+                <Button Click="Button_Click" Height="auto" Margin="2" Padding="0" Background="Transparent" BorderBrush="Transparent"  Style="{StaticResource MaterialDesignRaisedButton}" Width="auto">
+                    <materialDesign:PackIcon Kind="FileDocumentOutline" Foreground="#FF9B9B9B" Height="33" Width="33"/>
                 </Button>
-                <TextBlock Text=".txt" Foreground="#FF9B9B9B" FontSize="10" VerticalAlignment="Bottom"  Name="file_extension"/>
+                <TextBlock Text=".txt" Foreground="#FF9B9B9B" FontSize="12" VerticalAlignment="Bottom"  Name="file_extension" FontFamily="Comic Sans MS"/>
             </DockPanel>
         </Grid>
     </Border>
