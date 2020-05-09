@@ -340,6 +340,10 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 return new DelegateClickCommand((obj) =>
                 {
                     Service.DeleteContact(ContactWindowSelectedContact.User.Id);
+                    foreach(var it in Service.GetChats().Data)
+                    {
+
+                    }
 
                     LoadContacts();
                     LoadChats();
