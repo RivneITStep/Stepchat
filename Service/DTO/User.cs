@@ -23,12 +23,13 @@ namespace Service.DTO
         [DataMember]
         public string Login { get; set; }
         [DataMember]
+        public string Password { get; set; }
+        [DataMember]
         public bool IsOnline { get; set; }
         [DataMember]
         public DateTime LastOnlineDate { get; set; }
         [DataMember]
         public string Email { get; set; }
-        [DataMember]
-        public string Password { get; set; }
+      
     }
 }
