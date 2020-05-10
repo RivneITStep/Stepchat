@@ -28,7 +28,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                         if (!res.IsSuccess)
                         {
                             LoginWindow_ErrorTextBox = res.Error.ToString();
-
                         }
                         else
                         {
@@ -62,8 +61,6 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                     Task.Factory.StartNew(() =>
                     {
                         SetProgressBarVisibility(Visibility.Visible);
-                        try
-                        {
                             using (ServiceClient proxy = new ServiceClient())
                             {
                                 var res = proxy.Register(ConfigurateUserDTO(obj as PasswordBox));
@@ -79,6 +76,8 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                                 }
 
                             }
+                        try
+                        {
                         }
                         catch (Exception ex)
                         {

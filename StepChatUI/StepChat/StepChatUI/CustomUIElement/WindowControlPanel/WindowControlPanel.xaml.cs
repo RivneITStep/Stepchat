@@ -16,8 +16,6 @@ namespace StepChat.StepChatUI.CustomUIElement.WindowControlPanel
         {
             InitializeComponent();
         }
-
-
         private void ButtonClose_MouseClick(object sender, RoutedEventArgs e)
         {
             ButtonClose_MouseClick_Handler?.Invoke(sender, e);

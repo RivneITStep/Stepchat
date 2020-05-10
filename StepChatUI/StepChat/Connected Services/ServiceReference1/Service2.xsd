@@ -35,6 +35,7 @@
       <xs:enumeration value="PasswordIsIncorrect" />
       <xs:enumeration value="NotImplemented" />
       <xs:enumeration value="NoAuthorized" />
+      <xs:enumeration value="NotExist" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ResultError" nillable="true" type="tns:ResultError" />
@@ -123,4 +124,38 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ResultOfArrayOfMessageQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfMessageQo1Oyztf" />
+  <xs:complexType name="ResultOfArrayOfAttachmentQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfAttachment" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q7:ArrayOfAttachment" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfAttachmentQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfAttachmentQo1Oyztf" />
+  <xs:complexType name="ResultOfint">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Data" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfint" nillable="true" type="tns:ResultOfint" />
 </xs:schema>

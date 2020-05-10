@@ -1,9 +1,9 @@
 ﻿using StepChat.ServiceReference1;
 using StepChat.StepChatUI.CustomUIElement.MessageControl;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-
 namespace StepChat.StepChatUI.MainWindowUI.ViewModel
 {
     public enum RendererWindow
@@ -15,9 +15,11 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
     {
         private User User { get; set; }
         private ServiceClient Service { get; set; }
+        private List<string> Attacments { get; set; } = new List<string>();
         public MainWindowUIViewModel()
         {
             SetRengerState(RendererWindow.LoginRegistrationWindow);
+            Attacments = new List<string>();
             PersonalUserInfoItemVisability = Visibility.Collapsed;
             MainWindowMessageControlListView = new ObservableCollection<MessageControl>();
             MainWindowContactListListView = new ObservableCollection<PersonControl>();

@@ -86,6 +86,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DeleteContact">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteContactResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="DeleteContactResult" nillable="true" type="q9:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SearchUsers">
     <xs:complexType>
       <xs:sequence>
@@ -96,7 +110,7 @@
   <xs:element name="SearchUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SearchUsersResult" nillable="true" type="q9:ResultOfArrayOfUserQo1Oyztf" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SearchUsersResult" nillable="true" type="q10:ResultOfArrayOfUserQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,7 +124,7 @@
   <xs:element name="CreatePrivateChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreatePrivateChatResult" nillable="true" type="q10:ResultOfChatQo1Oyztf" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreatePrivateChatResult" nillable="true" type="q11:ResultOfChatQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,7 +138,7 @@
   <xs:element name="CreateChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreateChatResult" nillable="true" type="q11:ResultOfChatQo1Oyztf" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreateChatResult" nillable="true" type="q12:ResultOfChatQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -138,7 +152,7 @@
   <xs:element name="JoinChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="JoinChatResult" nillable="true" type="q12:ResultOfChatQo1Oyztf" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="JoinChatResult" nillable="true" type="q13:ResultOfChatQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +166,7 @@
   <xs:element name="LeaveChatResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="LeaveChatResult" nillable="true" type="q13:Result" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="LeaveChatResult" nillable="true" type="q14:Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -164,7 +178,7 @@
   <xs:element name="GetChatsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetChatsResult" nillable="true" type="q14:ResultOfArrayOfChatQo1Oyztf" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetChatsResult" nillable="true" type="q15:ResultOfArrayOfChatQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -179,7 +193,22 @@
   <xs:element name="SendMessageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SendMessageResult" nillable="true" type="q15:ResultOfMessageQo1Oyztf" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SendMessageResult" nillable="true" type="q16:ResultOfMessageQo1Oyztf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddContactToChat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="contactId" type="xs:int" />
+        <xs:element minOccurs="0" name="chatId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddContactToChatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="AddContactToChatResult" nillable="true" type="q17:ResultOfChatQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -194,7 +223,7 @@
   <xs:element name="EditMessageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="EditMessageResult" nillable="true" type="q16:ResultOfMessageQo1Oyztf" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="EditMessageResult" nillable="true" type="q18:ResultOfMessageQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -208,7 +237,7 @@
   <xs:element name="DeleteMessageResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="DeleteMessageResult" nillable="true" type="q17:Result" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="DeleteMessageResult" nillable="true" type="q19:Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,21 +251,76 @@
   <xs:element name="GetMessagesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetMessagesResult" nillable="true" type="q18:ResultOfArrayOfMessageQo1Oyztf" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetMessagesResult" nillable="true" type="q20:ResultOfArrayOfMessageQo1Oyztf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetPicture">
+  <xs:element name="DeleteAttachment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.microsoft.com/Message" name="stream" type="q19:StreamBody" />
+        <xs:element minOccurs="0" name="id" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetPictureResponse">
+  <xs:element name="DeleteAttachmentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SetPictureResult" nillable="true" type="q20:Result" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="DeleteAttachmentResult" nillable="true" type="q21:Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessageAttachments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="messageId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessageAttachmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetMessageAttachmentsResult" nillable="true" type="q22:ResultOfArrayOfAttachmentQo1Oyztf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSecretCode">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSecretCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreateSecretCodeResult" nillable="true" type="q23:ResultOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/Message" name="stream" type="q24:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SendFileResult" nillable="true" type="q25:ResultOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:int" />
+        <xs:element minOccurs="0" name="fileId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/Message" name="GetFileResult" type="q26:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

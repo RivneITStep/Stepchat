@@ -22,6 +22,8 @@ namespace StepChat.ServiceReference1 {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfArrayOfChatQo1Oyztf))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfMessageQo1Oyztf))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfint))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(StepChat.ServiceReference1.ResultOfUserQo1Oyztf))]
     public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -213,6 +215,52 @@ namespace StepChat.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResultOfArrayOfAttachmentQo1Oyztf", Namespace="http://schemas.datacontract.org/2004/07/Service")]
+    [System.SerializableAttribute()]
+    public partial class ResultOfArrayOfAttachmentQo1Oyztf : StepChat.ServiceReference1.Result {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private StepChat.ServiceReference1.Attachment[] DataField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public StepChat.ServiceReference1.Attachment[] Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataField, value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResultOfint", Namespace="http://schemas.datacontract.org/2004/07/Service")]
+    [System.SerializableAttribute()]
+    public partial class ResultOfint : StepChat.ServiceReference1.Result {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DataField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Data {
+            get {
+                return this.DataField;
+            }
+            set {
+                if ((this.DataField.Equals(value) != true)) {
+                    this.DataField = value;
+                    this.RaisePropertyChanged("Data");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ResultOfUserQo1Oyztf", Namespace="http://schemas.datacontract.org/2004/07/Service")]
     [System.SerializableAttribute()]
     public partial class ResultOfUserQo1Oyztf : StepChat.ServiceReference1.Result {
@@ -258,6 +306,9 @@ namespace StepChat.ServiceReference1 {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         NoAuthorized = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NotExist = 7,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -683,6 +734,131 @@ namespace StepChat.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Attachment", Namespace="http://schemas.datacontract.org/2004/07/Service.DTO")]
+    [System.SerializableAttribute()]
+    public partial class Attachment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FilePathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FileSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MessageIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilePath {
+            get {
+                return this.FilePathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilePathField, value) != true)) {
+                    this.FilePathField = value;
+                    this.RaisePropertyChanged("FilePath");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FileSize {
+            get {
+                return this.FileSizeField;
+            }
+            set {
+                if ((this.FileSizeField.Equals(value) != true)) {
+                    this.FileSizeField = value;
+                    this.RaisePropertyChanged("FileSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileType {
+            get {
+                return this.FileTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileTypeField, value) != true)) {
+                    this.FileTypeField = value;
+                    this.RaisePropertyChanged("FileType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MessageId {
+            get {
+                return this.MessageIdField;
+            }
+            set {
+                if ((this.MessageIdField.Equals(value) != true)) {
+                    this.MessageIdField = value;
+                    this.RaisePropertyChanged("MessageId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService")]
     public interface IService {
@@ -722,6 +898,12 @@ namespace StepChat.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetContacts", ReplyAction="http://tempuri.org/IService/GetContactsResponse")]
         System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf> GetContactsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteContact", ReplyAction="http://tempuri.org/IService/DeleteContactResponse")]
+        StepChat.ServiceReference1.Result DeleteContact(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteContact", ReplyAction="http://tempuri.org/IService/DeleteContactResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> DeleteContactAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SearchUsers", ReplyAction="http://tempuri.org/IService/SearchUsersResponse")]
         StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf SearchUsers(string query);
@@ -765,6 +947,12 @@ namespace StepChat.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SendMessage", ReplyAction="http://tempuri.org/IService/SendMessageResponse")]
         System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfMessageQo1Oyztf> SendMessageAsync(int chatId, string text);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContactToChat", ReplyAction="http://tempuri.org/IService/AddContactToChatResponse")]
+        StepChat.ServiceReference1.ResultOfChatQo1Oyztf AddContactToChat(int contactId, int chatId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddContactToChat", ReplyAction="http://tempuri.org/IService/AddContactToChatResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfChatQo1Oyztf> AddContactToChatAsync(int contactId, int chatId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/EditMessage", ReplyAction="http://tempuri.org/IService/EditMessageResponse")]
         StepChat.ServiceReference1.ResultOfMessageQo1Oyztf EditMessage(int messageId, string newText);
         
@@ -782,6 +970,24 @@ namespace StepChat.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMessages", ReplyAction="http://tempuri.org/IService/GetMessagesResponse")]
         System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttachment", ReplyAction="http://tempuri.org/IService/DeleteAttachmentResponse")]
+        StepChat.ServiceReference1.Result DeleteAttachment(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/DeleteAttachment", ReplyAction="http://tempuri.org/IService/DeleteAttachmentResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> DeleteAttachmentAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMessageAttachments", ReplyAction="http://tempuri.org/IService/GetMessageAttachmentsResponse")]
+        StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf GetMessageAttachments(int messageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetMessageAttachments", ReplyAction="http://tempuri.org/IService/GetMessageAttachmentsResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf> GetMessageAttachmentsAsync(int messageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSecretCode", ReplyAction="http://tempuri.org/IService/CreateSecretCodeResponse")]
+        StepChat.ServiceReference1.ResultOfint CreateSecretCode();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateSecretCode", ReplyAction="http://tempuri.org/IService/CreateSecretCodeResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfint> CreateSecretCodeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -859,6 +1065,14 @@ namespace StepChat.ServiceReference1 {
             return base.Channel.GetContactsAsync();
         }
         
+        public StepChat.ServiceReference1.Result DeleteContact(int id) {
+            return base.Channel.DeleteContact(id);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> DeleteContactAsync(int id) {
+            return base.Channel.DeleteContactAsync(id);
+        }
+        
         public StepChat.ServiceReference1.ResultOfArrayOfUserQo1Oyztf SearchUsers(string query) {
             return base.Channel.SearchUsers(query);
         }
@@ -915,6 +1129,14 @@ namespace StepChat.ServiceReference1 {
             return base.Channel.SendMessageAsync(chatId, text);
         }
         
+        public StepChat.ServiceReference1.ResultOfChatQo1Oyztf AddContactToChat(int contactId, int chatId) {
+            return base.Channel.AddContactToChat(contactId, chatId);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfChatQo1Oyztf> AddContactToChatAsync(int contactId, int chatId) {
+            return base.Channel.AddContactToChatAsync(contactId, chatId);
+        }
+        
         public StepChat.ServiceReference1.ResultOfMessageQo1Oyztf EditMessage(int messageId, string newText) {
             return base.Channel.EditMessage(messageId, newText);
         }
@@ -938,17 +1160,47 @@ namespace StepChat.ServiceReference1 {
         public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfMessageQo1Oyztf> GetMessagesAsync(int chatId) {
             return base.Channel.GetMessagesAsync(chatId);
         }
+        
+        public StepChat.ServiceReference1.Result DeleteAttachment(int id) {
+            return base.Channel.DeleteAttachment(id);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> DeleteAttachmentAsync(int id) {
+            return base.Channel.DeleteAttachmentAsync(id);
+        }
+        
+        public StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf GetMessageAttachments(int messageId) {
+            return base.Channel.GetMessageAttachments(messageId);
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf> GetMessageAttachmentsAsync(int messageId) {
+            return base.Channel.GetMessageAttachmentsAsync(messageId);
+        }
+        
+        public StepChat.ServiceReference1.ResultOfint CreateSecretCode() {
+            return base.Channel.CreateSecretCode();
+        }
+        
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfint> CreateSecretCodeAsync() {
+            return base.Channel.CreateSecretCodeAsync();
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IServiceStream")]
     public interface IServiceStream {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SetPicture", ReplyAction="http://tempuri.org/IServiceStream/SetPictureResponse")]
-        StepChat.ServiceReference1.Result SetPicture(System.IO.Stream stream);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SendFile", ReplyAction="http://tempuri.org/IServiceStream/SendFileResponse")]
+        StepChat.ServiceReference1.ResultOfint SendFile(System.IO.Stream stream);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SetPicture", ReplyAction="http://tempuri.org/IServiceStream/SetPictureResponse")]
-        System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> SetPictureAsync(System.IO.Stream stream);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/SendFile", ReplyAction="http://tempuri.org/IServiceStream/SendFileResponse")]
+        System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfint> SendFileAsync(System.IO.Stream stream);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/GetFile", ReplyAction="http://tempuri.org/IServiceStream/GetFileResponse")]
+        System.IO.Stream GetFile(int code, int fileId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceStream/GetFile", ReplyAction="http://tempuri.org/IServiceStream/GetFileResponse")]
+        System.Threading.Tasks.Task<System.IO.Stream> GetFileAsync(int code, int fileId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -978,12 +1230,20 @@ namespace StepChat.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public StepChat.ServiceReference1.Result SetPicture(System.IO.Stream stream) {
-            return base.Channel.SetPicture(stream);
+        public StepChat.ServiceReference1.ResultOfint SendFile(System.IO.Stream stream) {
+            return base.Channel.SendFile(stream);
         }
         
-        public System.Threading.Tasks.Task<StepChat.ServiceReference1.Result> SetPictureAsync(System.IO.Stream stream) {
-            return base.Channel.SetPictureAsync(stream);
+        public System.Threading.Tasks.Task<StepChat.ServiceReference1.ResultOfint> SendFileAsync(System.IO.Stream stream) {
+            return base.Channel.SendFileAsync(stream);
+        }
+        
+        public System.IO.Stream GetFile(int code, int fileId) {
+            return base.Channel.GetFile(code, fileId);
+        }
+        
+        public System.Threading.Tasks.Task<System.IO.Stream> GetFileAsync(int code, int fileId) {
+            return base.Channel.GetFileAsync(code, fileId);
         }
     }
 }

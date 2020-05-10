@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
+using StepChat.StepChatUI.ApiStream;
 using StepChat.StepChatUI.Commands;
 using StepChat.StepChatUI.CustomUIElement.PersonControl;
 namespace StepChat.StepChatUI.MainWindowUI.ViewModel
@@ -20,8 +23,13 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                     }
                     Task.Run(() =>
                     {
-                        Service.SendMessage(MainWindowContactListListViewSelectedItem.ChatId, MainWindowEnterYourMessageTextBox);
+                        var res = Service.SendMessage(MainWindowContactListListViewSelectedItem.ChatId, MainWindowEnterYourMessageTextBox);
+                        foreach (var item in Attacments)
+                        {
+                            ApiStream.ApiStream.AttachFile(Service, res.Data.Id, item);
+                        }
                         MainWindowEnterYourMessageTextBox = "";
+                        Attacments.Clear();
                     });
                 });
             }
@@ -38,6 +46,21 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                         MainWindowContactListListView.Add(contactToAdd);
                         Service.AddContact(SearchSelectedItem.User.Id);
                         Service.CreatePrivateChat(SearchSelectedItem.User.Id);
+                    }
+                });
+            }
+        }
+        public ICommand MainWindowAttachFileButtonClick
+        {
+            get
+            {
+                return new DelegateClickCommand((obj) =>
+                {
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Multiselect = true;
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        Attacments = openFileDialog.FileNames.ToList();
                     }
                 });
             }
