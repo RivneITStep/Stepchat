@@ -66,6 +66,10 @@ namespace DAL
                                     PhotoPath = u.PhotoPath
                                 });
         }
+        public List<Attachment> GetMessageAttachments(int messageId)
+        {
+            return context.Messages.First(m => m.Id == messageId).Attachments.ToList();
+        }
         public Attachment GetAttachment(int id)
         {
             return context.Attachments.FirstOrDefault(a => a.Id == id);
@@ -74,7 +78,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null||existing.Contacts==null) return null;
+            if (existing == null) return null;
 
             List<User> contacts = new  List<User>();
 
@@ -270,7 +274,6 @@ namespace DAL
             existing.Bio = newUser.Bio;
             existing.Email = newUser.Email;
             existing.PhotoPath = newUser.PhotoPath;
-            existing.Password = newUser.Password;
             existing.Login = newUser.Login;
             existing.LastOnlineDate = newUser.LastOnlineDate;
 
@@ -280,7 +283,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null||existing.ChatMembers==null) return null;
+            if (existing == null) return null;
 
             List<Chat> chats = new  List<Chat>();
 

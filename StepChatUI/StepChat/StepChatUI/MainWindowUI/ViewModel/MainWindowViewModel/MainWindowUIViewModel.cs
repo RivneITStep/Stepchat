@@ -335,6 +335,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
         }
         public ICommand ContactWindowDeleteButtonClick
         {
+            
             get
             {
                 return new DelegateClickCommand((obj) =>

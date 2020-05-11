@@ -11,19 +11,17 @@ using DAL;
 
 namespace Service
 {
-
-
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService, IServiceStream
     {
         private static Random rand = new Random(44);
         private static Dictionary<int, User> SecretCodes = new Dictionary<int, User>();
+        private static string userPhotosDir = ConfigurationManager.AppSettings["UsersPhotosDirectory"];
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private static DALClass dal = new DALClass();
         private static IMapper mapper;
         private User ActiveUser = null;
 
-        private static string userPhotosDir = ConfigurationManager.AppSettings["UsersPhotosDirectory"];
 
         static Service()
         {
@@ -36,6 +34,9 @@ namespace Service
 
                 cfg.CreateMap<DTO.Message, Message>().PreserveReferences();
                 cfg.CreateMap<Message, DTO.Message>().PreserveReferences();
+
+                cfg.CreateMap<DTO.Attachment, Attachment>().PreserveReferences();
+                cfg.CreateMap<Attachment, DTO.Attachment>().PreserveReferences();
             });
             mapper = config.CreateMapper();
 
@@ -137,7 +138,7 @@ namespace Service
             Chat chat = new Chat { IsPersonal = true };
 
             chat.ChatMembers.Add(new ChatMember { User = ActiveUser, ChatId=chat.Id, MemberRoleId=1});
-        //    chat.ChatMembers.Add(new ChatMember { UserId = userId, ChatId=chat.Id, MemberRoleId = 1 });
+            chat.ChatMembers.Add(new ChatMember { UserId = userId, ChatId=chat.Id, MemberRoleId = 1 });
 
             dal.AddChat(chat);
             return Result<DTO.Chat>.OK(mapper.Map<DTO.Chat>(chat));
@@ -427,6 +428,21 @@ namespace Service
             }
 
             return Result.OK;
+        }
+
+        public Result<List<DTO.Attachment>> GetMessageAttachments(int messageId)
+        {
+            if (IsNotAuth())
+                return Result<List<DTO.Attachment>>.WithError(ResultError.NoAuthorized);
+            Logger.Debug($"User '{ActiveUser.Login}' get message '{messageId}' attachments");
+
+            if(!dal.CheckMessageExist(messageId))
+                return Result<List<DTO.Attachment>>.WithError(ResultError.NotExist, $"Message id '{messageId}' not exist");
+
+
+            List<DTO.Attachment> attachments = mapper.Map<List<DTO.Attachment>>(dal.GetMessageAttachments(messageId));
+
+            return Result<List<DTO.Attachment>>.OK(attachments);
         }
     }
 }

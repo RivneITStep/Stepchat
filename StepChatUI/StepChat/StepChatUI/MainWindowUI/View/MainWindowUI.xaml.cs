@@ -236,7 +236,7 @@ namespace StepChat.StepChatUI.MainWindowUI.View
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Button_Click_9(object sender, RoutedEventArgs e)
