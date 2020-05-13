@@ -124,7 +124,7 @@
                     <DockPanel  Grid.Row="2" Background="{DynamicResource PrimaryColor}" LastChildFill="False">
 
                         <Button DockPanel.Dock="Left" Foreground="{DynamicResource ForegroundColor}"
- Style="{StaticResource MaterialDesignIconForegroundButton}"
+ Style="{StaticResource MaterialDesignIconForegroundButton}"  Command="{Binding MainWindowAttachFileButtonClick}"
   ToolTip="MaterialDesignFloatingActionMiniLightButton" Background="{x:Null}" BorderBrush="{x:Null}">
                             <materialDesign:PackIcon
     Kind="File"
@@ -253,7 +253,7 @@
             <!--###########################################################################################-->
             <!--###########################################################################################-->
             
-            <Grid Visibility="{Binding LoginRegistrationWindow_Visibility}">
+            <Grid Visibility="{Binding LoginRegistrationWindow_Visibility}" d:IsHidden="True">
                 <!--<Grid Visibility="Collapsed">-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>

@@ -85,8 +85,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="StepChatUI\ApiStream\ApiStream.cs" />
     <Compile Include="StepChatUI\BaseViewModel\BaseViewModel.cs" />
     <Compile Include="StepChatUI\Commands\DelegateClickCommand.cs" />
+    <Compile Include="StepChatUI\CustomUIElement\AttachControl\AttachControl.xaml.cs">
+      <DependentUpon>AttachControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StepChatUI\CustomUIElement\ContactControl\ContactControl.xaml.cs">
       <DependentUpon>ContactControl.xaml</DependentUpon>
     </Compile>
@@ -105,9 +109,18 @@
     <Compile Include="StepChatUI\CustomUIElement\WindowControlPanel\WindowControlPanel.xaml.cs">
       <DependentUpon>WindowControlPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\MainWindowUIViewModel.cs" />
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\MainWindowViewModel.cs" />
-    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\MainWindowUIViewModel.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Methods_GlobalConstructor.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\PrivateFields.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\GlobalDataMainWindowUIViewModel\Properties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Methods.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\PrivateFields.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\LoginRegistrationViewModel\Properties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Commands.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Methods.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\PrivateFieldsANDProperties.cs" />
+    <Compile Include="StepChatUI\MainWindowUI\ViewModel\MainWindowViewModel\Properties.cs" />
     <Compile Include="StepChatUI\MainWindowUI\View\MainWindowUI.xaml.cs">
       <DependentUpon>MainWindowUI.xaml</DependentUpon>
     </Compile>
@@ -147,6 +160,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfArrayOfAttachmentQo1Oyztf.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\StepChat.ServiceReference1.ResultOfArrayOfChatQo1Oyztf.datasource">
@@ -190,13 +206,17 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="StepChatUI\CustomUIElement\AttachControl\AttachControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="StepChatUI\CustomUIElement\ContactControl\ContactControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StepChatUI\CustomUIElement\MessageControl\MessageControl.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="StepChatUI\CustomUIElement\PersonalInfoControl\PersonalInfoControl.xaml">
       <SubType>Designer</SubType>

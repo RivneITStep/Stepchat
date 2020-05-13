@@ -87,7 +87,15 @@ namespace StepChat.StepChatUI.CustomUIElement.PersonControl
         }
         private void SetMessage(string message)
         {
-            lastMessage.Text = message.Substring(0, 20) + "...";
+            if(message!=null)
+            if (message.Length > 20)
+            {
+                lastMessage.Text = message.Substring(0, 20) + "...";
+            }
+            else
+            {
+                lastMessage.Text = message;
+            }
         }
         private void SetTimeSended(DateTime time)
         {

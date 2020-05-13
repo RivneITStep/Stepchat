@@ -124,6 +124,23 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ResultOfArrayOfMessageQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfMessageQo1Oyztf" />
+  <xs:complexType name="ResultOfArrayOfAttachmentQo1Oyztf">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfAttachment" Namespace="http://schemas.datacontract.org/2004/07/Service.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Service.DTO" minOccurs="0" name="Data" nillable="true" type="q7:ArrayOfAttachment" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfAttachmentQo1Oyztf" nillable="true" type="tns:ResultOfArrayOfAttachmentQo1Oyztf" />
   <xs:complexType name="ResultOfint">
     <xs:annotation>
       <xs:appinfo>

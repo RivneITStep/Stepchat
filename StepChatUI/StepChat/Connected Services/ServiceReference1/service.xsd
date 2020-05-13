@@ -269,6 +269,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMessageAttachments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="messageId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMessageAttachmentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="GetMessageAttachmentsResult" nillable="true" type="q22:ResultOfArrayOfAttachmentQo1Oyztf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateSecretCode">
     <xs:complexType>
       <xs:sequence />
@@ -277,21 +291,21 @@
   <xs:element name="CreateSecretCodeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreateSecretCodeResult" nillable="true" type="q22:ResultOfint" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="CreateSecretCodeResult" nillable="true" type="q23:ResultOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.microsoft.com/Message" name="stream" type="q23:StreamBody" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/Message" name="stream" type="q24:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SendFileResult" nillable="true" type="q24:ResultOfint" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Service" minOccurs="0" name="SendFileResult" nillable="true" type="q25:ResultOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -306,7 +320,7 @@
   <xs:element name="GetFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.microsoft.com/Message" name="GetFileResult" type="q25:StreamBody" />
+        <xs:element xmlns:q26="http://schemas.microsoft.com/Message" name="GetFileResult" type="q26:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
