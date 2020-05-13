@@ -18,7 +18,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
             {
                 return new DelegateClickCommand((obj) =>
                 {
-                    if (MainWindowContactListListViewSelectedItem == null)
+                    if (MainWindowContactListListViewSelectedItem == null||MainWindowEnterYourMessageTextBox==null|| MainWindowEnterYourMessageTextBox=="")
                     {
                         return;
                     }

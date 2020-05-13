@@ -82,6 +82,7 @@ namespace StepChat.StepChatUI.MainWindowUI.ViewModel
                 {
                     List<AttachControl> attaches = new List<AttachControl>();
                     var res = Service.GetMessageAttachments(item.Id);
+                    if(!res.IsSuccess)return;
                     foreach (var item2 in res.Data)
                     {
                         AttachControl ac = new AttachControl(item2.FileName, item2.FileType, item2.Id);

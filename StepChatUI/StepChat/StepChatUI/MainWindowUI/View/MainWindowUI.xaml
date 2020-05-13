@@ -97,7 +97,8 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                    <ListView ItemsSource="{Binding MainWindowMessageControlListView}" 
+HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Name="MessageList"  ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectiveScrollingGrid.SelectiveScrollingOrientation="None" BorderBrush="{x:Null}" Foreground="{x:Null}"/>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>

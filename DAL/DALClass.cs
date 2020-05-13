@@ -78,7 +78,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null) return null;
+            if (existing == null || existing.Contacts == null) return null;
 
             List<User> contacts = new  List<User>();
 
@@ -283,7 +283,7 @@ namespace DAL
         {
             var existing = context.Users.FirstOrDefault(u => u.Id == userId);
 
-            if (existing == null) return null;
+            if (existing == null || existing.ChatMembers==null) return null;
 
             List<Chat> chats = new  List<Chat>();
 
