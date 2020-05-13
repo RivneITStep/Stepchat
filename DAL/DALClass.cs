@@ -98,7 +98,7 @@ namespace DAL
 
         public void RemoveContact(int contactId)
         {
-            var existing = context.Contacts.FirstOrDefault(u => u.Id == contactId);
+            var existing = context.Contacts.FirstOrDefault(u => u.UserContactId == contactId);
             
             if (existing == null) return;         
 
